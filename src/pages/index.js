@@ -65,9 +65,11 @@ const IndexPage = ({ data }) => {
   return (
     <main>
       <Seo />
-      <section className="container relative mx-auto ">
-        <h1 className="absolute z-50 px-4 py-2 text-2xl font-bold transform -translate-x-1/2 rounded font-title bg-slate-200 top-8 left-1/2">
-          <Link to="/">Secret Pittsburgh</Link>
+      <section className="relative">
+        <h1 className="absolute z-50 px-4 py-2 text-2xl font-bold transform -translate-x-1/2 rounded bg-slate-200 top-8 left-1/2">
+          <Link to="/" className="font-title">
+            Secret Pittsburgh
+          </Link>
         </h1>
         <Map
           {...viewState}
@@ -107,12 +109,14 @@ const IndexPage = ({ data }) => {
                   550
                 )
               )}
-              <Link
-                to={location.gatsbyPath}
-                className="inline-block px-4 py-2 font-bold text-black transition transform bg-blue-300 rounded hover:text-black hover:scale-105"
-              >
-                Learn More
-              </Link>
+              <div className="flex items-center justify-center">
+                <Link
+                  to={location.gatsbyPath}
+                  className="inline-block px-4 py-2 font-bold text-center text-black transition transform bg-blue-300 rounded hover:text-black hover:scale-105"
+                >
+                  Learn More
+                </Link>
+              </div>
             </div>
           )}
         </Drawer>
