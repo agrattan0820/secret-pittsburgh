@@ -13,23 +13,29 @@ mapboxgl.workerClass =
   require("worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker").default;
 
 const LocationPage = (props) => {
-  // const [spLocation, setSpLocation] = useState(location.state.location);
+  const [location, setLocation] = useState(props.data.nodeLocation);
 
   console.log(props);
   return (
     <main>
       <Seo />
-      <section className="container relative mx-auto ">
-        <h1 className="absolute z-50 px-4 py-2 text-2xl font-bold transform -translate-x-1/2 rounded font-title bg-slate-200 top-8 left-1/2">
-          <Link to="/">Secret Pittsburgh</Link>
-        </h1>
-        {/* {parse(
-          shortenString(
-            spLocation?.relationships.field_associated_guidebook_entry.body
-              .processed,
-            550
-          )
-        )} */}
+      <h1 className="absolute z-50 px-4 py-2 text-2xl font-bold transform -translate-x-1/2 rounded font-title bg-slate-200 top-8 left-1/2">
+        <Link to="/" className="font-title">
+          Secret Pittsburgh
+        </Link>
+      </h1>
+      <section className="container relative flex flex-col justify-center h-screen mx-auto ">
+        <div className="mx-auto space-y-8 max-w-prose">
+          <h2 className="text-3xl font-bold">{location?.title}</h2>
+          {parse(
+            shortenString(
+              location?.relationships.field_associated_guidebook_entry.body
+                .processed,
+              550
+            )
+          )}
+        </div>
+
         {/* <pre>{JSON.stringify(data, null, 4)}</pre> */}
       </section>
     </main>
