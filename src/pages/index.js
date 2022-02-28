@@ -153,9 +153,7 @@ const IndexPage = ({ data }) => {
           zoom: 14,
         }}
         style={{ width: 600, height: 400 }}
-        mapboxAccessToken={
-          "pk.eyJ1IjoiYWdyYXR0YW4iLCJhIjoiY2wwNnVicjJ6MmJpczNlcWg1Z3JtamQ3NSJ9.XZFpqjiZqUeb2MiIuQBKEw"
-        }
+        mapboxAccessToken={process.env.GATSBY_MAPBOX_ACCESS_TOKEN}
         mapStyle={"mapbox://styles/mapbox/light-v10"}
       />
       <pre>{JSON.stringify(data, null, 4)}</pre>
