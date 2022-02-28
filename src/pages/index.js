@@ -75,7 +75,7 @@ const IndexPage = ({ data }) => {
           <ScaleControl />
           <GeolocateControl />
         </Map>
-        <pre>{JSON.stringify(data, null, 4)}</pre>
+        {/* <pre>{JSON.stringify(data, null, 4)}</pre> */}
       </section>
     </main>
   );
