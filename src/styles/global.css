@@ -1,3 +1,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@import url(https://api.tiles.mapbox.com/mapbox-gl-js/v1.5.1/mapbox-gl.css);
+
+.mapboxgl-ctrl-attrib-inner {
+  display: none;
+}
+
+.mapboxgl-marker {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+}
