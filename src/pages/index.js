@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useState, useMemo, useRef } from "react";
 import { graphql } from "gatsby";
 import Map, {
   Marker,
@@ -18,13 +18,19 @@ mapboxgl.workerClass =
   require("worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker").default;
 
 const IndexPage = ({ data }) => {
-  const [viewState, setViewState] = React.useState({
+  const [viewState, setViewState] = useState({
     latitude: 40.4406,
     longitude: -79.9959,
     zoom: 14,
     bearing: 0,
     pitch: 45, // pitch in degrees
   });
+
+  const mapRef = useRef();
+
+  const goToLoc = (lat, lng) => {
+    mapRef.current?.flyTo({ center: [lng, lat], zoom: 15, duration: 800 });
+  };
 
   const pins = React.useMemo(
     () =>
@@ -34,6 +40,12 @@ const IndexPage = ({ data }) => {
           longitude={location.field_geolocation.lng}
           latitude={location.field_geolocation.lat}
           anchor="bottom"
+          onClick={() =>
+            goToLoc(
+              location.field_geolocation.lat,
+              location.field_geolocation.lng
+            )
+          }
         >
           <Pin />
         </Marker>
@@ -44,10 +56,14 @@ const IndexPage = ({ data }) => {
   return (
     <main>
       <Seo />
-      <section className="container mx-auto">
+      <section className="container relative mx-auto">
+        <h1 className="absolute z-50 px-4 py-2 text-2xl font-bold transform -translate-x-1/2 rounded bg-slate-200 top-8 left-1/2">
+          Secret Pittsburgh
+        </h1>
         <Map
           {...viewState}
           style={{ width: "100%", height: "100vh", overflow: "hidden" }}
+          ref={mapRef}
           onMove={(evt) => setViewState(evt.viewState)}
           mapboxAccessToken={process.env.GATSBY_MAPBOX_ACCESS_TOKEN}
           mapStyle={"mapbox://styles/mapbox/light-v10"}
@@ -59,6 +75,7 @@ const IndexPage = ({ data }) => {
           <ScaleControl />
           <GeolocateControl />
         </Map>
+        <pre>{JSON.stringify(data, null, 4)}</pre>
       </section>
     </main>
   );
@@ -114,6 +131,44 @@ export const query = graphql`
                 }
               }
             }
+          }
+          field_associated_guidebook_entry {
+            body {
+              processed
+            }
+            field_image {
+              alt
+            }
+            title
+            relationships {
+              field_image {
+                uri {
+                  url
+                }
+              }
+            }
+          }
+          field_associated_basic_info_entr {
+            body {
+              processed
+            }
+            title
+          }
+          node__article {
+            body {
+              processed
+            }
+            field_image {
+              alt
+            }
+            relationships {
+              field_image {
+                uri {
+                  url
+                }
+              }
+            }
+            title
           }
         }
       }
