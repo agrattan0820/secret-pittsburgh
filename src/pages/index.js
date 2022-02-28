@@ -32,7 +32,7 @@ const IndexPage = ({ data }) => {
     mapRef.current?.flyTo({ center: [lng, lat], zoom: 15, duration: 800 });
   };
 
-  const pins = React.useMemo(
+  const pins = useMemo(
     () =>
       data.allNodeLocation.nodes.map((location, i) => (
         <Marker
