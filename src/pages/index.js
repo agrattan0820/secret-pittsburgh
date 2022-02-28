@@ -1,7 +1,7 @@
 import React, { useState, useMemo, useRef } from "react";
 import parse from "html-react-parser";
-import { graphql } from "gatsby";
-import { Drawer, Button } from "antd";
+import { graphql, Link } from "gatsby";
+import { Drawer } from "antd";
 import Map, {
   Marker,
   NavigationControl,
@@ -15,7 +15,7 @@ import "mapbox-gl/dist/mapbox-gl.css";
 import mapboxgl from "mapbox-gl";
 import Seo from "../components/seo";
 import Pin from "../components/pin";
-import { shortenString } from "../util";
+import { shortenString, stringToSlug } from "../util";
 // @ts-ignore
 mapboxgl.workerClass =
   require("worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker").default;
@@ -67,7 +67,7 @@ const IndexPage = ({ data }) => {
       <Seo />
       <section className="container relative mx-auto ">
         <h1 className="absolute z-50 px-4 py-2 text-2xl font-bold transform -translate-x-1/2 rounded font-title bg-slate-200 top-8 left-1/2">
-          Secret Pittsburgh
+          <Link to="/">Secret Pittsburgh</Link>
         </h1>
         <Map
           {...viewState}
@@ -91,9 +91,8 @@ const IndexPage = ({ data }) => {
           visible={drawerOpen}
         >
           {location && (
-            <div className="leading-loose">
+            <div className="space-y-4 leading-loose">
               <img
-                className="mb-4"
                 src={`https://secretpittsburgh.pitt.edu/${location?.relationships.field_associated_guidebook_entry.relationships.field_image[0].uri.url}`}
                 alt={
                   location?.relationships.field_associated_guidebook_entry
@@ -108,6 +107,12 @@ const IndexPage = ({ data }) => {
                   550
                 )
               )}
+              <Link
+                to={location.gatsbyPath}
+                className="inline-block px-4 py-2 font-bold text-black transition transform bg-blue-300 rounded hover:text-black hover:scale-105"
+              >
+                Learn More
+              </Link>
             </div>
           )}
         </Drawer>
@@ -144,29 +149,6 @@ export const query = graphql`
         relationships {
           field_neighborhood {
             name
-          }
-          field_main_entry {
-            title
-            field_place {
-              links {
-                help {
-                  href
-                }
-              }
-            }
-            body {
-              processed
-            }
-            field_image {
-              alt
-            }
-            relationships {
-              field_image {
-                uri {
-                  url
-                }
-              }
-            }
           }
           field_associated_guidebook_entry {
             body {
@@ -206,7 +188,43 @@ export const query = graphql`
             }
             title
           }
+          field_main_entry {
+            title
+            field_place {
+              links {
+                help {
+                  href
+                }
+              }
+            }
+            body {
+              processed
+            }
+            field_image {
+              alt
+            }
+            relationships {
+              field_image {
+                uri {
+                  url
+                }
+              }
+            }
+          }
+          node__basics {
+            body {
+              processed
+            }
+            title
+          }
+          node__guidebook_entry {
+            title
+            body {
+              processed
+            }
+          }
         }
+        gatsbyPath(filePath: "/location/{nodeLocation.title}")
       }
     }
     allNodeGuidebookEntry {
