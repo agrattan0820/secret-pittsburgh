@@ -12,7 +12,7 @@ export function getNodeText(node) {
   if (typeof node === "object" && node) return getNodeText(node.props.children);
 }
 
-export function stringToSlug(str) {
+export function stringToSlug(str = "") {
   str = str.replace(/^\s+|\s+$/g, ""); // trim
   str = str.toLowerCase();
 
