@@ -4,14 +4,17 @@ require("dotenv").config({
 
 module.exports = {
   siteMetadata: {
-    title: `new`,
-    siteUrl: `https://www.yourdomain.tld`,
+    title: `Secret Pittsburgh`,
+    siteUrl: `https://secretpittsburgh.pitt.edu/`,
+    description: `Welcome to Secret Pittsburgh, a digital guide to Pittsburgh created by University of Pittsburgh students!`,
+    author: `University of Pittsburgh`,
   },
   plugins: [
     "gatsby-plugin-sass",
     "gatsby-plugin-image",
     "gatsby-plugin-react-helmet",
     "gatsby-plugin-sitemap",
+    "gatsby-plugin-postcss",
     {
       resolve: "gatsby-plugin-manifest",
       options: {
