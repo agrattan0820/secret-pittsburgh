@@ -29,8 +29,8 @@ const LocationPage = (props) => {
           <h2 className="text-3xl font-bold">{location?.title}</h2>
           {parse(
             shortenString(
-              location?.relationships.field_associated_guidebook_entry.body
-                .processed,
+              location?.relationships?.field_associated_guidebook_entry?.body
+                ?.processed,
               550
             )
           )}
