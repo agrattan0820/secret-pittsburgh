@@ -112,6 +112,7 @@ export const query = graphql`
           title
         }
       }
+      gatsbyPath(filePath: "/location/{nodeLocation.title}")
     }
   }
 `;
