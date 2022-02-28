@@ -23,11 +23,14 @@
     "gatsby-plugin-sass": "^5.8.0",
     "gatsby-plugin-sharp": "^4.8.1",
     "gatsby-plugin-sitemap": "^5.8.0",
+    "gatsby-source-drupal": "^5.8.1",
     "gatsby-source-filesystem": "^4.8.1",
     "gatsby-transformer-sharp": "^4.8.0",
+    "mapbox-gl": "^2.7.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-helmet": "^6.1.0",
+    "react-map-gl": "^7.0.7",
     "sass": "^1.49.9"
   }
 }
