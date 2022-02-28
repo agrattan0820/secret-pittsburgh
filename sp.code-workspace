@@ -5,7 +5,6 @@
   }
  ],
   "settings": {
-   "files.autoSave": "onFocusChange",
    "editor.codeActionsOnSave": {
     "source.fixAll": true,
    },
