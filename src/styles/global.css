@@ -23,3 +23,21 @@
   left: 0px;
   top: 0px;
 }
+
+.sp-marker-icon {
+  width: 100%;
+  z-index: 1;
+  color: #003594;
+  opacity: 0.5;
+  font-size: 18px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.sp-marker-icon:hover {
+  transform: scale(1.3, 1.3);
+}
+
+.sp-marker-icon:focus {
+  transform: scale(1.3, 1.3);
+}
