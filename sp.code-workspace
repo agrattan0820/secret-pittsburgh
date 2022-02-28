@@ -1,0 +1,29 @@
+{
+ "folders": [
+  {
+   "path": "."
+  }
+ ],
+  "settings": {
+   "files.autoSave": "onFocusChange",
+   "editor.codeActionsOnSave": {
+    "source.fixAll": true,
+   },
+   "search.exclude": {
+    "**/node_modules": true,
+    "**/.cache": true,
+    "**/*.log": true,
+    "**/package.lock": true,
+   },
+  },
+  "extensions": {
+   "recommendations": [
+    "esbenp.prettier-vscode",
+    "bradlc.vscode-tailwindcss",
+    "heybourn.headwind",
+    "formulahendry.auto-rename-tag",
+    "aaron-bond.better-comments",
+    "GraphQL.vscode-graphql"
+   ]
+  }
+}
