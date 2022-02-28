@@ -46,11 +46,11 @@ const IndexPage = ({ data }) => {
           latitude={location.field_geolocation.lat}
           anchor="bottom"
           onClick={() => {
+            setLocation(location);
             goToLoc(
               location.field_geolocation.lat,
               location.field_geolocation.lng
             );
-            setLocation(location);
             setDrawerOpen(true);
           }}
         >
