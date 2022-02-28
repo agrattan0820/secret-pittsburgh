@@ -8,6 +8,12 @@
 
 @import url(https://api.tiles.mapbox.com/mapbox-gl-js/v1.5.1/mapbox-gl.css);
 
+*,
+*::before,
+*::after {
+  font-family: "Open Sans", "sans-serif";
+}
+
 .mapboxgl-ctrl-attrib-inner {
   display: none;
 }

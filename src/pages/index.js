@@ -65,8 +65,8 @@ const IndexPage = ({ data }) => {
   return (
     <main>
       <Seo />
-      <section className="container relative mx-auto">
-        <h1 className="absolute z-50 px-4 py-2 text-2xl font-bold transform -translate-x-1/2 rounded bg-slate-200 top-8 left-1/2">
+      <section className="container relative mx-auto ">
+        <h1 className="absolute z-50 px-4 py-2 text-2xl font-bold transform -translate-x-1/2 rounded font-title bg-slate-200 top-8 left-1/2">
           Secret Pittsburgh
         </h1>
         <Map
@@ -91,7 +91,7 @@ const IndexPage = ({ data }) => {
           visible={drawerOpen}
         >
           {location && (
-            <>
+            <div className="leading-loose">
               <img
                 className="mb-4"
                 src={`https://secretpittsburgh.pitt.edu/${location?.relationships.field_associated_guidebook_entry.relationships.field_image[0].uri.url}`}
@@ -100,6 +100,7 @@ const IndexPage = ({ data }) => {
                     .field_image[0].alt
                 }
               />
+
               {parse(
                 shortenString(
                   location?.relationships.field_associated_guidebook_entry.body
@@ -107,7 +108,7 @@ const IndexPage = ({ data }) => {
                   550
                 )
               )}
-            </>
+            </div>
           )}
         </Drawer>
         {/* <pre>{JSON.stringify(data, null, 4)}</pre> */}
