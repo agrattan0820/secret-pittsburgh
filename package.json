@@ -1,0 +1,33 @@
+{
+  "name": "secret-pittsburgh",
+  "version": "1.0.0",
+  "private": true,
+  "description": "secret-pittsburgh",
+  "author": "GameDog9988",
+  "keywords": [
+    "gatsby"
+  ],
+  "scripts": {
+    "develop": "gatsby develop",
+    "start": "gatsby develop",
+    "build": "gatsby build",
+    "serve": "gatsby serve",
+    "clean": "gatsby clean"
+  },
+  "dependencies": {
+    "gatsby": "^4.8.0",
+    "gatsby-plugin-google-analytics": "^4.8.0",
+    "gatsby-plugin-image": "^2.8.1",
+    "gatsby-plugin-manifest": "^4.8.1",
+    "gatsby-plugin-react-helmet": "^5.8.0",
+    "gatsby-plugin-sass": "^5.8.0",
+    "gatsby-plugin-sharp": "^4.8.1",
+    "gatsby-plugin-sitemap": "^5.8.0",
+    "gatsby-source-filesystem": "^4.8.1",
+    "gatsby-transformer-sharp": "^4.8.0",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "react-helmet": "^6.1.0",
+    "sass": "^1.49.9"
+  }
+}
