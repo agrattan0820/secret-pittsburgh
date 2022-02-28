@@ -1,5 +1,7 @@
 import React, { useState, useMemo, useRef } from "react";
+import parse from "html-react-parser";
 import { graphql } from "gatsby";
+import { Drawer, Button } from "antd";
 import Map, {
   Marker,
   NavigationControl,
@@ -13,6 +15,7 @@ import "mapbox-gl/dist/mapbox-gl.css";
 import mapboxgl from "mapbox-gl";
 import Seo from "../components/seo";
 import Pin from "../components/pin";
+import { shortenString } from "../util";
 // @ts-ignore
 mapboxgl.workerClass =
   require("worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker").default;
@@ -25,6 +28,8 @@ const IndexPage = ({ data }) => {
     bearing: 0,
     pitch: 45, // pitch in degrees
   });
+  const [location, setLocation] = useState();
+  const [drawerOpen, setDrawerOpen] = useState(false);
 
   const mapRef = useRef();
 
@@ -40,18 +45,22 @@ const IndexPage = ({ data }) => {
           longitude={location.field_geolocation.lng}
           latitude={location.field_geolocation.lat}
           anchor="bottom"
-          onClick={() =>
+          onClick={() => {
             goToLoc(
               location.field_geolocation.lat,
               location.field_geolocation.lng
-            )
-          }
+            );
+            setLocation(location);
+            setDrawerOpen(true);
+          }}
         >
           <Pin />
         </Marker>
       )),
     [data.allNodeLocation.nodes]
   );
+
+  console.log(data);
 
   return (
     <main>
@@ -75,6 +84,32 @@ const IndexPage = ({ data }) => {
           <ScaleControl />
           <GeolocateControl />
         </Map>
+        <Drawer
+          title={location?.title ?? "Location"}
+          placement="left"
+          onClose={() => setDrawerOpen(false)}
+          visible={drawerOpen}
+        >
+          {location && (
+            <>
+              <img
+                className="mb-4"
+                src={`https://secretpittsburgh.pitt.edu/${location?.relationships.field_associated_guidebook_entry.relationships.field_image[0].uri.url}`}
+                alt={
+                  location?.relationships.field_associated_guidebook_entry
+                    .field_image[0].alt
+                }
+              />
+              {parse(
+                shortenString(
+                  location?.relationships.field_associated_guidebook_entry.body
+                    .processed,
+                  550
+                )
+              )}
+            </>
+          )}
+        </Drawer>
         {/* <pre>{JSON.stringify(data, null, 4)}</pre> */}
       </section>
     </main>
