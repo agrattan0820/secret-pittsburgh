@@ -2,11 +2,11 @@ import React, { useState } from "react";
 import parse from "html-react-parser";
 import { graphql, Link } from "gatsby";
 import "mapbox-gl/dist/mapbox-gl.css";
+import { Carousel } from "antd";
 
 /* eslint-disable import/no-webpack-loader-syntax */
 import mapboxgl from "mapbox-gl";
 import Seo from "../../components/seo";
-import Pin from "../../components/pin";
 import { shortenString } from "../../util";
 // @ts-ignore
 mapboxgl.workerClass =
@@ -24,15 +24,31 @@ const LocationPage = (props) => {
           Secret Pittsburgh
         </Link>
       </h1>
-      <section className="container relative flex flex-col justify-center h-screen mx-auto ">
-        <div className="mx-auto space-y-8 max-w-prose">
+      <section className="container relative flex flex-col justify-center min-h-screen pt-32 pb-24 mx-auto ">
+        <div className="w-full max-w-2xl px-4 mx-auto space-y-8 leading-loose">
+          <Carousel
+            style={{ margin: "auto" }}
+            autoplay
+            arrows={true}
+            pauseOnHover={false}
+          >
+            {location?.relationships.field_associated_guidebook_entry.relationships.field_image.map(
+              (image, i) => (
+                <img
+                  className="object-cover h-72 md:h-96 carousel-image"
+                  src={`https://secretpittsburgh.pitt.edu/${image.uri.url}`}
+                  alt={
+                    location?.relationships.field_associated_guidebook_entry
+                      .field_image[i].alt
+                  }
+                />
+              )
+            )}
+          </Carousel>
           <h2 className="text-3xl font-bold">{location?.title}</h2>
           {parse(
-            shortenString(
-              location?.relationships?.field_associated_guidebook_entry?.body
-                ?.processed ?? "",
-              550
-            )
+            location?.relationships?.field_associated_guidebook_entry?.body
+              ?.processed ?? ""
           )}
         </div>
       </section>

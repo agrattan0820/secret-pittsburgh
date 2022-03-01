@@ -15,7 +15,7 @@
 }
 
 a:hover {
-  color: initial;
+  color: unset;
 }
 
 .mapboxgl-ctrl-attrib-inner {
@@ -44,4 +44,20 @@ a:hover {
 
 .sp-marker-icon:focus {
   transform: scale(1.3, 1.3);
+}
+
+.ant-drawer-title {
+  font-family: "Montserrat", "sans-serif";
+  font-weight: bold;
+}
+
+/* .carousel-image {
+  height: 500px;
+  object-fit: cover;
+} */
+
+@media screen and (min-width: 1280px) {
+  .carousel-image {
+    height: 500px;
+  }
 }
