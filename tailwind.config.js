@@ -4,7 +4,18 @@ module.exports = {
     fontFamily: {
       title: ["Montserrat", "sans-serif"],
     },
-    extend: {},
+    extend: {
+      colors: {
+        "pitt-blue": "#243E8B",
+        "pitt-yellow": "#FFB81C",
+        "pitt-gold": "#CDB87E",
+      },
+      textColor: {
+        "pitt-blue": "#243E8B",
+        "pitt-yellow": "#FFB81C",
+        "pitt-gold": "#CDB87E",
+      },
+    },
   },
   plugins: [],
 };
