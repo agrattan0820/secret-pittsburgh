@@ -10,6 +10,8 @@ import Map, {
   GeolocateControl,
 } from "react-map-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
+import { AiOutlineClose } from "react-icons/ai";
+import { FaTimes } from "react-icons/fa";
 
 /* eslint-disable import/no-webpack-loader-syntax */
 import mapboxgl from "mapbox-gl";
@@ -73,6 +75,7 @@ const IndexPage = ({ data }) => {
         </h1>
         <Map
           {...viewState}
+          reuseMaps
           style={{ width: "100%", height: "100vh", overflow: "hidden" }}
           ref={mapRef}
           onMove={(evt) => setViewState(evt.viewState)}
@@ -91,6 +94,9 @@ const IndexPage = ({ data }) => {
           placement="left"
           onClose={() => setDrawerOpen(false)}
           visible={drawerOpen}
+          closeIcon={
+            <FaTimes className="absolute text-xl transform -translate-y-1/2 top-1/2 right-8" />
+          }
         >
           {location && (
             <div className="space-y-4 leading-loose">
@@ -112,7 +118,7 @@ const IndexPage = ({ data }) => {
               <div className="flex items-center justify-center">
                 <Link
                   to={location.gatsbyPath}
-                  className="inline-block px-4 py-2 font-bold text-center text-black transition transform bg-blue-300 rounded hover:text-black hover:scale-105"
+                  className="inline-block px-4 py-2 font-bold text-center text-white transition transform rounded hover:text-white bg-pitt-blue hover:scale-105"
                 >
                   Learn More
                 </Link>
