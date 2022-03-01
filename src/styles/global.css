@@ -51,6 +51,10 @@ a:hover {
   font-weight: bold;
 }
 
+.drawer-text a {
+  color: #1890ff;
+}
+
 /* .carousel-image {
   height: 500px;
   object-fit: cover;

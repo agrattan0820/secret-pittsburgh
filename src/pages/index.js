@@ -109,14 +109,16 @@ const IndexPage = ({ data }) => {
                     .field_image[0].alt
                 }
               />
+              <div className="drawer-text">
+                {parse(
+                  shortenString(
+                    location?.relationships.field_associated_guidebook_entry
+                      .body.processed,
+                    550
+                  )
+                )}
+              </div>
 
-              {parse(
-                shortenString(
-                  location?.relationships.field_associated_guidebook_entry.body
-                    .processed,
-                  550
-                )
-              )}
               <div className="flex items-center justify-center">
                 <Link
                   to={location.gatsbyPath}
