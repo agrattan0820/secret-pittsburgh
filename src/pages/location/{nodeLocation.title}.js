@@ -30,7 +30,7 @@ const LocationPage = (props) => {
           {parse(
             shortenString(
               location?.relationships?.field_associated_guidebook_entry?.body
-                ?.processed,
+                ?.processed ?? "",
               550
             )
           )}
