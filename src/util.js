@@ -1,3 +1,5 @@
+import React from "react";
+
 export function shortenString(string, length) {
   if (string.length > length) {
     return string.substring(0, length) + "...";
@@ -32,4 +34,23 @@ export function stringToSlug(str) {
     .replace(/-+$/, ""); // trim - from end of text
 
   return str;
+}
+
+export function useStickyState(defaultValue, key) {
+  const windowGlobal = typeof window !== `undefined` && window;
+
+  const [value, setValue] = React.useState(() => {
+    const stickyValue = windowGlobal.localStorage.getItem(key) ?? null;
+    return stickyValue !== null ? JSON.parse(stickyValue) : defaultValue;
+  });
+
+  React.useEffect(() => {
+    const windowGlobal = typeof window !== `undefined` && window;
+
+    if (windowGlobal) {
+      windowGlobal.localStorage.setItem(key, JSON.stringify(value));
+    }
+  }, [key, value]);
+
+  return [value, setValue];
 }
