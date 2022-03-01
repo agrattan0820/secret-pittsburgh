@@ -67,7 +67,7 @@ const IndexPage = ({ data }) => {
   return (
     <main>
       <header className="absolute z-50 flex justify-center w-full max-w-2xl transform -translate-x-1/2 top-8 left-1/2">
-        <h1 className="px-4 py-2 text-lg font-bold rounded w-min lg:text-2xl bg-slate-200">
+        <h1 className="px-4 py-2 text-lg font-bold rounded shadow w-min lg:text-2xl bg-slate-200">
           <Link to="/" className="inline-block font-title whitespace-nowrap">
             Secret Pittsburgh
           </Link>
@@ -102,6 +102,7 @@ const IndexPage = ({ data }) => {
           {location && (
             <div className="space-y-4 leading-loose">
               <img
+                className="shadow-md"
                 src={`https://secretpittsburgh.pitt.edu/${location?.relationships.field_associated_guidebook_entry.relationships.field_image[0].uri.url}`}
                 alt={
                   location?.relationships.field_associated_guidebook_entry
@@ -119,7 +120,7 @@ const IndexPage = ({ data }) => {
               <div className="flex items-center justify-center">
                 <Link
                   to={location.gatsbyPath}
-                  className="inline-block px-4 py-2 font-bold text-center text-white transition transform rounded hover:text-white bg-pitt-blue hover:scale-105"
+                  className="inline-block px-4 py-2 font-bold text-center text-white transition transform rounded shadow hover:text-white bg-pitt-blue hover:scale-105"
                 >
                   Learn More
                 </Link>

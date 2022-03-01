@@ -22,11 +22,11 @@ const LocationPage = (props) => {
       <header className="absolute z-50 flex justify-center w-full max-w-2xl transform -translate-x-1/2 top-8 left-1/2">
         <Link
           to="/"
-          className="absolute text-lg transform -translate-y-1/2 left-8 top-1/2"
+          className="absolute text-lg transform -translate-y-1/2 lg:text-xl left-8 top-1/2"
         >
           <FaArrowLeft />
         </Link>
-        <h1 className="px-4 py-2 text-lg font-bold rounded w-min lg:text-2xl bg-slate-200">
+        <h1 className="px-4 py-2 text-lg font-bold rounded shadow w-min lg:text-2xl bg-slate-200">
           <Link to="/" className="inline-block font-title whitespace-nowrap">
             Secret Pittsburgh
           </Link>
@@ -44,6 +44,7 @@ const LocationPage = (props) => {
                 autoplay
                 arrows={true}
                 pauseOnHover={false}
+                className="shadow-lg"
               >
                 {location?.relationships.field_associated_guidebook_entry.relationships.field_image.map(
                   (image, i) => (
