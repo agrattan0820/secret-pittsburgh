@@ -26,25 +26,31 @@ const LocationPage = (props) => {
       </h1>
       <section className="container relative flex flex-col justify-center min-h-screen pt-32 pb-24 mx-auto ">
         <div className="w-full max-w-2xl px-4 mx-auto space-y-8 leading-loose">
-          <Carousel
-            style={{ margin: "auto" }}
-            autoplay
-            arrows={true}
-            pauseOnHover={false}
-          >
-            {location?.relationships.field_associated_guidebook_entry.relationships.field_image.map(
-              (image, i) => (
-                <img
-                  className="object-cover h-72 md:h-96 carousel-image"
-                  src={`https://secretpittsburgh.pitt.edu/${image.uri.url}`}
-                  alt={
-                    location?.relationships.field_associated_guidebook_entry
-                      .field_image[i].alt
-                  }
-                />
-              )
+          {location?.relationships?.field_associated_guidebook_entry
+            ?.relationships &&
+            location?.relationships?.field_associated_guidebook_entry
+              ?.relationships.field_image.length > 0 && (
+              <Carousel
+                style={{ margin: "auto" }}
+                autoplay
+                arrows={true}
+                pauseOnHover={false}
+              >
+                {location?.relationships.field_associated_guidebook_entry.relationships.field_image.map(
+                  (image, i) => (
+                    <img
+                      className="object-cover h-72 md:h-96 carousel-image"
+                      src={`https://secretpittsburgh.pitt.edu/${image.uri.url}`}
+                      alt={
+                        location?.relationships.field_associated_guidebook_entry
+                          .field_image[i].alt
+                      }
+                    />
+                  )
+                )}
+              </Carousel>
             )}
-          </Carousel>
+
           <h2 className="text-3xl font-bold">{location?.title}</h2>
           {parse(
             location?.relationships?.field_associated_guidebook_entry?.body
