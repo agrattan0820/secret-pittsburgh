@@ -66,13 +66,15 @@ const IndexPage = ({ data }) => {
 
   return (
     <main>
-      <Seo />
-      <section className="relative">
-        <h1 className="absolute z-50 px-4 py-2 text-lg font-bold transform -translate-x-1/2 rounded w-min lg:text-2xl bg-slate-200 top-8 left-1/2">
+      <header className="absolute z-50 flex justify-center w-full max-w-2xl transform -translate-x-1/2 top-8 left-1/2">
+        <h1 className="px-4 py-2 text-lg font-bold rounded w-min lg:text-2xl bg-slate-200">
           <Link to="/" className="inline-block font-title whitespace-nowrap">
             Secret Pittsburgh
           </Link>
         </h1>
+      </header>
+      <Seo />
+      <section className="relative">
         <Map
           {...viewState}
           reuseMaps
