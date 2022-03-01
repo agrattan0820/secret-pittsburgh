@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import parse from "html-react-parser";
-import { graphql, Link } from "gatsby";
+import { graphql, Link, navigate } from "gatsby";
 import "mapbox-gl/dist/mapbox-gl.css";
 import { Carousel } from "antd";
+import { FaArrowLeft } from "react-icons/fa";
 
 /* eslint-disable import/no-webpack-loader-syntax */
 import mapboxgl from "mapbox-gl";
 import Seo from "../../components/seo";
-import { shortenString } from "../../util";
 // @ts-ignore
 mapboxgl.workerClass =
   require("worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker").default;
@@ -19,11 +19,20 @@ const LocationPage = (props) => {
   return (
     <main>
       <Seo />
-      <h1 className="absolute z-50 px-4 py-2 text-lg font-bold transform -translate-x-1/2 rounded w-min lg:text-2xl bg-slate-200 top-8 left-1/2">
-        <Link to="/" className="inline-block font-title whitespace-nowrap">
-          Secret Pittsburgh
+      <header className="absolute z-50 flex justify-center w-full transform -translate-x-1/2 top-8 left-1/2">
+        <Link
+          to="/"
+          className="absolute text-lg transform -translate-y-1/2 left-8 top-1/2"
+        >
+          <FaArrowLeft />
         </Link>
-      </h1>
+        <h1 className="px-4 py-2 text-lg font-bold rounded w-min lg:text-2xl bg-slate-200">
+          <Link to="/" className="inline-block font-title whitespace-nowrap">
+            Secret Pittsburgh
+          </Link>
+        </h1>
+      </header>
+
       <section className="container relative flex flex-col justify-center min-h-screen pt-32 pb-24 mx-auto ">
         <div className="w-full max-w-2xl px-4 mx-auto space-y-8 leading-loose">
           {location?.relationships?.field_associated_guidebook_entry
