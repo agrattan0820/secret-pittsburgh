@@ -26,7 +26,7 @@ const LocationPage = (props) => {
         >
           <FaArrowLeft />
         </Link>
-        <h1 className="px-4 py-2 text-lg font-bold rounded shadow w-min lg:text-2xl bg-slate-200">
+        <h1 className="px-4 py-2 text-lg font-bold rounded shadow w-min lg:text-2xl xl:text-3xl bg-slate-200">
           <Link to="/" className="inline-block font-title whitespace-nowrap">
             Secret Pittsburgh
           </Link>

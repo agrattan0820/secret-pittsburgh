@@ -67,7 +67,7 @@ const IndexPage = ({ data }) => {
   return (
     <main>
       <header className="absolute z-50 flex justify-center w-full max-w-2xl transform -translate-x-1/2 top-8 left-1/2">
-        <h1 className="px-4 py-2 text-lg font-bold rounded shadow w-min lg:text-2xl bg-slate-200">
+        <h1 className="px-4 py-2 text-lg font-bold rounded shadow w-min lg:text-2xl xl:text-3xl bg-slate-200">
           <Link to="/" className="inline-block font-title whitespace-nowrap">
             Secret Pittsburgh
           </Link>
