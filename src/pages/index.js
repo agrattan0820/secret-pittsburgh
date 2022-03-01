@@ -66,8 +66,8 @@ const IndexPage = ({ data }) => {
     <main>
       <Seo />
       <section className="relative">
-        <h1 className="absolute z-50 px-4 py-2 text-2xl font-bold transform -translate-x-1/2 rounded bg-slate-200 top-8 left-1/2">
-          <Link to="/" className="font-title">
+        <h1 className="absolute z-50 px-4 py-2 text-lg font-bold transform -translate-x-1/2 rounded w-min lg:text-2xl bg-slate-200 top-8 left-1/2">
+          <Link to="/" className="inline-block font-title whitespace-nowrap">
             Secret Pittsburgh
           </Link>
         </h1>
