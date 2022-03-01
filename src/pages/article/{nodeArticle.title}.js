@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import parse from "html-react-parser";
-import { graphql, Link, navigate } from "gatsby";
+import { graphql, Link } from "gatsby";
 import "mapbox-gl/dist/mapbox-gl.css";
 import { Carousel } from "antd";
 import { FaArrowLeft } from "react-icons/fa";
