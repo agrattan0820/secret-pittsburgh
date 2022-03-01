@@ -17,7 +17,7 @@ import { FaTimes } from "react-icons/fa";
 import mapboxgl from "mapbox-gl";
 import Seo from "../components/seo";
 import Pin from "../components/pin";
-import { shortenString, stringToSlug } from "../util";
+import { shortenString } from "../util";
 // @ts-ignore
 mapboxgl.workerClass =
   require("worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker").default;
@@ -84,10 +84,9 @@ const IndexPage = ({ data }) => {
           // className="w-full h-screen overflow-hidden"
         >
           {pins}
-          <NavigationControl />
-          <FullscreenControl />
+          <NavigationControl position="bottom-right" />
           <ScaleControl />
-          <GeolocateControl />
+          <GeolocateControl position="bottom-right" />
         </Map>
         <Drawer
           title={location?.title ?? "Location"}
