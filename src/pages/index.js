@@ -28,10 +28,14 @@ const IndexPage = ({ data }) => {
     longitude: -79.9959,
     zoom: 14,
     bearing: 0,
-    pitch: 45, // pitch in degrees
+    pitch: 45,
+    width: "100%",
+    height: "100vh",
+    minZoom: 12,
   });
   const [location, setLocation] = useState();
   const [drawerOpen, setDrawerOpen] = useState(false);
+  const [intro, setIntro] = useState(true);
 
   const mapRef = useRef();
 
@@ -74,22 +78,70 @@ const IndexPage = ({ data }) => {
         </h1>
       </header>
       <Seo />
-      <section className="relative">
-        <Map
-          {...viewState}
-          reuseMaps
-          style={{ width: "100%", height: "100vh", overflow: "hidden" }}
-          ref={mapRef}
-          onMove={(evt) => setViewState(evt.viewState)}
-          mapboxAccessToken={process.env.GATSBY_MAPBOX_ACCESS_TOKEN}
-          mapStyle={"mapbox://styles/mapbox/light-v10"}
-          // className="w-full h-screen overflow-hidden"
+      <section className="relative flex flex-col items-center justify-center min-h-screen pt-32 space-x-0 space-y-8 lg:pt-0 md:space-y-0 md:space-x-8 md:flex-row">
+        {intro && (
+          <div className="space-y-4 leading-loose max-w-prose">
+            <h2 className="font-bold lg:text-6xl lg:leading-snug font-title">
+              Find the COOL in Pittsburgh
+            </h2>
+            <p>
+              The "Secret Pittsburgh" Literature class invites University of
+              Pittsburgh students to explore unusual or hidden spaces of the
+              city, including "secret" spaces within well-known landmarks.
+            </p>
+            <button
+              onClick={() => {
+                setIntro(false);
+              }}
+              className="hidden px-4 py-2 font-bold text-white transition rounded shadow focus-within:scale-105 hover:scale-105 lg:inline-block bg-pitt-blue"
+            >
+              Let's Go!
+            </button>
+          </div>
+        )}
+
+        <div
+          style={{
+            width: intro ? "500px" : "100vw",
+            height: intro ? "350px" : "100vh",
+            overflow: "hidden",
+            transition: "all ease .8s",
+          }}
         >
-          {pins}
-          <NavigationControl position="bottom-right" />
-          <ScaleControl />
-          <GeolocateControl position="bottom-right" />
-        </Map>
+          <Map
+            {...viewState}
+            reuseMaps
+            style={{
+              width: "100vw",
+              height: "100vh",
+              overflow: "hidden",
+              margin: "0 auto",
+            }}
+            ref={mapRef}
+            onMove={(evt) => {
+              setIntro(false);
+              setViewState(evt.viewState);
+            }}
+            mapboxAccessToken={process.env.GATSBY_MAPBOX_ACCESS_TOKEN}
+            mapStyle={"mapbox://styles/mapbox/light-v10"}
+          >
+            {pins}
+            <NavigationControl position="bottom-right" />
+            <ScaleControl />
+            <GeolocateControl position="bottom-right" />
+          </Map>
+        </div>
+
+        {intro && (
+          <button
+            onClick={() => {
+              setIntro(false);
+            }}
+            className="px-4 py-2 font-bold text-white transition rounded shadow focus-within:scale-105 hover:scale-105 lg:hidden bg-pitt-blue"
+          >
+            Let's Go!
+          </button>
+        )}
         <Drawer
           title={location?.title ?? "Location"}
           placement="left"
