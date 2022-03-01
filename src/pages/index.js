@@ -10,7 +10,7 @@ import Map, {
 } from "react-map-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 import { AiOutlineClose } from "react-icons/ai";
-import { FaTimes } from "react-icons/fa";
+import { FaTimes, FaArrowLeft } from "react-icons/fa";
 
 /* eslint-disable import/no-webpack-loader-syntax */
 import mapboxgl from "mapbox-gl";
@@ -21,7 +21,7 @@ import { shortenString } from "../util";
 mapboxgl.workerClass =
   require("worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker").default;
 
-const IndexPage = ({ data }) => {
+const IndexPage = ({ data, location: router }) => {
   const [viewState, setViewState] = useState({
     latitude: 40.4406,
     longitude: -79.9959,
@@ -34,7 +34,7 @@ const IndexPage = ({ data }) => {
   });
   const [location, setLocation] = useState();
   const [drawerOpen, setDrawerOpen] = useState(false);
-  const [intro, setIntro] = useState(true);
+  const [intro, setIntro] = useState(router.search !== "?back=true");
 
   const mapRef = useRef();
 
@@ -68,6 +68,14 @@ const IndexPage = ({ data }) => {
   return (
     <main>
       <header className="absolute z-50 flex justify-center w-full max-w-2xl transform -translate-x-1/2 top-8 left-1/2">
+        {!intro && (
+          <button
+            onClick={() => setIntro(true)}
+            className="absolute p-2 text-lg transform -translate-y-1/2 rounded-full lg:text-xl bg-slate-200 left-8 top-1/2"
+          >
+            <FaArrowLeft />
+          </button>
+        )}
         <h1 className="px-4 py-2 text-lg font-bold rounded shadow w-min lg:text-2xl xl:text-3xl bg-slate-200">
           <Link to="/" className="inline-block font-title whitespace-nowrap">
             Secret Pittsburgh

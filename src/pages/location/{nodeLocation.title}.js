@@ -21,7 +21,7 @@ const LocationPage = (props) => {
       <Seo />
       <header className="absolute z-50 flex justify-center w-full max-w-2xl transform -translate-x-1/2 top-8 left-1/2">
         <Link
-          to="/"
+          to="/?back=true"
           className="absolute text-lg transform -translate-y-1/2 lg:text-xl left-8 top-1/2"
         >
           <FaArrowLeft />
@@ -66,19 +66,21 @@ const LocationPage = (props) => {
             location?.relationships?.field_associated_guidebook_entry?.body
               ?.processed ?? ""
           )}
-          <div className="space-y-4">
-            <h3 className="font-bold">Read More Articles</h3>
-            {location?.relationships?.node__article.map((article, i) => (
-              <Link
-                key={i}
-                to={article.gatsbyPath}
-                className="flex items-center justify-between p-4 space-x-4 text-lg font-bold transition transform rounded hover:scale-105 bg-slate-200 lg:text-2xl"
-              >
-                <span>{article.title}</span>
-                <FaNewspaper />
-              </Link>
-            ))}
-          </div>
+          {location?.relationships?.node__article && (
+            <div className="space-y-4">
+              <h3 className="font-bold">Read More Articles</h3>
+              {location?.relationships?.node__article?.map((article, i) => (
+                <Link
+                  key={i}
+                  to={article.gatsbyPath}
+                  className="flex items-center justify-between p-4 space-x-4 text-lg font-bold transition transform rounded hover:scale-105 bg-slate-200 lg:text-2xl"
+                >
+                  <span>{article.title}</span>
+                  <FaNewspaper />
+                </Link>
+              ))}
+            </div>
+          )}
         </div>
       </section>
     </main>
