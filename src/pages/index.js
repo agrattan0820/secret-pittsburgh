@@ -78,10 +78,10 @@ const IndexPage = ({ data }) => {
         </h1>
       </header>
       <Seo />
-      <section className="relative flex flex-col items-center justify-center min-h-screen pt-32 space-x-0 space-y-8 lg:pt-0 md:space-y-0 md:space-x-8 md:flex-row">
+      <section className="relative flex flex-col items-center justify-center min-h-screen pb-8 space-x-0 space-y-8 overflow-hidden md:pb-0 lg:space-y-0 lg:space-x-8 lg:flex-row">
         {intro && (
-          <div className="space-y-4 leading-loose max-w-prose">
-            <h2 className="font-bold lg:text-6xl lg:leading-snug font-title">
+          <div className="px-4 pt-32 space-y-4 leading-loose max-w-prose lg:pt-0">
+            <h2 className="text-3xl font-bold lg:text-6xl lg:leading-snug font-title">
               Find the COOL in Pittsburgh
             </h2>
             <p>
