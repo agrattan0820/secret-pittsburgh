@@ -20,13 +20,15 @@ const ArticlePage = (props) => {
   return (
     <main>
       <Seo />
-      <header className="absolute z-50 flex justify-center w-full max-w-2xl transform -translate-x-1/2 top-8 left-1/2">
-        <Link
-          to={article?.relationships?.node__location[0].gatsbyPath}
-          className="absolute text-lg transform -translate-y-1/2 lg:text-xl left-8 top-1/2"
-        >
-          <FaArrowLeft />
-        </Link>
+      <header className="absolute z-50 flex justify-center w-full max-w-3xl transform -translate-x-1/2 top-8 left-1/2">
+        {article?.relationships?.node__location && (
+          <Link
+            to={article?.relationships?.node__location[0].gatsbyPath}
+            className="absolute text-lg transform -translate-y-1/2 lg:text-xl left-8 top-1/2"
+          >
+            <FaArrowLeft />
+          </Link>
+        )}
         <h1 className="px-4 py-2 text-lg font-bold rounded shadow w-min lg:text-2xl xl:text-3xl bg-slate-200">
           <Link to="/" className="inline-block font-title whitespace-nowrap">
             Secret Pittsburgh
@@ -35,7 +37,7 @@ const ArticlePage = (props) => {
       </header>
 
       <section className="container relative flex flex-col justify-center min-h-screen pt-32 pb-24 mx-auto ">
-        <div className="w-full max-w-2xl px-4 mx-auto space-y-8 leading-loose">
+        <div className="w-full max-w-3xl px-4 mx-auto space-y-8 leading-loose">
           {article?.relationships?.field_image &&
             article?.relationships?.field_image.length > 0 && (
               <Carousel

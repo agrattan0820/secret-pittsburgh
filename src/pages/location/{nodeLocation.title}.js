@@ -19,7 +19,7 @@ const LocationPage = (props) => {
   return (
     <main>
       <Seo />
-      <header className="absolute z-50 flex justify-center w-full max-w-2xl transform -translate-x-1/2 top-8 left-1/2">
+      <header className="absolute z-50 flex justify-center w-full max-w-3xl transform -translate-x-1/2 top-8 left-1/2">
         <Link
           to="/?back=true"
           className="absolute text-lg transform -translate-y-1/2 lg:text-xl left-8 top-1/2"
@@ -34,7 +34,7 @@ const LocationPage = (props) => {
       </header>
 
       <section className="container relative flex flex-col justify-center min-h-screen pt-32 pb-24 mx-auto ">
-        <div className="w-full max-w-2xl px-4 mx-auto space-y-8 leading-loose">
+        <div className="w-full max-w-3xl px-4 mx-auto space-y-8 leading-loose">
           {location?.relationships?.field_associated_guidebook_entry
             ?.relationships &&
             location?.relationships?.field_associated_guidebook_entry
@@ -62,10 +62,13 @@ const LocationPage = (props) => {
               </Carousel>
             )}
           <h2 className="text-3xl font-bold">{location?.title}</h2>
-          {parse(
-            location?.relationships?.field_associated_guidebook_entry?.body
-              ?.processed ?? ""
-          )}
+          <div className="space-y-8 text-lg">
+            {parse(
+              location?.relationships?.field_associated_guidebook_entry?.body
+                ?.processed ?? ""
+            )}
+          </div>
+
           {location?.relationships?.node__article && (
             <div className="space-y-4">
               <h3 className="font-bold">Read More Articles</h3>
