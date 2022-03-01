@@ -5,7 +5,6 @@ import { Drawer } from "antd";
 import Map, {
   Marker,
   NavigationControl,
-  FullscreenControl,
   ScaleControl,
   GeolocateControl,
 } from "react-map-gl";
@@ -65,8 +64,6 @@ const IndexPage = ({ data }) => {
       )),
     [data.allNodeLocation.nodes]
   );
-
-  console.log(data);
 
   return (
     <main>

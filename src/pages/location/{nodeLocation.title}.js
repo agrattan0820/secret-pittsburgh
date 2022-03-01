@@ -3,7 +3,7 @@ import parse from "html-react-parser";
 import { graphql, Link, navigate } from "gatsby";
 import "mapbox-gl/dist/mapbox-gl.css";
 import { Carousel } from "antd";
-import { FaArrowLeft } from "react-icons/fa";
+import { FaArrowLeft, FaNewspaper } from "react-icons/fa";
 
 /* eslint-disable import/no-webpack-loader-syntax */
 import mapboxgl from "mapbox-gl";
@@ -61,12 +61,22 @@ const LocationPage = (props) => {
                 )}
               </Carousel>
             )}
-
           <h2 className="text-3xl font-bold">{location?.title}</h2>
           {parse(
             location?.relationships?.field_associated_guidebook_entry?.body
               ?.processed ?? ""
           )}
+          <h3 className="font-bold">Read More Articles</h3>
+          {location?.relationships?.node__article.map((article, i) => (
+            <Link
+              key={i}
+              to={article.gatsbyPath}
+              className="flex items-center justify-between p-4 text-lg font-bold transition transform rounded hover:scale-105 bg-slate-200 lg:text-2xl"
+            >
+              <span>{article.title}</span>
+              <FaNewspaper />
+            </Link>
+          ))}
         </div>
       </section>
     </main>
@@ -146,6 +156,7 @@ export const query = graphql`
               }
             }
           }
+          gatsbyPath(filePath: "/article/{nodeArticle.title}")
           title
         }
       }
