@@ -48,7 +48,7 @@ const LocationPage = (props) => {
                 {location?.relationships.field_associated_guidebook_entry.relationships.field_image.map(
                   (image, i) => (
                     <img
-                      className="object-cover h-72 md:h-96 carousel-image"
+                      className="object-cover w-full h-72 md:h-96 carousel-image"
                       src={`https://secretpittsburgh.pitt.edu/${image.uri.url}`}
                       alt={
                         location?.relationships.field_associated_guidebook_entry
