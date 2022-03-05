@@ -132,7 +132,6 @@ const IndexPage = ({ data, location: router }) => {
           >
             {pins}
             <NavigationControl position="bottom-right" />
-            <ScaleControl />
             <GeolocateControl position="bottom-right" />
           </Map>
         </div>
