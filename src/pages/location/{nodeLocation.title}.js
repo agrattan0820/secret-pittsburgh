@@ -60,7 +60,7 @@ const LocationPage = (props) => {
                               .alt
                           }
                         />
-                        <figcaption className="absolute bottom-0 left-0 p-4 text-white transition duration-300 transform -translate-x-16 bg-black opacity-0 group-hover:translate-x-0 max-w-prose group-hover:opacity-80">
+                        <figcaption className="absolute bottom-0 left-0 px-4 pt-4 pb-6 text-white transition duration-300 transform -translate-x-16 bg-black opacity-0 group-hover:translate-x-0 max-w-prose group-hover:opacity-80">
                           {
                             location?.relationships
                               .field_associated_guidebook_entry.field_image[i]

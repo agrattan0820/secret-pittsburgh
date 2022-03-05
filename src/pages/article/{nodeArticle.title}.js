@@ -48,12 +48,19 @@ const ArticlePage = (props) => {
                 className="shadow-lg"
               >
                 {article?.relationships?.field_image.map((image, i) => (
-                  <img
-                    key={i}
-                    className="object-cover w-full h-72 md:h-96 carousel-image"
-                    src={`https://secretpittsburgh.pitt.edu/${image?.uri?.url}`}
-                    alt={article?.field_image[i]?.alt}
-                  />
+                  // Extra div needed so there is no extra padding underneath the figure in the carousel
+                  <div key={i}>
+                    <figure className="relative block w-full group">
+                      <img
+                        className="object-cover w-full carousel-image"
+                        src={`https://secretpittsburgh.pitt.edu/${image?.uri?.url}`}
+                        alt={article?.field_image[i]?.alt}
+                      />
+                      <figcaption className="absolute bottom-0 left-0 px-4 pt-4 pb-6 text-white transition duration-300 transform -translate-x-16 bg-black opacity-0 group-hover:translate-x-0 max-w-prose group-hover:opacity-80">
+                        {article?.field_image[i]?.alt}
+                      </figcaption>
+                    </figure>
+                  </div>
                 ))}
               </Carousel>
             )}
