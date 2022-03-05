@@ -49,10 +49,9 @@ const LocationPage = (props) => {
                 {location?.relationships.field_associated_guidebook_entry.relationships.field_image.map(
                   (image, i) => (
                     // Extra div needed so there is no extra padding underneath the figure in the carousel
-                    <div>
+                    <div key={i}>
                       <figure className="relative block w-full group">
                         <img
-                          key={i}
                           className="object-cover w-full rounded carousel-image"
                           src={`https://secretpittsburgh.pitt.edu/${image.uri.url}`}
                           alt={
