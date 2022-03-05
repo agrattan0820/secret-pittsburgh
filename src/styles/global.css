@@ -55,10 +55,15 @@ a:hover {
   color: #1890ff;
 }
 
-/* .carousel-image {
-  height: 500px;
-  object-fit: cover;
-} */
+.carousel-image {
+  height: 288px;
+}
+
+@media screen and (min-width: 768px) {
+  .carousel-image {
+    height: 384px;
+  }
+}
 
 @media screen and (min-width: 1280px) {
   .carousel-image {

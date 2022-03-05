@@ -40,7 +40,7 @@ const LocationPage = (props) => {
             location?.relationships?.field_associated_guidebook_entry
               ?.relationships.field_image.length > 0 && (
               <Carousel
-                style={{ margin: "auto" }}
+                style={{ margin: "0 auto", padding: "0" }}
                 autoplay
                 arrows={true}
                 pauseOnHover={false}
@@ -48,15 +48,28 @@ const LocationPage = (props) => {
               >
                 {location?.relationships.field_associated_guidebook_entry.relationships.field_image.map(
                   (image, i) => (
-                    <img
-                      key={i}
-                      className="object-cover w-full h-72 md:h-96 carousel-image"
-                      src={`https://secretpittsburgh.pitt.edu/${image.uri.url}`}
-                      alt={
-                        location?.relationships.field_associated_guidebook_entry
-                          .field_image[i].alt
-                      }
-                    />
+                    // Extra div needed so there is no extra padding underneath the figure in the carousel
+                    <div>
+                      <figure className="relative block w-full group">
+                        <img
+                          key={i}
+                          className="object-cover w-full rounded carousel-image"
+                          src={`https://secretpittsburgh.pitt.edu/${image.uri.url}`}
+                          alt={
+                            location?.relationships
+                              .field_associated_guidebook_entry.field_image[i]
+                              .alt
+                          }
+                        />
+                        <figcaption className="absolute bottom-0 left-0 p-4 text-white transition duration-300 transform -translate-x-16 bg-black opacity-0 group-hover:translate-x-0 max-w-prose group-hover:opacity-80">
+                          {
+                            location?.relationships
+                              .field_associated_guidebook_entry.field_image[i]
+                              .alt
+                          }
+                        </figcaption>
+                      </figure>
+                    </div>
                   )
                 )}
               </Carousel>
