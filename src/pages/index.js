@@ -62,7 +62,7 @@ const IndexPage = ({ data, location: router }) => {
 
   return (
     <main>
-      <header className="absolute z-50 flex justify-center w-full max-w-2xl transform -translate-x-1/2 top-8 left-1/2">
+      <header className="fixed z-50 flex justify-center w-full max-w-2xl transform -translate-x-1/2 top-8 left-1/2">
         {!intro && (
           <button
             onClick={() => setIntro(true)}
@@ -143,7 +143,7 @@ const IndexPage = ({ data, location: router }) => {
           </button>
         )}
         {!intro && (
-          <nav className="absolute z-50 transition transform bottom-16">
+          <nav className="fixed z-50 transition transform bottom-16">
             <ul className="flex space-x-4">
               <li>
                 <Link
@@ -183,7 +183,7 @@ const IndexPage = ({ data, location: router }) => {
                     .field_image[0].alt
                 }
               />
-              <div className="drawer-text">
+              <div className="processed-text">
                 {parse(
                   shortenString(
                     location?.relationships.field_associated_guidebook_entry
