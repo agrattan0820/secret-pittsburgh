@@ -10,13 +10,14 @@ import Map, {
 } from "react-map-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 import { AiOutlineClose } from "react-icons/ai";
-import { FaTimes, FaArrowLeft } from "react-icons/fa";
+import { FaTimes, FaArrowLeft, FaInfoCircle, FaBook } from "react-icons/fa";
 
 /* eslint-disable import/no-webpack-loader-syntax */
 import mapboxgl from "mapbox-gl";
 import Seo from "../components/seo";
 import Pin from "../components/pin";
 import { shortenString } from "../util";
+
 // @ts-ignore
 mapboxgl.workerClass =
   require("worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker").default;
@@ -138,6 +139,7 @@ const IndexPage = ({ data, location: router }) => {
 
         {intro && (
           <button
+            aria-label="Open Secret Pittsburgh Map"
             onClick={() => {
               setIntro(false);
             }}
@@ -145,6 +147,28 @@ const IndexPage = ({ data, location: router }) => {
           >
             Let's Go!
           </button>
+        )}
+        {!intro && (
+          <nav className="absolute z-50 transition transform bottom-16">
+            <ul className="flex space-x-4">
+              <li>
+                <Link
+                  to="/"
+                  className="flex items-center px-4 py-2 space-x-2 font-bold text-center text-white transition transform rounded shadow hover:text-white bg-pitt-blue hover:scale-105"
+                >
+                  <span>About</span> <FaInfoCircle />
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/"
+                  className="flex items-center px-4 py-2 space-x-2 font-bold text-center text-white transition transform rounded shadow hover:text-white bg-pitt-blue hover:scale-105"
+                >
+                  <span>Bookshelf</span> <FaBook />
+                </Link>
+              </li>
+            </ul>
+          </nav>
         )}
         <Drawer
           title={location?.title ?? "Location"}
