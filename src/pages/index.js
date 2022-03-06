@@ -118,7 +118,7 @@ const IndexPage = ({ data, location: router }) => {
           <Pin visited={visitedLocations.includes(markerLocation.title)} />
         </Marker>
       )),
-    [data.allNodeLocation.nodes, visitedLocations, setVisitedLocations]
+    [data.allNodeLocation.nodes, visitedLocations, handleLocationOpen]
   );
 
   return (
@@ -232,6 +232,12 @@ const IndexPage = ({ data, location: router }) => {
         )} */}
         {!intro && (
           <nav className="fixed z-50 transition transform bottom-8">
+            <Controls
+              locations={data.allNodeLocation}
+              neighborhoods={data.allTaxonomyTermNeighborhoods}
+              onSelect={onSelect}
+              onChange={onChange}
+            />
             <ul className="flex space-x-4">
               <li>
                 <Link
@@ -250,12 +256,6 @@ const IndexPage = ({ data, location: router }) => {
                 </Link>
               </li>
             </ul>
-            <Controls
-              locations={data.allNodeLocation}
-              neighborhoods={data.allTaxonomyTermNeighborhoods}
-              onSelect={onSelect}
-              onChange={onChange}
-            />
           </nav>
         )}
         <Drawer
