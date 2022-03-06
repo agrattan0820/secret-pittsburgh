@@ -147,16 +147,16 @@ const IndexPage = ({ data, location: router }) => {
             <ul className="flex space-x-4">
               <li>
                 <Link
-                  to="/"
-                  className="flex items-center px-4 py-2 space-x-2 font-bold text-center text-white transition transform rounded shadow hover:text-white bg-pitt-blue hover:scale-105"
+                  to="/about"
+                  className="flex items-center justify-center w-32 px-4 py-2 space-x-2 font-bold text-center text-white transition transform rounded shadow hover:text-white bg-pitt-blue hover:scale-105"
                 >
                   <span>About</span> <FaInfoCircle />
                 </Link>
               </li>
               <li>
                 <Link
-                  to="/"
-                  className="flex items-center px-4 py-2 space-x-2 font-bold text-center text-white transition transform rounded shadow hover:text-white bg-pitt-blue hover:scale-105"
+                  to="/bookshelf"
+                  className="flex items-center justify-center w-32 px-4 py-2 space-x-2 font-bold text-center text-white transition transform rounded shadow hover:text-white bg-pitt-blue hover:scale-105"
                 >
                   <span>Bookshelf</span> <FaBook />
                 </Link>
