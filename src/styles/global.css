@@ -56,6 +56,14 @@ a:hover {
   word-wrap: break-word;
 }
 
+.processed-text a:hover {
+  text-decoration: underline;
+}
+
+.processed-text a:focus-visible {
+  text-decoration: underline;
+}
+
 .carousel-image {
   height: 288px;
 }
