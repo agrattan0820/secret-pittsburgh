@@ -111,11 +111,18 @@ const IndexPage = ({ data, location: router }) => {
           longitude={markerLocation.field_geolocation.lng}
           latitude={markerLocation.field_geolocation.lat}
           anchor="bottom"
-          onClick={() => {
-            handleLocationOpen(markerLocation);
-          }}
         >
-          <Pin visited={visitedLocations.includes(markerLocation.title)} />
+          <button
+            onClick={() => {
+              handleLocationOpen(markerLocation);
+            }}
+            aria-label={`Open location information of ${markerLocation.title}`}
+          >
+            <Pin
+              name={markerLocation.title}
+              visited={visitedLocations.includes(markerLocation.title)}
+            />
+          </button>
         </Marker>
       )),
     [data.allNodeLocation.nodes, visitedLocations, handleLocationOpen]
