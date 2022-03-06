@@ -32,7 +32,7 @@ a:hover {
   width: 100%;
   z-index: 1;
   color: #003594;
-  opacity: 0.5;
+  opacity: 0.8;
   font-size: 18px;
   cursor: pointer;
   transition: 0.3s ease;
@@ -44,6 +44,10 @@ a:hover {
 
 .sp-marker-icon:focus {
   transform: scale(1.3, 1.3);
+}
+
+.sp-marker-visited {
+  opacity: 0.45;
 }
 
 .ant-drawer-title {

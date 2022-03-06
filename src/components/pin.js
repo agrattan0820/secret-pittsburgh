@@ -1,8 +1,15 @@
 import * as React from "react";
 import { FaMapMarkerAlt } from "react-icons/fa";
 
-function Pin() {
-  return <FaMapMarkerAlt className="filter drop-shadow sp-marker-icon" />;
+function Pin({ visited }) {
+  console.log(visited);
+  return (
+    <FaMapMarkerAlt
+      className={`filter drop-shadow sp-marker-icon ${
+        visited && "sp-marker-visited"
+      }`}
+    />
+  );
 }
 
-export default React.memo(Pin);
+export default Pin;

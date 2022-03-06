@@ -4,13 +4,20 @@ import { graphql, Link } from "gatsby";
 import { Drawer } from "antd";
 import Map, { Marker, NavigationControl, GeolocateControl } from "react-map-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
-import { FaTimes, FaArrowLeft, FaInfoCircle, FaBook } from "react-icons/fa";
+import {
+  FaTimes,
+  FaArrowLeft,
+  FaInfoCircle,
+  FaBook,
+  FaMapMarkerAlt,
+} from "react-icons/fa";
 
 /* eslint-disable import/no-webpack-loader-syntax */
 import mapboxgl from "mapbox-gl";
 import Seo from "../components/seo";
 import Pin from "../components/pin";
 import { shortenString } from "../util";
+import useStickyState from "../components/useStickyState";
 
 // @ts-ignore
 mapboxgl.workerClass =
@@ -30,6 +37,10 @@ const IndexPage = ({ data, location: router }) => {
   const [location, setLocation] = useState();
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [intro, setIntro] = useState(router.search !== "?back=true");
+  const [visitedLocations, setVisitedLocations] = useStickyState(
+    [],
+    "visited-locations"
+  );
 
   const mapRef = useRef();
 
@@ -37,27 +48,32 @@ const IndexPage = ({ data, location: router }) => {
     mapRef.current?.flyTo({ center: [lng, lat], zoom: 15, duration: 800 });
   };
 
+  console.log(location);
+
   const pins = useMemo(
     () =>
-      data.allNodeLocation.nodes.map((location, i) => (
+      data.allNodeLocation.nodes.map((markerLocation, i) => (
         <Marker
           key={i}
-          longitude={location.field_geolocation.lng}
-          latitude={location.field_geolocation.lat}
+          longitude={markerLocation.field_geolocation.lng}
+          latitude={markerLocation.field_geolocation.lat}
           anchor="bottom"
           onClick={() => {
-            setLocation(location);
+            setLocation(markerLocation);
             goToLoc(
-              location.field_geolocation.lat,
-              location.field_geolocation.lng
+              markerLocation.field_geolocation.lat,
+              markerLocation.field_geolocation.lng
             );
             setDrawerOpen(true);
+            if (!visitedLocations.includes(markerLocation.title)) {
+              setVisitedLocations([...visitedLocations, markerLocation.title]);
+            }
           }}
         >
-          <Pin />
+          <Pin visited={visitedLocations.includes(markerLocation.title)} />
         </Marker>
       )),
-    [data.allNodeLocation.nodes]
+    [data.allNodeLocation.nodes, visitedLocations]
   );
 
   return (
