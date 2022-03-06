@@ -62,7 +62,7 @@ const IndexPage = ({ data, location: router }) => {
 
   return (
     <main>
-      <header className="fixed z-50 flex justify-center w-full max-w-2xl transform -translate-x-1/2 top-8 left-1/2">
+      <header className="absolute z-50 flex justify-center w-full max-w-2xl transform -translate-x-1/2 top-8 left-1/2">
         {!intro && (
           <button
             onClick={() => setIntro(true)}
@@ -78,7 +78,11 @@ const IndexPage = ({ data, location: router }) => {
         </h1>
       </header>
       <Seo />
-      <section className="relative flex flex-col items-center justify-center min-h-screen pb-8 space-x-0 space-y-8 overflow-hidden md:pb-0 lg:space-y-0 lg:space-x-8 lg:flex-row">
+      <section
+        className={`relative flex flex-col items-center justify-center min-h-screen pb-16 space-x-0 space-y-8 overflow-hidden md:pb-0 lg:space-y-0 lg:space-x-8 lg:flex-row ${
+          !intro && "pb-0"
+        }`}
+      >
         {intro && (
           <div className="px-4 pt-32 space-y-4 leading-loose max-w-prose lg:pt-0">
             <h2 className="text-3xl font-bold lg:text-6xl lg:leading-snug font-title">
@@ -93,7 +97,7 @@ const IndexPage = ({ data, location: router }) => {
               onClick={() => {
                 setIntro(false);
               }}
-              className="hidden px-4 py-2 font-bold text-white transition rounded shadow focus-within:scale-105 hover:scale-105 lg:inline-block bg-pitt-blue"
+              className="inline-block px-4 py-2 font-bold text-white transition rounded shadow focus-within:scale-105 hover:scale-105 bg-pitt-blue"
             >
               Let's Go!
             </button>
@@ -132,6 +136,28 @@ const IndexPage = ({ data, location: router }) => {
         </div>
 
         {intro && (
+          <footer className="absolute space-x-4 bottom-8 processed-text">
+            <Link
+              to="/about"
+              className="inline-block text-sm hover:underline focus-visible:underline"
+            >
+              About
+            </Link>
+            <Link
+              to="/bookshelf"
+              className="inline-block hover:underline focus-visible:underline"
+            >
+              Bookshelf
+            </Link>
+            <a
+              href="https://www.instagram.com/secretpittsburgh/?hl=en"
+              className="inline-block hover:underline focus-visible:underline"
+            >
+              Instagram
+            </a>
+          </footer>
+        )}
+        {/* {intro && (
           <button
             aria-label="Open Secret Pittsburgh Map"
             onClick={() => {
@@ -141,9 +167,9 @@ const IndexPage = ({ data, location: router }) => {
           >
             Let's Go!
           </button>
-        )}
+        )} */}
         {!intro && (
-          <nav className="fixed z-50 transition transform bottom-16">
+          <nav className="fixed z-50 transition transform bottom-8">
             <ul className="flex space-x-4">
               <li>
                 <Link
