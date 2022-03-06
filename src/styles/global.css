@@ -53,6 +53,7 @@ a:hover {
 
 .processed-text a {
   color: #1890ff;
+  word-wrap: break-word;
 }
 
 .carousel-image {
