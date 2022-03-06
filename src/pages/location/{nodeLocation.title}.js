@@ -3,7 +3,7 @@ import parse from "html-react-parser";
 import { graphql, Link } from "gatsby";
 import "mapbox-gl/dist/mapbox-gl.css";
 import { Carousel } from "antd";
-import { FaArrowLeft, FaNewspaper, FaInfoCircle } from "react-icons/fa";
+import { FaArrowLeft, FaNewspaper } from "react-icons/fa";
 
 /* eslint-disable import/no-webpack-loader-syntax */
 import mapboxgl from "mapbox-gl";

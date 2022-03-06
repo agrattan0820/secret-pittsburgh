@@ -1,6 +1,5 @@
 import * as React from "react";
-import { FaMapMarkerAlt } from "react-icons/fa";
-import { AutoComplete, Card } from "antd";
+import { AutoComplete } from "antd";
 
 function Controls({ locations, neighborhoods, onSelect, onChange }) {
   const sortedNeighborhoods = neighborhoods.nodes.sort((a, b) => {
