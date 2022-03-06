@@ -21,7 +21,7 @@ function Controls({ locations, neighborhoods, onSelect, onChange }) {
   return (
     <div>
       <AutoComplete
-        className="sp-autocomplete"
+        className="shadow sp-autocomplete"
         placeholder="Filter by location name..."
         dataSource={locationNames}
         allowClear={true}
@@ -35,7 +35,7 @@ function Controls({ locations, neighborhoods, onSelect, onChange }) {
         notFoundContent="Location Not Found"
       />
       <AutoComplete
-        className="sp-autocomplete"
+        className="shadow sp-autocomplete"
         placeholder="Filter by neighborhood..."
         dataSource={neighborhoodNames}
         allowClear={true}
