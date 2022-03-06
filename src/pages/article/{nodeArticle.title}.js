@@ -19,7 +19,7 @@ const ArticlePage = (props) => {
 
   return (
     <main>
-      <Seo />
+      <Seo title={article?.title} />
       <header className="absolute z-50 flex justify-center w-full max-w-3xl transform -translate-x-1/2 top-8 left-1/2">
         {article?.relationships?.node__location && (
           <Link

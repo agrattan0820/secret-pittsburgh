@@ -19,7 +19,7 @@ const LocationPage = (props) => {
   console.log(props);
   return (
     <main>
-      <Seo />
+      <Seo title={location?.title} />
       <header className="absolute z-50 flex justify-center w-full max-w-3xl transform -translate-x-1/2 top-8 left-1/2">
         <Link
           to="/?back=true"
