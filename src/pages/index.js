@@ -2,14 +2,8 @@ import React, { useState, useMemo, useRef } from "react";
 import parse from "html-react-parser";
 import { graphql, Link } from "gatsby";
 import { Drawer } from "antd";
-import Map, {
-  Marker,
-  NavigationControl,
-  ScaleControl,
-  GeolocateControl,
-} from "react-map-gl";
+import Map, { Marker, NavigationControl, GeolocateControl } from "react-map-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
-import { AiOutlineClose } from "react-icons/ai";
 import { FaTimes, FaArrowLeft, FaInfoCircle, FaBook } from "react-icons/fa";
 
 /* eslint-disable import/no-webpack-loader-syntax */

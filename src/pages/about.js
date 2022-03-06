@@ -1,9 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import parse from "html-react-parser";
 import { graphql, Link } from "gatsby";
 import "mapbox-gl/dist/mapbox-gl.css";
-import { Carousel } from "antd";
-import { FaArrowLeft, FaNewspaper } from "react-icons/fa";
+import { FaArrowLeft } from "react-icons/fa";
 
 /* eslint-disable import/no-webpack-loader-syntax */
 import mapboxgl from "mapbox-gl";
