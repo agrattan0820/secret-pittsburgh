@@ -83,3 +83,14 @@ a:hover {
     height: 450px;
   }
 }
+
+.sp-autocomplete {
+  display: block;
+  margin: 0.5rem 0;
+  z-index: 20;
+  border: none;
+}
+
+.sp-autocomplete .ant-select-selector {
+  border: none !important;
+}

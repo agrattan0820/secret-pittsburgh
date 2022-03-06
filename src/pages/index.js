@@ -4,13 +4,7 @@ import { graphql, Link } from "gatsby";
 import { Drawer } from "antd";
 import Map, { Marker, NavigationControl, GeolocateControl } from "react-map-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
-import {
-  FaTimes,
-  FaArrowLeft,
-  FaInfoCircle,
-  FaBook,
-  FaMapMarkerAlt,
-} from "react-icons/fa";
+import { FaTimes, FaArrowLeft, FaInfoCircle, FaBook } from "react-icons/fa";
 
 /* eslint-disable import/no-webpack-loader-syntax */
 import mapboxgl from "mapbox-gl";
@@ -18,6 +12,7 @@ import Seo from "../components/seo";
 import Pin from "../components/pin";
 import { shortenString } from "../util";
 import useStickyState from "../components/useStickyState";
+import Controls from "../components/controls";
 
 // @ts-ignore
 mapboxgl.workerClass =
@@ -44,11 +39,69 @@ const IndexPage = ({ data, location: router }) => {
 
   const mapRef = useRef();
 
+  console.log(data);
+
+  const handleLocationOpen = (markerLocation) => {
+    setLocation(markerLocation);
+    goToLoc(
+      markerLocation.field_geolocation.lat,
+      markerLocation.field_geolocation.lng
+    );
+    setDrawerOpen(true);
+    if (!visitedLocations.includes(markerLocation.title)) {
+      setVisitedLocations([...visitedLocations, markerLocation.title]);
+    }
+  };
+
   const goToLoc = (lat, lng) => {
     mapRef.current?.flyTo({ center: [lng, lat], zoom: 15, duration: 800 });
   };
 
-  console.log(location);
+  const onSelect = (v, o, state) => {
+    console.log(v, o, state);
+    if (state === "filterLocation") {
+      const locMatch = data.allNodeLocation.nodes.find(
+        (location) => location.title === v
+      );
+      locMatch && handleLocationOpen(locMatch);
+    }
+
+    if (state === "filterNeighborhood") {
+      const neighborhoodMatch = data.allTaxonomyTermNeighborhoods.nodes.find(
+        (neighborhood) => neighborhood.name === v
+      );
+      const neighborhoodLats =
+        neighborhoodMatch.relationships.node__location.map((location) => {
+          return location.field_geolocation.lat;
+        });
+      const neighborhoodLngs =
+        neighborhoodMatch.relationships.node__location.map((location) => {
+          return location.field_geolocation.lng;
+        });
+
+      const sumLats = neighborhoodLats.reduce(
+        (previous, current) => (current += previous)
+      );
+      const avgLat = sumLats / neighborhoodLats.length;
+
+      const sumLongs = neighborhoodLngs.reduce(
+        (previous, current) => (current += previous)
+      );
+      const avgLong = sumLongs / neighborhoodLngs.length;
+
+      goToLoc(avgLat, avgLong);
+    }
+  };
+
+  const onChange = (v, state) => {
+    console.log(v, state);
+
+    // if (!v)
+    //   this.setState({
+    //     [state]: null,
+    //   });
+    // this._goToLoc(40.4406, -79.9959, 12);
+  };
 
   const pins = useMemo(
     () =>
@@ -59,21 +112,13 @@ const IndexPage = ({ data, location: router }) => {
           latitude={markerLocation.field_geolocation.lat}
           anchor="bottom"
           onClick={() => {
-            setLocation(markerLocation);
-            goToLoc(
-              markerLocation.field_geolocation.lat,
-              markerLocation.field_geolocation.lng
-            );
-            setDrawerOpen(true);
-            if (!visitedLocations.includes(markerLocation.title)) {
-              setVisitedLocations([...visitedLocations, markerLocation.title]);
-            }
+            handleLocationOpen(markerLocation);
           }}
         >
           <Pin visited={visitedLocations.includes(markerLocation.title)} />
         </Marker>
       )),
-    [data.allNodeLocation.nodes, visitedLocations]
+    [data.allNodeLocation.nodes, visitedLocations, setVisitedLocations]
   );
 
   return (
@@ -82,6 +127,7 @@ const IndexPage = ({ data, location: router }) => {
         {!intro && (
           <button
             onClick={() => setIntro(true)}
+            aria-label="Exit map view"
             className="absolute p-2 text-lg transform -translate-y-1/2 rounded-full lg:text-xl bg-slate-200 left-8 top-1/2"
           >
             <FaArrowLeft />
@@ -204,6 +250,12 @@ const IndexPage = ({ data, location: router }) => {
                 </Link>
               </li>
             </ul>
+            <Controls
+              locations={data.allNodeLocation}
+              neighborhoods={data.allTaxonomyTermNeighborhoods}
+              onSelect={onSelect}
+              onChange={onChange}
+            />
           </nav>
         )}
         <Drawer
@@ -378,6 +430,20 @@ export const query = graphql`
           processed
           summary
           value
+        }
+      }
+    }
+    allTaxonomyTermNeighborhoods {
+      nodes {
+        name
+        relationships {
+          node__location {
+            title
+            field_geolocation {
+              lat
+              lng
+            }
+          }
         }
       }
     }
