@@ -51,7 +51,7 @@ a:hover {
   font-weight: bold;
 }
 
-.drawer-text a {
+.processed-text a {
   color: #1890ff;
 }
 
@@ -67,6 +67,6 @@ a:hover {
 
 @media screen and (min-width: 1280px) {
   .carousel-image {
-    height: 500px;
+    height: 450px;
   }
 }

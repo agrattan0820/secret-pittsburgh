@@ -65,7 +65,7 @@ const ArticlePage = (props) => {
               </Carousel>
             )}
           <h2 className="text-3xl font-bold">{article?.title}</h2>
-          <div className="space-y-8 leading-loose xl:leading-loose xl:text-lg">
+          <div className="space-y-8 leading-loose processed-text xl:leading-loose xl:text-lg">
             {parse(article?.body?.processed ?? "")}
           </div>
         </div>

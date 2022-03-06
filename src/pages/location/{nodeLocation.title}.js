@@ -3,7 +3,7 @@ import parse from "html-react-parser";
 import { graphql, Link } from "gatsby";
 import "mapbox-gl/dist/mapbox-gl.css";
 import { Carousel } from "antd";
-import { FaArrowLeft, FaNewspaper } from "react-icons/fa";
+import { FaArrowLeft, FaNewspaper, FaInfoCircle } from "react-icons/fa";
 
 /* eslint-disable import/no-webpack-loader-syntax */
 import mapboxgl from "mapbox-gl";
@@ -14,6 +14,7 @@ mapboxgl.workerClass =
 
 const LocationPage = (props) => {
   const [location, setLocation] = useState(props.data.nodeLocation);
+  const [drawer, setDrawer] = useState("");
 
   console.log(props);
   return (
@@ -74,7 +75,22 @@ const LocationPage = (props) => {
               </Carousel>
             )}
           <h2 className="text-3xl font-bold">{location?.title}</h2>
-          <div className="space-y-8 leading-loose xl:leading-loose xl:text-lg">
+          {/* TODO: Possible toggle buttons? */}
+          {/* <div className="flex items-center space-x-4">
+            <button className="flex items-center justify-center w-32 px-4 py-2 space-x-2 font-bold text-center text-black transition transform rounded shadow hover:text-black bg-slate-200 hover:scale-105">
+              <span>About</span> <FaInfoCircle />
+            </button>
+            <button className="flex items-center justify-center w-32 px-4 py-2 space-x-2 font-bold text-center text-black transition transform rounded shadow hover:text-black bg-slate-200 hover:scale-105">
+              <span>Articles</span> <FaNewspaper />
+            </button>
+          </div> */}
+          <div className="space-y-2 leading-loose processed-text xl:leading-loose xl:text-lg">
+            {parse(
+              location?.relationships?.field_associated_basic_info_entr?.body
+                ?.processed ?? ""
+            )}
+          </div>
+          <div className="space-y-8 leading-loose processed-text xl:leading-loose xl:text-lg">
             {parse(
               location?.relationships?.field_associated_guidebook_entry?.body
                 ?.processed ?? ""
