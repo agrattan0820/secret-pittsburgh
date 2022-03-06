@@ -24,6 +24,7 @@ const ArticlePage = (props) => {
         {article?.relationships?.node__location && (
           <Link
             to={article?.relationships?.node__location[0].gatsbyPath}
+            aria-label="Go back to homepage"
             className="absolute text-lg transform -translate-y-1/2 lg:text-xl left-8 top-1/2"
           >
             <FaArrowLeft />

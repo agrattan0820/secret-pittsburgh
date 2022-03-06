@@ -23,6 +23,7 @@ const LocationPage = (props) => {
       <header className="absolute z-50 flex justify-center w-full max-w-3xl transform -translate-x-1/2 top-8 left-1/2">
         <Link
           to="/?back=true"
+          aria-label="Go back to homepage"
           className="absolute text-lg transform -translate-y-1/2 lg:text-xl left-8 top-1/2"
         >
           <FaArrowLeft />
