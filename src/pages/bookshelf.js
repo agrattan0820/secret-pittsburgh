@@ -48,11 +48,13 @@ const AboutPage = ({ data }) => {
               all of them are. Instead, this list compiles anything that has
               been taught in the class over the years.
             </p>
-            <ul className="space-y-8">
+            <ul className="space-y-8 ">
               {data.allNodeBookshelfItem.nodes &&
                 data.allNodeBookshelfItem.nodes.map((book, i) => (
                   <>
-                    <li key={i}>{parse(book.body.processed)}</li>
+                    <li key={i} className="processed-text">
+                      {parse(book.body.processed)}
+                    </li>
                     {i !== data.allNodeBookshelfItem.nodes.length - 1 && <hr />}
                   </>
                 ))}
