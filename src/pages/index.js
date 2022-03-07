@@ -110,7 +110,8 @@ const IndexPage = ({ data, location: router }) => {
       height: "100vh",
       transition: {
         duration: 0.8,
-        type: "spring",
+        type: "tween",
+        ease: "circOut",
       },
     },
     closed: {
@@ -118,7 +119,8 @@ const IndexPage = ({ data, location: router }) => {
       height: "350px",
       transition: {
         duration: 0.8,
-        type: "spring",
+        type: "tween",
+        ease: "circOut",
       },
     },
   };
@@ -265,7 +267,6 @@ const IndexPage = ({ data, location: router }) => {
             <motion.nav
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
               className="fixed z-50 transform bottom-8"
             >
               <Controls
