@@ -13,6 +13,7 @@ import Pin from "../components/pin";
 import { shortenString } from "../util";
 import useStickyState from "../components/useStickyState";
 import Controls from "../components/controls";
+import { motion, AnimatePresence } from "framer-motion";
 
 // @ts-ignore
 mapboxgl.workerClass =
@@ -103,6 +104,25 @@ const IndexPage = ({ data, location: router }) => {
     // this._goToLoc(40.4406, -79.9959, 12);
   };
 
+  const mapVariants = {
+    open: {
+      width: "100vw",
+      height: "100vh",
+      transition: {
+        duration: 0.8,
+        type: "spring",
+      },
+    },
+    closed: {
+      width: "500px",
+      height: "350px",
+      transition: {
+        duration: 0.8,
+        type: "spring",
+      },
+    },
+  };
+
   const pins = useMemo(
     () =>
       data.allNodeLocation.nodes.map((markerLocation, i) => (
@@ -173,12 +193,15 @@ const IndexPage = ({ data, location: router }) => {
           </div>
         )}
 
-        <div
+        <motion.div
+          initial={false}
+          animate={intro ? "closed" : "open"}
+          variants={mapVariants}
           style={{
-            width: intro ? "500px" : "100vw",
-            height: intro ? "350px" : "100vh",
+            //   width: intro ? "500px" : "100vw",
+            //   height: intro ? "350px" : "100vh",
             overflow: "hidden",
-            transition: "all ease .8s",
+            //   transition: "all ease .8s",
           }}
         >
           <Map
@@ -202,7 +225,7 @@ const IndexPage = ({ data, location: router }) => {
             <NavigationControl position="bottom-right" />
             <GeolocateControl position="bottom-right" />
           </Map>
-        </div>
+        </motion.div>
 
         {intro && (
           <footer className="absolute space-x-4 bottom-8 processed-text">
@@ -237,34 +260,42 @@ const IndexPage = ({ data, location: router }) => {
             Let's Go!
           </button>
         )} */}
-        {!intro && (
-          <nav className="fixed z-50 transition transform bottom-8">
-            <Controls
-              locations={data.allNodeLocation}
-              neighborhoods={data.allTaxonomyTermNeighborhoods}
-              onSelect={onSelect}
-              onChange={onChange}
-            />
-            <ul className="flex space-x-4">
-              <li>
-                <Link
-                  to="/about"
-                  className="flex items-center justify-center w-32 px-4 py-2 space-x-2 font-bold text-center text-white transition transform rounded shadow hover:text-white bg-pitt-blue hover:scale-105"
-                >
-                  <span>About</span> <FaInfoCircle />
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/bookshelf"
-                  className="flex items-center justify-center w-32 px-4 py-2 space-x-2 font-bold text-center text-white transition transform rounded shadow hover:text-white bg-pitt-blue hover:scale-105"
-                >
-                  <span>Bookshelf</span> <FaBook />
-                </Link>
-              </li>
-            </ul>
-          </nav>
-        )}
+        <AnimatePresence>
+          {!intro && (
+            <motion.nav
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="fixed z-50 transform bottom-8"
+            >
+              <Controls
+                locations={data.allNodeLocation}
+                neighborhoods={data.allTaxonomyTermNeighborhoods}
+                onSelect={onSelect}
+                onChange={onChange}
+              />
+              <motion.ul className="flex space-x-4">
+                <li>
+                  <Link
+                    to="/about"
+                    className="flex items-center justify-center w-32 px-4 py-2 space-x-2 font-bold text-center text-white transition transform rounded shadow hover:text-white bg-pitt-blue hover:scale-105"
+                  >
+                    <span>About</span> <FaInfoCircle />
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/bookshelf"
+                    className="flex items-center justify-center w-32 px-4 py-2 space-x-2 font-bold text-center text-white transition transform rounded shadow hover:text-white bg-pitt-blue hover:scale-105"
+                  >
+                    <span>Bookshelf</span> <FaBook />
+                  </Link>
+                </li>
+              </motion.ul>
+            </motion.nav>
+          )}
+        </AnimatePresence>
+
         <Drawer
           title={location?.title ?? "Location"}
           placement="left"
