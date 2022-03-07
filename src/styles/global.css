@@ -91,6 +91,10 @@ a:hover {
   border: none;
 }
 
+.sp-autocomplete .ant-select-selection-search-input {
+  color: black !important;
+}
+
 .sp-autocomplete .ant-select-selector {
   border: none !important;
 }

@@ -76,6 +76,7 @@ const LocationPage = (props) => {
               </Carousel>
             )}
           <h2 className="text-3xl font-bold">{location?.title}</h2>
+
           {/* TODO: Possible toggle buttons? */}
           {/* <div className="flex items-center space-x-4">
             <button className="flex items-center justify-center w-32 px-4 py-2 space-x-2 font-bold text-center text-black transition transform rounded shadow hover:text-black bg-slate-200 hover:scale-105">
@@ -91,28 +92,28 @@ const LocationPage = (props) => {
                 ?.processed ?? ""
             )}
           </div>
+          {location?.relationships?.node__article && (
+            <div className="space-y-4">
+              <h3 className="font-bold">Read Articles</h3>
+              <div className="grid grid-cols-3 gap-8">
+                {location?.relationships?.node__article?.map((article, i) => (
+                  <Link
+                    key={i}
+                    to={article.gatsbyPath}
+                    className="flex items-center justify-between p-4 space-x-4 font-bold transition transform rounded shadow hover:scale-105 hover:underline bg-slate-200 focus-visible:scale-105 focus-visible:underline"
+                  >
+                    <span>{article.title}</span>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          )}
           <div className="space-y-8 leading-loose processed-text xl:leading-loose xl:text-lg">
             {parse(
               location?.relationships?.field_associated_guidebook_entry?.body
                 ?.processed ?? ""
             )}
           </div>
-
-          {location?.relationships?.node__article && (
-            <div className="space-y-4">
-              <h3 className="font-bold">Read More Articles</h3>
-              {location?.relationships?.node__article?.map((article, i) => (
-                <Link
-                  key={i}
-                  to={article.gatsbyPath}
-                  className="flex items-center justify-between p-4 space-x-4 text-lg font-bold transition transform rounded hover:scale-105 bg-slate-200 lg:text-2xl"
-                >
-                  <span>{article.title}</span>
-                  <FaNewspaper />
-                </Link>
-              ))}
-            </div>
-          )}
         </div>
       </section>
     </main>
