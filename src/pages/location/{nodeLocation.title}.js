@@ -92,7 +92,7 @@ const LocationPage = (props) => {
                 ?.processed ?? ""
             )}
           </div>
-          {location?.relationships?.node__article && (
+          {/* {location?.relationships?.node__article && (
             <div className="space-y-4">
               <h3 className="font-bold">Read Articles</h3>
               <div className="grid grid-cols-3 gap-8">
@@ -107,13 +107,28 @@ const LocationPage = (props) => {
                 ))}
               </div>
             </div>
-          )}
+          )} */}
           <div className="space-y-8 leading-loose processed-text xl:leading-loose xl:text-lg">
             {parse(
               location?.relationships?.field_associated_guidebook_entry?.body
                 ?.processed ?? ""
             )}
           </div>
+          {location?.relationships?.node__article && (
+            <div className="space-y-4">
+              <h3 className="font-bold">Read More Articles</h3>
+              {location?.relationships?.node__article?.map((article, i) => (
+                <Link
+                  key={i}
+                  to={article.gatsbyPath}
+                  className="flex items-center justify-between p-4 space-x-4 text-lg font-bold transition transform rounded hover:scale-105 bg-slate-200 lg:text-2xl"
+                >
+                  <span>{article.title}</span>
+                  <FaNewspaper />
+                </Link>
+              ))}
+            </div>
+          )}
         </div>
       </section>
     </main>
