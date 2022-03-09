@@ -37,6 +37,7 @@ const IndexPage = ({ data, location: router }) => {
     [],
     "visited-locations"
   );
+  const [tooltip, setTooltip] = useState(false);
 
   const mapRef = useRef();
 
@@ -59,7 +60,6 @@ const IndexPage = ({ data, location: router }) => {
   };
 
   const onSelect = (v, o, state) => {
-    console.log(v, o, state);
     if (state === "filterLocation") {
       const locMatch = data.allNodeLocation.nodes.find(
         (location) => location.title === v
@@ -96,12 +96,6 @@ const IndexPage = ({ data, location: router }) => {
 
   const onChange = (v, state) => {
     console.log(v, state);
-
-    // if (!v)
-    //   this.setState({
-    //     [state]: null,
-    //   });
-    // this._goToLoc(40.4406, -79.9959, 12);
   };
 
   const mapVariants = {
@@ -138,6 +132,9 @@ const IndexPage = ({ data, location: router }) => {
             onClick={() => {
               handleLocationOpen(markerLocation);
             }}
+            onMouseOver={() => setTooltip(markerLocation)}
+            // onMouseMove={() => setTooltip(markerLocation)}
+            onMouseOut={() => setTooltip(false)}
             aria-label={`Open location information of ${markerLocation.title}`}
           >
             <Pin
@@ -200,10 +197,7 @@ const IndexPage = ({ data, location: router }) => {
           animate={intro ? "closed" : "open"}
           variants={mapVariants}
           style={{
-            //   width: intro ? "500px" : "100vw",
-            //   height: intro ? "350px" : "100vh",
             overflow: "hidden",
-            //   transition: "all ease .8s",
           }}
         >
           <Map
@@ -224,6 +218,22 @@ const IndexPage = ({ data, location: router }) => {
             mapStyle={"mapbox://styles/mapbox/light-v10"}
           >
             {pins}
+            <AnimatePresence>
+              {tooltip && (
+                <Marker
+                  longitude={tooltip.field_geolocation.lng}
+                  latitude={tooltip.field_geolocation.lat}
+                >
+                  <motion.div
+                    initial={{ y: 16, opacity: 0, x: "-50%" }}
+                    animate={{ y: 0, opacity: 1, x: "-50%" }}
+                    className="absolute w-40 px-4 py-2 font-bold text-center text-black rounded pointer-events-none left-1/2 -top-24 bg-slate-200"
+                  >
+                    {tooltip.title}
+                  </motion.div>
+                </Marker>
+              )}
+            </AnimatePresence>
             <NavigationControl position="bottom-right" />
             <GeolocateControl position="bottom-right" />
           </Map>
