@@ -240,22 +240,22 @@ const IndexPage = ({ data, location: router }) => {
         </motion.div>
 
         {intro && (
-          <footer className="absolute space-x-4 bottom-8 processed-text">
+          <footer className="absolute space-x-4 bottom-8 text-pitt-blue">
             <Link
               to="/about"
-              className="inline-block text-sm hover:underline focus-visible:underline"
+              className="inline-block text-pitt-blue hover:underline focus-visible:underline"
             >
               About
             </Link>
             <Link
               to="/bookshelf"
-              className="inline-block hover:underline focus-visible:underline"
+              className="inline-block text-pitt-blue hover:underline focus-visible:underline"
             >
               Bookshelf
             </Link>
             <a
               href="https://www.instagram.com/secretpittsburgh/?hl=en"
-              className="inline-block hover:underline focus-visible:underline"
+              className="inline-block text-pitt-blue hover:underline focus-visible:underline"
             >
               Instagram
             </a>
