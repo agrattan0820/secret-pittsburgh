@@ -84,7 +84,7 @@ export default AboutPage;
 
 export const query = graphql`
   {
-    allNodeBookshelfItem {
+    allNodeBookshelfItem(sort: { order: ASC, fields: field_author_lastname }) {
       nodes {
         body {
           processed
