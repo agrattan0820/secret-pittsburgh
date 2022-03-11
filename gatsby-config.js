@@ -15,6 +15,7 @@ module.exports = {
     "gatsby-plugin-react-helmet",
     "gatsby-plugin-sitemap",
     "gatsby-plugin-postcss",
+    "gatsby-plugin-smoothscroll",
     {
       resolve: "gatsby-plugin-manifest",
       options: {
