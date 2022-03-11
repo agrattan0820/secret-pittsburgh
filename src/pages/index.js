@@ -261,17 +261,6 @@ const IndexPage = ({ data, location: router }) => {
             </a>
           </footer>
         )}
-        {/* {intro && (
-          <button
-            aria-label="Open Secret Pittsburgh Map"
-            onClick={() => {
-              setIntro(false);
-            }}
-            className="px-4 py-2 font-bold text-white transition rounded shadow focus-within:scale-105 hover:scale-105 lg:hidden bg-pitt-blue"
-          >
-            Let's Go!
-          </button>
-        )} */}
         <AnimatePresence>
           {!intro && (
             <motion.nav
