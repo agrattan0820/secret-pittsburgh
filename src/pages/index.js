@@ -307,14 +307,18 @@ const IndexPage = ({ data, location: router }) => {
         >
           {location && (
             <div className="space-y-4 leading-loose">
-              <img
-                className="shadow-md"
-                src={`https://secretpittsburgh.pitt.edu/${location?.relationships.field_associated_guidebook_entry.relationships.field_image[0].uri.url}`}
-                alt={
-                  location?.relationships.field_associated_guidebook_entry
-                    .field_image[0].alt
-                }
-              />
+              {location?.relationships?.field_associated_guidebook_entry
+                ?.relationships?.field_image[0]?.uri?.url && (
+                <img
+                  className="shadow-md"
+                  src={`https://secretpittsburgh.pitt.edu/${location?.relationships.field_associated_guidebook_entry.relationships.field_image[0].uri.url}`}
+                  alt={
+                    location?.relationships.field_associated_guidebook_entry
+                      .field_image[0].alt
+                  }
+                />
+              )}
+
               <div className="processed-text">
                 {parse(
                   shortenString(
