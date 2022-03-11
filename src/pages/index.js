@@ -227,7 +227,7 @@ const IndexPage = ({ data, location: router }) => {
                   <motion.div
                     initial={{ y: 16, opacity: 0, x: "-50%" }}
                     animate={{ y: 0, opacity: 1, x: "-50%" }}
-                    className="absolute w-40 px-4 py-2 font-bold text-center text-black rounded pointer-events-none left-1/2 -top-24 bg-slate-200"
+                    className="absolute w-40 px-4 py-2 font-bold text-center text-black rounded shadow pointer-events-none left-1/2 -top-24 bg-slate-200"
                   >
                     {tooltip.title}
                   </motion.div>
