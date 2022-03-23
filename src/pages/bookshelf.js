@@ -14,11 +14,11 @@ import BookshelfImage from "../images/secret_pittsburgh_bookshelf.jpg";
 mapboxgl.workerClass =
   require("worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker").default;
 
-const AboutPage = ({ data }) => {
+const BookshelfPage = ({ data }) => {
   console.log(data);
   return (
     <main>
-      <Seo />
+      <Seo title="Bookshelf" />
       <header
         className="absolute z-50 flex justify-center w-full max-w-3xl transform -translate-x-1/2 top-8 left-1/2"
         id="page-top"
@@ -97,7 +97,7 @@ const AboutPage = ({ data }) => {
   );
 };
 
-export default AboutPage;
+export default BookshelfPage;
 
 export const query = graphql`
   {
