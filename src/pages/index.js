@@ -5,6 +5,7 @@ import { Drawer } from "antd";
 import Map, { Marker, NavigationControl, GeolocateControl } from "react-map-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 import { FaTimes, FaArrowLeft, FaInfoCircle, FaBook } from "react-icons/fa";
+import { GiSuspensionBridge } from "react-icons/gi";
 
 /* eslint-disable import/no-webpack-loader-syntax */
 import mapboxgl from "mapbox-gl";
@@ -173,8 +174,12 @@ const IndexPage = ({ data, location: router }) => {
       >
         {intro && (
           <div className="px-4 pt-32 space-y-4 leading-loose max-w-prose lg:pt-0">
-            <h2 className="text-3xl font-bold lg:text-6xl lg:leading-snug font-title">
-              Find the COOL in Pittsburgh
+            <h2 className="text-3xl font-bold lg:text-6xl lg:leading-tight font-title">
+              Explore the Steel City{" "}
+              <GiSuspensionBridge
+                className="inline-block ml-2 text-pitt-blue"
+                aria-label="Bridge Icon"
+              />
             </h2>
             <p>
               The "Secret Pittsburgh" Literature class invites University of
@@ -187,7 +192,7 @@ const IndexPage = ({ data, location: router }) => {
               }}
               className="inline-block px-4 py-2 font-bold text-white transition rounded shadow focus-within:scale-105 hover:scale-105 bg-pitt-blue"
             >
-              Let's Go!
+              Enter the City
             </button>
           </div>
         )}
