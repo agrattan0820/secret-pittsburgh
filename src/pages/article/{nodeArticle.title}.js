@@ -16,8 +16,6 @@ mapboxgl.workerClass =
 const ArticlePage = (props) => {
   const [article, setArticle] = useState(props.data.nodeArticle);
 
-  console.log(props);
-
   return (
     <main>
       <Seo

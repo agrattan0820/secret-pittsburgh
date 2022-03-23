@@ -26,7 +26,6 @@ const LocationPage = (props) => {
       )
     : null;
 
-  console.log(props);
   return (
     <main>
       <Seo
