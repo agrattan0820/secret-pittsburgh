@@ -16,6 +16,15 @@ const LocationPage = (props) => {
   const [location, setLocation] = useState(props.data.nodeLocation);
   const [drawer, setDrawer] = useState("");
 
+  const essays = location?.relationships?.node__article
+    ? location?.relationships?.node__article.filter(
+        (article, i, self) =>
+          i === self.findIndex((t) => t.title === article.title)
+      )
+    : null;
+
+  console.log(essays);
+
   console.log(props);
   return (
     <main>
@@ -92,6 +101,21 @@ const LocationPage = (props) => {
                 ?.processed ?? ""
             )}
           </div>
+          {location?.relationships?.field_associated_basic_info_entr?.body
+            ?.processed === undefined &&
+            essays === null && (
+              <div className="space-y-2">
+                <p className="leading-loose xl:leading-loose xl:text-lg">
+                  Oops! Looks like this is an empty location
+                </p>
+                <Link
+                  to="/"
+                  className="inline-block px-4 py-2 font-bold text-center text-white transition transform rounded shadow hover:text-white bg-pitt-blue hover:scale-105"
+                >
+                  Go Back Home
+                </Link>
+              </div>
+            )}
           {/* {location?.relationships?.node__article && (
             <div className="space-y-4">
               <h3 className="font-bold">Read Articles</h3>
@@ -117,16 +141,17 @@ const LocationPage = (props) => {
           {location?.relationships?.node__article && (
             <div className="space-y-4">
               <h3 className="font-bold">Read More Articles</h3>
-              {location?.relationships?.node__article?.map((article, i) => (
-                <Link
-                  key={i}
-                  to={article.gatsbyPath}
-                  className="flex items-center justify-between p-4 space-x-4 text-lg font-bold transition transform rounded hover:scale-105 bg-slate-200 lg:text-2xl"
-                >
-                  <span>{article.title}</span>
-                  <FaNewspaper />
-                </Link>
-              ))}
+              {essays !== null &&
+                essays.map((article, i) => (
+                  <Link
+                    key={i}
+                    to={article.gatsbyPath}
+                    className="flex items-center justify-between p-4 space-x-4 text-lg font-bold transition transform rounded hover:scale-105 bg-slate-200 lg:text-2xl"
+                  >
+                    <span>{article.title}</span>
+                    <FaNewspaper />
+                  </Link>
+                ))}
             </div>
           )}
         </div>
