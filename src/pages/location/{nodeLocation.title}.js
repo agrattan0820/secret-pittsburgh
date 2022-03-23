@@ -41,7 +41,7 @@ const LocationPage = (props) => {
                     location?.relationships?.field_associated_guidebook_entry
                       ?.body?.processed ?? ""
                   )
-                ),
+                ).replace(/(\r\n|\n|\r)/gm, ""),
                 157
               )
             : null

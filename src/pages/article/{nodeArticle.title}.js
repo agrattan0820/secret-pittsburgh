@@ -24,7 +24,10 @@ const ArticlePage = (props) => {
         title={article?.title}
         // Parse article body and insert it as site description (157 string length because ellipsis added at end)
         description={shortenString(
-          getNodeText(parse(article?.body?.processed ?? "")),
+          getNodeText(parse(article?.body?.processed ?? "")).replace(
+            /(\r\n|\n|\r)/gm,
+            ""
+          ),
           157
         )}
       />
