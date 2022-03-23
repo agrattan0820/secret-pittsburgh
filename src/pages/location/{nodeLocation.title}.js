@@ -16,6 +16,12 @@ const LocationPage = (props) => {
   const [location, setLocation] = useState(props.data.nodeLocation);
   const [drawer, setDrawer] = useState("");
 
+  const essays = location?.relationships?.node__article.filter(
+    (article, i, self) => i === self.findIndex((t) => t.title === article.title)
+  );
+
+  console.log(essays);
+
   console.log(props);
   return (
     <main>
@@ -117,7 +123,7 @@ const LocationPage = (props) => {
           {location?.relationships?.node__article && (
             <div className="space-y-4">
               <h3 className="font-bold">Read More Articles</h3>
-              {location?.relationships?.node__article?.map((article, i) => (
+              {essays.map((article, i) => (
                 <Link
                   key={i}
                   to={article.gatsbyPath}
