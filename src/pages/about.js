@@ -18,7 +18,7 @@ const AboutPage = ({ data }) => {
   console.log(data);
   return (
     <main>
-      <Seo />
+      <Seo title="About" />
       <header
         className="absolute z-50 flex justify-center w-full max-w-3xl transform -translate-x-1/2 top-8 left-1/2"
         id="page-top"
