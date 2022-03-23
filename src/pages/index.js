@@ -308,35 +308,50 @@ const IndexPage = ({ data, location: router }) => {
           {location && (
             <div className="space-y-4 leading-loose">
               {location?.relationships?.field_associated_guidebook_entry
-                ?.relationships?.field_image[0]?.uri?.url && (
-                <img
-                  className="shadow-md"
-                  src={`https://secretpittsburgh.pitt.edu/${location?.relationships.field_associated_guidebook_entry.relationships.field_image[0].uri.url}`}
-                  alt={
-                    location?.relationships.field_associated_guidebook_entry
-                      .field_image[0].alt
-                  }
-                />
+                ?.relationships?.field_image[0]?.uri?.url === undefined &&
+              location?.relationships?.field_associated_guidebook_entry?.body
+                ?.processed === undefined ? (
+                <div className="space-y-2">
+                  <p className="leading-loose xl:leading-loose xl:text-lg">
+                    Oops! Looks like this is an empty location
+                  </p>
+                  <p>
+                    Email Dr. FitzPatrick (jlf115@pitt.edu) about this error or
+                    if you have any questions.
+                  </p>
+                </div>
+              ) : (
+                <>
+                  {location?.relationships?.field_associated_guidebook_entry
+                    ?.relationships?.field_image[0]?.uri?.url && (
+                    <img
+                      className="shadow-md"
+                      src={`https://secretpittsburgh.pitt.edu/${location?.relationships.field_associated_guidebook_entry.relationships.field_image[0].uri.url}`}
+                      alt={
+                        location?.relationships.field_associated_guidebook_entry
+                          .field_image[0].alt
+                      }
+                    />
+                  )}
+                  <div className="processed-text">
+                    {parse(
+                      shortenString(
+                        location?.relationships.field_associated_guidebook_entry
+                          .body.processed ?? "",
+                        550
+                      )
+                    )}
+                  </div>
+                  <div className="flex items-center justify-center">
+                    <Link
+                      to={location.gatsbyPath}
+                      className="inline-block px-4 py-2 font-bold text-center text-white transition transform rounded shadow hover:text-white bg-pitt-blue hover:scale-105"
+                    >
+                      Learn More
+                    </Link>
+                  </div>
+                </>
               )}
-
-              <div className="processed-text">
-                {parse(
-                  shortenString(
-                    location?.relationships.field_associated_guidebook_entry
-                      .body.processed ?? "",
-                    550
-                  )
-                )}
-              </div>
-
-              <div className="flex items-center justify-center">
-                <Link
-                  to={location.gatsbyPath}
-                  className="inline-block px-4 py-2 font-bold text-center text-white transition transform rounded shadow hover:text-white bg-pitt-blue hover:scale-105"
-                >
-                  Learn More
-                </Link>
-              </div>
             </div>
           )}
         </Drawer>
