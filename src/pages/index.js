@@ -340,7 +340,6 @@ const IndexPage = ({ data, location: router }) => {
             </div>
           )}
         </Drawer>
-        {/* <pre>{JSON.stringify(data, null, 4)}</pre> */}
       </section>
     </main>
   );
