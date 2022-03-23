@@ -323,7 +323,7 @@ const IndexPage = ({ data, location: router }) => {
                 {parse(
                   shortenString(
                     location?.relationships.field_associated_guidebook_entry
-                      .body.processed,
+                      .body.processed ?? "",
                     550
                   )
                 )}
