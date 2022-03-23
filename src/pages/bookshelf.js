@@ -2,7 +2,7 @@ import React from "react";
 import parse from "html-react-parser";
 import { graphql, Link } from "gatsby";
 import "mapbox-gl/dist/mapbox-gl.css";
-import { FaArrowLeft, FaArrowUp } from "react-icons/fa";
+import { FaArrowLeft, FaArrowUp, FaBook, FaBookOpen } from "react-icons/fa";
 import scrollTo from "gatsby-plugin-smoothscroll";
 
 /* eslint-disable import/no-webpack-loader-syntax */
@@ -55,14 +55,31 @@ const AboutPage = ({ data }) => {
               all of them are. Instead, this list compiles anything that has
               been taught in the class over the years.
             </p>
-            <ul className="space-y-8 ">
+            <ul className="space-y-8">
               {data.allNodeBookshelfItem.nodes &&
                 data.allNodeBookshelfItem.nodes.map((book, i) => (
                   <>
                     <li key={i} className="processed-text">
                       {parse(book.body.processed)}
+                      <a
+                        href={`https://pitt.primo.exlibrisgroup.com/discovery/search?query=any,contains,${book.title.replaceAll(
+                          " ",
+                          "%20"
+                        )}&tab=Everything&search_scope=MyInst_and_CI&vid=01PITT_INST:01PITT_INST&lang=en&offset=0`}
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        Search in Pitt Library Catalog
+                        <FaBookOpen className="inline-block ml-2" />
+                      </a>
                     </li>
                     {i !== data.allNodeBookshelfItem.nodes.length - 1 && <hr />}
+                    {/* <li
+                      key={i}
+                      className="h-64 p-4 font-bold border-l-8 font-title w-52 rounded-r-md bg-slate-200 border-l-slate-900"
+                    >
+                      {book?.title}
+                    </li> */}
                   </>
                 ))}
             </ul>
