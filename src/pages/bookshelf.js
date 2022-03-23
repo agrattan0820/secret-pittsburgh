@@ -2,7 +2,7 @@ import React from "react";
 import parse from "html-react-parser";
 import { graphql, Link } from "gatsby";
 import "mapbox-gl/dist/mapbox-gl.css";
-import { FaArrowLeft, FaArrowUp, FaBook, FaBookOpen } from "react-icons/fa";
+import { FaArrowLeft, FaArrowUp, FaBookOpen } from "react-icons/fa";
 import scrollTo from "gatsby-plugin-smoothscroll";
 
 /* eslint-disable import/no-webpack-loader-syntax */
