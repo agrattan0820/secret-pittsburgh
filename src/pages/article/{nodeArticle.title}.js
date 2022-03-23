@@ -8,6 +8,7 @@ import { FaArrowLeft } from "react-icons/fa";
 /* eslint-disable import/no-webpack-loader-syntax */
 import mapboxgl from "mapbox-gl";
 import Seo from "../../components/seo";
+import { getNodeText, shortenString } from "../../util";
 // @ts-ignore
 mapboxgl.workerClass =
   require("worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker").default;
@@ -19,7 +20,14 @@ const ArticlePage = (props) => {
 
   return (
     <main>
-      <Seo title={article?.title} />
+      <Seo
+        title={article?.title}
+        // Parse article body and insert it as site description (157 string length because ellipsis added at end)
+        description={shortenString(
+          getNodeText(parse(article?.body?.processed ?? "")),
+          157
+        )}
+      />
       <header className="absolute z-50 flex justify-center w-full max-w-3xl transform -translate-x-1/2 top-8 left-1/2">
         {article?.relationships?.node__location && (
           <Link

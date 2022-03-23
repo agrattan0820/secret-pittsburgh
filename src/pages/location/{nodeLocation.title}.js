@@ -8,6 +8,7 @@ import { FaArrowLeft, FaNewspaper } from "react-icons/fa";
 /* eslint-disable import/no-webpack-loader-syntax */
 import mapboxgl from "mapbox-gl";
 import Seo from "../../components/seo";
+import { getNodeText, shortenString } from "../../util";
 // @ts-ignore
 mapboxgl.workerClass =
   require("worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker").default;
@@ -28,7 +29,24 @@ const LocationPage = (props) => {
   console.log(props);
   return (
     <main>
-      <Seo title={location?.title} />
+      <Seo
+        title={location?.title}
+        // Parse location information and insert it as site description (157 string length because ellipsis added at end)
+        description={
+          location?.relationships?.field_associated_guidebook_entry?.body
+            ?.processed
+            ? shortenString(
+                getNodeText(
+                  parse(
+                    location?.relationships?.field_associated_guidebook_entry
+                      ?.body?.processed ?? ""
+                  )
+                ),
+                157
+              )
+            : null
+        }
+      />
       <header className="absolute z-50 flex justify-center w-full max-w-3xl transform -translate-x-1/2 top-8 left-1/2">
         <Link
           to="/?back=true"
