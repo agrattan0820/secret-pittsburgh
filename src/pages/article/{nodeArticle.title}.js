@@ -55,7 +55,7 @@ const ArticlePage = (props) => {
                 autoplay
                 arrows={true}
                 pauseOnHover={false}
-                className="mb-8 shadow-lg"
+                className="shadow-lg"
               >
                 {article?.relationships?.field_image.map((image, i) => (
                   // Extra div needed so there is no extra padding underneath the figure in the carousel
@@ -74,7 +74,7 @@ const ArticlePage = (props) => {
                 ))}
               </Carousel>
             )}
-          <h2 className="mb-4 text-3xl font-bold">{article?.title}</h2>
+          <h2 className="mt-8 mb-4 text-3xl font-bold">{article?.title}</h2>
           {article?.field_author_name && (
             <p className="mb-8 italic xl:text-lg">
               By {article?.field_author_name}
