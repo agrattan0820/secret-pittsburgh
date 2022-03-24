@@ -157,7 +157,7 @@ const LocationPage = (props) => {
           </div>
           {location?.relationships?.node__article && (
             <div className="space-y-4">
-              <h3 className="font-bold">Read Stories About This Location</h3>
+              <h3 className="font-bold">Learn More</h3>
               {articles !== null &&
                 articles.map((article, i) => (
                   <Link
