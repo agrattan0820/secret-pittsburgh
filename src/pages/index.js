@@ -4,7 +4,13 @@ import { graphql, Link } from "gatsby";
 import { Drawer } from "antd";
 import Map, { Marker, NavigationControl, GeolocateControl } from "react-map-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
-import { FaTimes, FaArrowLeft, FaInfoCircle, FaBook } from "react-icons/fa";
+import {
+  FaTimes,
+  FaArrowLeft,
+  FaInfoCircle,
+  FaBook,
+  FaCity,
+} from "react-icons/fa";
 import { GiSuspensionBridge } from "react-icons/gi";
 
 /* eslint-disable import/no-webpack-loader-syntax */
@@ -162,6 +168,10 @@ const IndexPage = ({ data, location: router }) => {
         )}
         <h1 className="px-4 py-2 text-lg font-bold rounded shadow w-min lg:text-2xl xl:text-3xl bg-slate-200">
           <Link to="/" className="inline-block font-title whitespace-nowrap">
+            {/* <FaCity
+              className="inline-block mr-2 text-pitt-blue"
+              aria-label="Bridge Icon"
+            />{" "} */}
             Secret Pittsburgh
           </Link>
         </h1>
@@ -174,7 +184,7 @@ const IndexPage = ({ data, location: router }) => {
       >
         {intro && (
           <div className="px-4 pt-32 space-y-4 leading-loose max-w-prose lg:pt-0">
-            <h2 className="text-3xl font-bold lg:text-6xl lg:leading-tight font-title">
+            <h2 className="text-5xl font-bold leading-tight lg:leading-tight lg:text-6xl font-title">
               Explore the Steel City{" "}
               <GiSuspensionBridge
                 className="inline-block ml-2 text-pitt-blue"
@@ -263,6 +273,12 @@ const IndexPage = ({ data, location: router }) => {
               className="inline-block text-pitt-blue hover:underline focus-visible:underline"
             >
               Instagram
+            </a>
+            <a
+              href="https://twitter.com/Secret_PGH?s=20&t=Hai0p_eXqekpzlkH2_XYvQ"
+              className="inline-block text-pitt-blue hover:underline focus-visible:underline"
+            >
+              Twitter
             </a>
           </footer>
         )}
