@@ -47,7 +47,7 @@ const ArticlePage = (props) => {
       </header>
 
       <section className="container relative flex flex-col justify-center min-h-screen pt-32 pb-24 mx-auto ">
-        <div className="w-full max-w-3xl px-4 mx-auto space-y-8 leading-loose">
+        <div className="w-full max-w-3xl px-4 mx-auto leading-loose">
           {article?.relationships?.field_image &&
             article?.relationships?.field_image.length > 0 && (
               <Carousel
@@ -55,7 +55,7 @@ const ArticlePage = (props) => {
                 autoplay
                 arrows={true}
                 pauseOnHover={false}
-                className="shadow-lg"
+                className="mb-8 shadow-lg"
               >
                 {article?.relationships?.field_image.map((image, i) => (
                   // Extra div needed so there is no extra padding underneath the figure in the carousel
@@ -74,7 +74,12 @@ const ArticlePage = (props) => {
                 ))}
               </Carousel>
             )}
-          <h2 className="text-3xl font-bold">{article?.title}</h2>
+          <h2 className="mb-4 text-3xl font-bold">{article?.title}</h2>
+          {article?.field_author_name && (
+            <p className="mb-8 italic xl:text-lg">
+              By {article?.field_author_name}
+            </p>
+          )}
           <div className="space-y-8 leading-loose processed-text xl:leading-loose xl:text-lg">
             {parse(article?.body?.processed ?? "")}
           </div>
