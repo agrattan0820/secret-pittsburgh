@@ -317,7 +317,7 @@ const IndexPage = ({ data, location: router }) => {
               location?.relationships?.field_associated_guidebook_entry?.body
                 ?.processed === undefined ? (
                 <div className="space-y-2">
-                  <p className="leading-loose xl:leading-loose xl:text-lg">
+                  <p className="font-bold leading-loose xl:leading-loose xl:text-lg">
                     Oops! Looks like this is an empty location
                   </p>
                   <p>
