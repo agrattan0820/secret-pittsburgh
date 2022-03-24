@@ -109,6 +109,7 @@ const IndexPage = ({ data, location: router }) => {
     open: {
       width: "100vw",
       height: "100vh",
+      borderRadius: "0",
       transition: {
         duration: 0.8,
         type: "tween",
@@ -118,6 +119,7 @@ const IndexPage = ({ data, location: router }) => {
     closed: {
       width: "500px",
       height: "350px",
+      borderRadius: "0.25rem",
       transition: {
         duration: 0.8,
         type: "tween",
@@ -161,12 +163,12 @@ const IndexPage = ({ data, location: router }) => {
           <button
             onClick={() => setIntro(true)}
             aria-label="Exit map view"
-            className="absolute p-2 text-lg transform -translate-y-1/2 rounded-full lg:text-xl bg-slate-200 left-8 top-1/2"
+            className="absolute p-2 text-lg text-white transform -translate-y-1/2 rounded-full lg:text-xl bg-pitt-blue left-8 top-1/2"
           >
             <FaArrowLeft />
           </button>
         )}
-        <h1 className="px-4 py-2 text-lg font-bold rounded shadow w-min lg:text-2xl xl:text-3xl bg-slate-200">
+        <h1 className="px-4 py-2 text-lg font-bold text-white rounded shadow w-min lg:text-2xl xl:text-3xl bg-pitt-blue">
           <Link to="/" className="inline-block font-title whitespace-nowrap">
             {/* <FaCity
               className="inline-block mr-2 text-pitt-blue"
