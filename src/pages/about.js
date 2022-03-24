@@ -2,7 +2,7 @@ import React from "react";
 import parse from "html-react-parser";
 import { graphql, Link } from "gatsby";
 import "mapbox-gl/dist/mapbox-gl.css";
-import { FaArrowLeft, FaArrowUp, FaInstagram } from "react-icons/fa";
+import { FaArrowLeft, FaArrowUp, FaInstagram, FaTwitter } from "react-icons/fa";
 import scrollTo from "gatsby-plugin-smoothscroll";
 
 /* eslint-disable import/no-webpack-loader-syntax */
@@ -45,18 +45,27 @@ const AboutPage = ({ data }) => {
             alt="Students of the University of Pittsburgh Secret Pittsburgh class"
           />
           <h2 className="text-3xl font-bold">About Us and Our Mission</h2>
+          <div className="flex space-x-4">
+            <a
+              href="https://www.instagram.com/secretpittsburgh/?hl=en"
+              className="flex items-center justify-center px-2 py-2 space-x-2 text-sm font-bold text-center text-black transition transform rounded shadow md:px-4 md:text-base hover:text-black bg-slate-200 hover:scale-105"
+            >
+              <FaInstagram />
+              <span>Follow Our Instagram</span>
+            </a>
+            <a
+              href="https://twitter.com/Secret_PGH?s=20&t=Hai0p_eXqekpzlkH2_XYvQ"
+              className="flex items-center justify-center px-2 py-2 space-x-2 text-sm font-bold text-center text-black transition transform rounded shadow md:px-4 md:text-base hover:text-black bg-slate-200 hover:scale-105"
+            >
+              <FaTwitter />
+              <span>Follow Our Twitter</span>
+            </a>
+          </div>
           <div className="space-y-8 leading-loose processed-text xl:leading-loose xl:text-lg">
             {data.nodePage.body.processed &&
               parse(data.nodePage.body.processed)}
           </div>
           <div className="flex space-x-4">
-            <a
-              href="https://www.instagram.com/secretpittsburgh/?hl=en"
-              className="flex items-center justify-center px-4 py-2 space-x-2 font-bold text-center text-black transition transform rounded shadow hover:text-black bg-slate-200 hover:scale-105"
-            >
-              <FaInstagram />
-              <span>Follow Our Instagram</span>
-            </a>
             <button
               onClick={() => scrollTo("#page-top")}
               className="flex items-center justify-center px-4 py-2 space-x-2 font-bold text-center text-black transition transform rounded shadow hover:text-black bg-slate-200 hover:scale-105"
