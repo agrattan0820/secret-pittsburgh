@@ -30,7 +30,7 @@ const IndexPage = ({ data, location: router }) => {
   const [viewState, setViewState] = useState({
     latitude: 40.4406,
     longitude: -79.9959,
-    zoom: 14,
+    zoom: 13,
     bearing: 0,
     pitch: 45,
     width: "100%",
