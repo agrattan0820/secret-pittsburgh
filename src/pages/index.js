@@ -56,10 +56,12 @@ const IndexPage = ({ data, location: router }) => {
       markerLocation.field_geolocation.lat,
       markerLocation.field_geolocation.lng
     );
-    setDrawerOpen(true);
-    if (!visitedLocations.includes(markerLocation.title)) {
-      setVisitedLocations([...visitedLocations, markerLocation.title]);
-    }
+    setTimeout(() => {
+      setDrawerOpen(true);
+      if (!visitedLocations.includes(markerLocation.title)) {
+        setVisitedLocations([...visitedLocations, markerLocation.title]);
+      }
+    }, 400);
   };
 
   const goToLoc = (lat, lng) => {
@@ -340,55 +342,63 @@ const IndexPage = ({ data, location: router }) => {
             <FaTimes className="absolute text-xl transform -translate-y-1/2 top-1/2 right-8" />
           }
         >
-          {location && (
-            <div className="space-y-4 leading-loose">
-              {location?.relationships?.field_associated_guidebook_entry
-                ?.relationships?.field_image[0]?.uri?.url === undefined &&
-              location?.relationships?.field_associated_guidebook_entry?.body
-                ?.processed === undefined ? (
-                <div className="space-y-2">
-                  <p className="font-bold leading-loose xl:leading-loose xl:text-lg">
-                    Oops! Looks like this is an empty location
-                  </p>
-                  <p>
-                    Email Dr. FitzPatrick (jlf115@pitt.edu) about this error or
-                    if you have any questions.
-                  </p>
-                </div>
-              ) : (
-                <>
-                  {location?.relationships?.field_associated_guidebook_entry
-                    ?.relationships?.field_image[0]?.uri?.url && (
-                    <img
-                      className="shadow-md"
-                      src={`https://secretpittsburgh.pitt.edu/${location?.relationships.field_associated_guidebook_entry.relationships.field_image[0].uri.url}`}
-                      alt={
-                        location?.relationships.field_associated_guidebook_entry
-                          .field_image[0].alt
-                      }
-                    />
-                  )}
-                  <div className="processed-text">
-                    {parse(
-                      shortenString(
-                        location?.relationships.field_associated_guidebook_entry
-                          .body.processed ?? "",
-                        550
-                      )
+          <AnimatePresence>
+            {location && (
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                className="space-y-4 leading-loose"
+              >
+                {location?.relationships?.field_associated_guidebook_entry
+                  ?.relationships?.field_image[0]?.uri?.url === undefined &&
+                location?.relationships?.field_associated_guidebook_entry?.body
+                  ?.processed === undefined ? (
+                  <div className="space-y-2">
+                    <p className="font-bold leading-loose xl:leading-loose xl:text-lg">
+                      Oops! Looks like this is an empty location
+                    </p>
+                    <p>
+                      Email Dr. FitzPatrick (jlf115@pitt.edu) about this error
+                      or if you have any questions.
+                    </p>
+                  </div>
+                ) : (
+                  <>
+                    {location?.relationships?.field_associated_guidebook_entry
+                      ?.relationships?.field_image[0]?.uri?.url && (
+                      <img
+                        className="shadow-md"
+                        src={`https://secretpittsburgh.pitt.edu/${location?.relationships.field_associated_guidebook_entry.relationships.field_image[0].uri.url}`}
+                        alt={
+                          location?.relationships
+                            .field_associated_guidebook_entry.field_image[0].alt
+                        }
+                      />
                     )}
-                  </div>
-                  <div className="flex items-center justify-center">
-                    <Link
-                      to={location.gatsbyPath}
-                      className="inline-block px-4 py-2 font-bold text-center text-white transition transform rounded shadow hover:text-white bg-pitt-blue hover:scale-105"
-                    >
-                      Learn More
-                    </Link>
-                  </div>
-                </>
-              )}
-            </div>
-          )}
+                    <div className="processed-text">
+                      {parse(
+                        shortenString(
+                          location?.relationships
+                            .field_associated_guidebook_entry.body.processed ??
+                            "",
+                          550
+                        )
+                      )}
+                    </div>
+                    <div className="flex items-center justify-center">
+                      <Link
+                        to={location.gatsbyPath}
+                        className="inline-block px-4 py-2 font-bold text-center text-white transition transform rounded shadow hover:text-white bg-pitt-blue hover:scale-105"
+                      >
+                        Learn More
+                      </Link>
+                    </div>
+                  </>
+                )}
+              </motion.div>
+            )}
+          </AnimatePresence>
         </Drawer>
       </section>
     </main>
