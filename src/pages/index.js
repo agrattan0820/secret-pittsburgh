@@ -142,8 +142,9 @@ const IndexPage = ({ data, location: router }) => {
               handleLocationOpen(markerLocation);
             }}
             onMouseOver={() => setTooltip(markerLocation)}
-            // onMouseMove={() => setTooltip(markerLocation)}
+            onFocus={() => setTooltip(markerLocation)}
             onMouseOut={() => setTooltip(false)}
+            onBlur={() => setTooltip(false)}
             aria-label={`Open location information of ${markerLocation.title}`}
           >
             <Pin
