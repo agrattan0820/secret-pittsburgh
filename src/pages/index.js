@@ -215,8 +215,19 @@ const IndexPage = ({ data, location: router }) => {
           variants={mapVariants}
           style={{
             overflow: "hidden",
+            position: "relative",
           }}
         >
+          {intro && (
+            <div
+              className="absolute top-0 left-0 animate-pulse"
+              style={{
+                width: "500px",
+                height: "350px",
+                backgroundColor: "#f6f6f4",
+              }}
+            />
+          )}
           <Map
             {...viewState}
             reuseMaps
