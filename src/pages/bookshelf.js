@@ -44,7 +44,7 @@ const BookshelfPage = ({ data }) => {
             src={BookshelfImage}
             alt="Old book from the Historic Pittsburgh Archive"
           />
-          <h2 className="text-3xl font-bold font-title" id="page-top">
+          <h2 className="text-3xl font-bold font-title">
             Bookshelf of Sources
           </h2>
           <div className="space-y-16 leading-loose xl:leading-loose xl:text-lg">
