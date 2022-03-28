@@ -16,14 +16,6 @@ The "Secret Pittsburgh" Literature class invites University of Pittsburgh studen
 ![GitHub forks](https://img.shields.io/github/forks/GameDog9988/secret-pittsburgh?style=social)
 ![Twitter Follow](https://img.shields.io/twitter/follow/Secret_PGH?style=social)
 
-## Prerequisites
-
-Before you begin, ensure you have met the following requirements:
-<!--- These are just example requirements. Add, duplicate or remove as required --->
-* You have installed the latest version of `<coding_language/dependency/requirement_1>`
-* You have a `<Windows/Linux/Mac>` machine. State which OS is supported/which is not.
-* You have read `<guide/link/documentation_related_to_project>`.
-
 ## Run Locally
 
 To run Secret Pittsburgh locally, follow these steps:
