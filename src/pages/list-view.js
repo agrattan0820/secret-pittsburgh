@@ -120,7 +120,7 @@ const ListViewPage = ({ data }) => {
                   <li key={i}>
                     <Link
                       to={location.gatsbyPath}
-                      className="block w-40 h-64 overflow-hidden transition transform rounded-md shadow md:w-64 md:h-72 hover:underline focus-visible:underline hover:scale-105 bg-slate-200"
+                      className="block w-40 h-64 overflow-hidden transition transform rounded-md shadow md:w-64 md:h-72 hover:scale-105 focus-visible:scale-105 bg-slate-200"
                     >
                       {location?.relationships?.field_associated_guidebook_entry
                         ?.relationships?.field_image &&
