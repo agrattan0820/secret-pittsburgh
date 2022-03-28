@@ -8,7 +8,7 @@ import scrollTo from "gatsby-plugin-smoothscroll";
 /* eslint-disable import/no-webpack-loader-syntax */
 import mapboxgl from "mapbox-gl";
 import Seo from "../components/seo";
-import BookshelfImage from "../images/secret_pittsburgh_bookshelf.jpg";
+import CityImage from "../images/secret_pittsburgh_list_view.jpg";
 import { shortenString } from "../util";
 import useStickyState from "../components/useStickyState";
 
@@ -53,15 +53,15 @@ const ListViewPage = ({ data }) => {
       <section className="container relative flex flex-col justify-center min-h-screen pt-32 pb-24 mx-auto ">
         <div className="w-full max-w-3xl px-4 mx-auto space-y-8 leading-loose lg:max-w-5xl">
           <img
-            className="object-cover w-full rounded shadow-lg carousel-image"
-            src={BookshelfImage}
-            alt="Old book from the Historic Pittsburgh Archive"
+            className="object-cover w-full max-w-3xl mx-auto rounded shadow-lg carousel-image"
+            src={CityImage}
+            alt="City of Pittsburgh"
           />
-          <h2 className="text-3xl font-bold font-title">
+          <h2 className="w-full max-w-3xl mx-auto text-3xl font-bold font-title">
             Secret Pittsburgh Locations
           </h2>
           <div className="space-y-16 leading-loose xl:leading-loose xl:text-lg">
-            <p>
+            <p className="w-full max-w-3xl mx-auto">
               The "Secret Pittsburgh" Literature class invites University of
               Pittsburgh students to explore unusual or hidden spaces of the
               city, including "secret" spaces within well-known landmarks.
@@ -113,14 +113,14 @@ const ListViewPage = ({ data }) => {
                   </li>
                 ))}
             </ul> */}
-            <ul className="grid grid-cols-2 gap-8 lg:grid-cols-3">
+            <ul className="grid items-stretch justify-center grid-cols-2 gap-8 justify-items-center lg:grid-cols-3">
               {data.allNodeLocation.nodes &&
                 sortedLocations &&
                 sortedLocations.map((location, i) => (
                   <li key={i}>
                     <Link
                       to={location.gatsbyPath}
-                      className="block w-64 overflow-hidden rounded-md shadow h-72 hover:underline focus-visible:underline bg-slate-200"
+                      className="block w-64 overflow-hidden transition transform rounded-md shadow h-72 hover:underline focus-visible:underline hover:scale-105 bg-slate-200"
                     >
                       {location?.relationships?.field_associated_guidebook_entry
                         ?.relationships?.field_image &&
@@ -138,7 +138,7 @@ const ListViewPage = ({ data }) => {
                           />
                         )}
 
-                      <h2 className="p-4 text-lg font-bold font-title">
+                      <h2 className="flex flex-col justify-center h-24 p-4 text-lg font-bold font-title text-ellipsis">
                         {location.title}
                       </h2>
                     </Link>
