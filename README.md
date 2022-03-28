@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://www.gatsbyjs.com/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter">
+  <a href="https://secret-pittsburgh-test.netlify.app/">
     <img alt="Secret Pittsburgh" src="https://user-images.githubusercontent.com/51346343/160471311-5fde8a84-2b00-424b-a1eb-9245febe9ebd.png" width="500" />
   </a>
 </p>
