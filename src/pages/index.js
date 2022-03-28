@@ -4,7 +4,14 @@ import { graphql, Link } from "gatsby";
 import { Drawer } from "antd";
 import Map, { Marker, NavigationControl, GeolocateControl } from "react-map-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
-import { FaTimes, FaArrowLeft, FaInfoCircle, FaBook } from "react-icons/fa";
+import {
+  FaTimes,
+  FaArrowLeft,
+  FaInfoCircle,
+  FaBook,
+  FaCity,
+} from "react-icons/fa";
+import { GiSuspensionBridge } from "react-icons/gi";
 
 /* eslint-disable import/no-webpack-loader-syntax */
 import mapboxgl from "mapbox-gl";
@@ -23,7 +30,7 @@ const IndexPage = ({ data, location: router }) => {
   const [viewState, setViewState] = useState({
     latitude: 40.4406,
     longitude: -79.9959,
-    zoom: 14,
+    zoom: 13,
     bearing: 0,
     pitch: 45,
     width: "100%",
@@ -49,10 +56,12 @@ const IndexPage = ({ data, location: router }) => {
       markerLocation.field_geolocation.lat,
       markerLocation.field_geolocation.lng
     );
-    setDrawerOpen(true);
-    if (!visitedLocations.includes(markerLocation.title)) {
-      setVisitedLocations([...visitedLocations, markerLocation.title]);
-    }
+    setTimeout(() => {
+      setDrawerOpen(true);
+      if (!visitedLocations.includes(markerLocation.title)) {
+        setVisitedLocations([...visitedLocations, markerLocation.title]);
+      }
+    }, 400);
   };
 
   const goToLoc = (lat, lng) => {
@@ -102,6 +111,7 @@ const IndexPage = ({ data, location: router }) => {
     open: {
       width: "100vw",
       height: "100vh",
+      borderRadius: "0",
       transition: {
         duration: 0.8,
         type: "tween",
@@ -111,6 +121,7 @@ const IndexPage = ({ data, location: router }) => {
     closed: {
       width: "500px",
       height: "350px",
+      borderRadius: "0.25rem",
       transition: {
         duration: 0.8,
         type: "tween",
@@ -133,8 +144,9 @@ const IndexPage = ({ data, location: router }) => {
               handleLocationOpen(markerLocation);
             }}
             onMouseOver={() => setTooltip(markerLocation)}
-            // onMouseMove={() => setTooltip(markerLocation)}
+            onFocus={() => setTooltip(markerLocation)}
             onMouseOut={() => setTooltip(false)}
+            onBlur={() => setTooltip(false)}
             aria-label={`Open location information of ${markerLocation.title}`}
           >
             <Pin
@@ -154,13 +166,17 @@ const IndexPage = ({ data, location: router }) => {
           <button
             onClick={() => setIntro(true)}
             aria-label="Exit map view"
-            className="absolute p-2 text-lg transform -translate-y-1/2 rounded-full lg:text-xl bg-slate-200 left-8 top-1/2"
+            className="absolute p-2 text-lg text-white transform -translate-y-1/2 rounded-full lg:text-xl bg-pitt-blue left-8 top-1/2"
           >
             <FaArrowLeft />
           </button>
         )}
-        <h1 className="px-4 py-2 text-lg font-bold rounded shadow w-min lg:text-2xl xl:text-3xl bg-slate-200">
+        <h1 className="px-4 py-2 text-lg font-bold text-white rounded shadow w-min lg:text-2xl xl:text-3xl bg-pitt-blue">
           <Link to="/" className="inline-block font-title whitespace-nowrap">
+            {/* <FaCity
+              className="inline-block mr-2 text-pitt-blue"
+              aria-label="Bridge Icon"
+            />{" "} */}
             Secret Pittsburgh
           </Link>
         </h1>
@@ -173,8 +189,12 @@ const IndexPage = ({ data, location: router }) => {
       >
         {intro && (
           <div className="px-4 pt-32 space-y-4 leading-loose max-w-prose lg:pt-0">
-            <h2 className="text-3xl font-bold lg:text-6xl lg:leading-snug font-title">
-              Find the COOL in Pittsburgh
+            <h2 className="text-5xl font-bold leading-tight lg:leading-tight lg:text-6xl font-title">
+              Explore the Steel City{" "}
+              <GiSuspensionBridge
+                className="inline-block ml-2 text-pitt-blue"
+                aria-label="Bridge Icon"
+              />
             </h2>
             <p>
               The "Secret Pittsburgh" Literature class invites University of
@@ -187,7 +207,7 @@ const IndexPage = ({ data, location: router }) => {
               }}
               className="inline-block px-4 py-2 font-bold text-white transition rounded shadow focus-within:scale-105 hover:scale-105 bg-pitt-blue"
             >
-              Let's Go!
+              Enter the City
             </button>
           </div>
         )}
@@ -198,8 +218,19 @@ const IndexPage = ({ data, location: router }) => {
           variants={mapVariants}
           style={{
             overflow: "hidden",
+            position: "relative",
           }}
         >
+          {intro && (
+            <div
+              className="absolute top-0 left-0 animate-pulse"
+              style={{
+                width: "500px",
+                height: "350px",
+                backgroundColor: "#f6f6f4",
+              }}
+            />
+          )}
           <Map
             {...viewState}
             reuseMaps
@@ -259,6 +290,12 @@ const IndexPage = ({ data, location: router }) => {
             >
               Instagram
             </a>
+            <a
+              href="https://twitter.com/Secret_PGH?s=20&t=Hai0p_eXqekpzlkH2_XYvQ"
+              className="inline-block text-pitt-blue hover:underline focus-visible:underline"
+            >
+              Twitter
+            </a>
           </footer>
         )}
         <AnimatePresence>
@@ -305,55 +342,63 @@ const IndexPage = ({ data, location: router }) => {
             <FaTimes className="absolute text-xl transform -translate-y-1/2 top-1/2 right-8" />
           }
         >
-          {location && (
-            <div className="space-y-4 leading-loose">
-              {location?.relationships?.field_associated_guidebook_entry
-                ?.relationships?.field_image[0]?.uri?.url === undefined &&
-              location?.relationships?.field_associated_guidebook_entry?.body
-                ?.processed === undefined ? (
-                <div className="space-y-2">
-                  <p className="leading-loose xl:leading-loose xl:text-lg">
-                    Oops! Looks like this is an empty location
-                  </p>
-                  <p>
-                    Email Dr. FitzPatrick (jlf115@pitt.edu) about this error or
-                    if you have any questions.
-                  </p>
-                </div>
-              ) : (
-                <>
-                  {location?.relationships?.field_associated_guidebook_entry
-                    ?.relationships?.field_image[0]?.uri?.url && (
-                    <img
-                      className="shadow-md"
-                      src={`https://secretpittsburgh.pitt.edu/${location?.relationships.field_associated_guidebook_entry.relationships.field_image[0].uri.url}`}
-                      alt={
-                        location?.relationships.field_associated_guidebook_entry
-                          .field_image[0].alt
-                      }
-                    />
-                  )}
-                  <div className="processed-text">
-                    {parse(
-                      shortenString(
-                        location?.relationships.field_associated_guidebook_entry
-                          .body.processed ?? "",
-                        550
-                      )
+          <AnimatePresence>
+            {location && (
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                className="space-y-4 leading-loose"
+              >
+                {location?.relationships?.field_associated_guidebook_entry
+                  ?.relationships?.field_image[0]?.uri?.url === undefined &&
+                location?.relationships?.field_associated_guidebook_entry?.body
+                  ?.processed === undefined ? (
+                  <div className="space-y-2">
+                    <p className="font-bold leading-loose xl:leading-loose xl:text-lg">
+                      Oops! Looks like this is an empty location
+                    </p>
+                    <p>
+                      Email Dr. FitzPatrick (jlf115@pitt.edu) about this error
+                      or if you have any questions.
+                    </p>
+                  </div>
+                ) : (
+                  <>
+                    {location?.relationships?.field_associated_guidebook_entry
+                      ?.relationships?.field_image[0]?.uri?.url && (
+                      <img
+                        className="shadow-md"
+                        src={`https://secretpittsburgh.pitt.edu/${location?.relationships.field_associated_guidebook_entry.relationships.field_image[0].uri.url}`}
+                        alt={
+                          location?.relationships
+                            .field_associated_guidebook_entry.field_image[0].alt
+                        }
+                      />
                     )}
-                  </div>
-                  <div className="flex items-center justify-center">
-                    <Link
-                      to={location.gatsbyPath}
-                      className="inline-block px-4 py-2 font-bold text-center text-white transition transform rounded shadow hover:text-white bg-pitt-blue hover:scale-105"
-                    >
-                      Learn More
-                    </Link>
-                  </div>
-                </>
-              )}
-            </div>
-          )}
+                    <div className="processed-text">
+                      {parse(
+                        shortenString(
+                          location?.relationships
+                            .field_associated_guidebook_entry.body.processed ??
+                            "",
+                          550
+                        )
+                      )}
+                    </div>
+                    <div className="flex items-center justify-center">
+                      <Link
+                        to={location.gatsbyPath}
+                        className="inline-block px-4 py-2 font-bold text-center text-white transition transform rounded shadow hover:text-white bg-pitt-blue hover:scale-105"
+                      >
+                        Learn More
+                      </Link>
+                    </div>
+                  </>
+                )}
+              </motion.div>
+            )}
+          </AnimatePresence>
         </Drawer>
       </section>
     </main>

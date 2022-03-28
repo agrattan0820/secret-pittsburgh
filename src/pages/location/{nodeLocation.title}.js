@@ -54,7 +54,7 @@ const LocationPage = (props) => {
         >
           <FaArrowLeft />
         </Link>
-        <h1 className="px-4 py-2 text-lg font-bold rounded shadow w-min lg:text-2xl xl:text-3xl bg-slate-200">
+        <h1 className="px-4 py-2 text-lg font-bold text-white rounded shadow w-min lg:text-2xl xl:text-3xl bg-pitt-blue">
           <Link to="/" className="inline-block font-title whitespace-nowrap">
             Secret Pittsburgh
           </Link>
@@ -157,7 +157,7 @@ const LocationPage = (props) => {
           </div>
           {location?.relationships?.node__article && (
             <div className="space-y-4">
-              <h3 className="font-bold">Read More Articles</h3>
+              <h3 className="font-bold">Learn More</h3>
               {articles !== null &&
                 articles.map((article, i) => (
                   <Link

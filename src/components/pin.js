@@ -7,7 +7,6 @@ function Pin({ name, visited }) {
       className={`filter drop-shadow sp-marker-icon ${
         visited && "sp-marker-visited"
       }`}
-      title={`${name} map marker`}
     />
   );
 }

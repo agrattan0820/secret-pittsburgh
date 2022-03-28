@@ -3,7 +3,8 @@ import parse from "html-react-parser";
 import { graphql, Link } from "gatsby";
 import "mapbox-gl/dist/mapbox-gl.css";
 import { Carousel } from "antd";
-import { FaArrowLeft } from "react-icons/fa";
+import { FaArrowLeft, FaArrowUp } from "react-icons/fa";
+import scrollTo from "gatsby-plugin-smoothscroll";
 
 /* eslint-disable import/no-webpack-loader-syntax */
 import mapboxgl from "mapbox-gl";
@@ -29,7 +30,10 @@ const ArticlePage = (props) => {
           157
         )}
       />
-      <header className="absolute z-50 flex justify-center w-full max-w-3xl transform -translate-x-1/2 top-8 left-1/2">
+      <header
+        className="absolute z-50 flex justify-center w-full max-w-3xl transform -translate-x-1/2 top-8 left-1/2"
+        id="page-top"
+      >
         {article?.relationships?.node__location && (
           <Link
             to={article?.relationships?.node__location[0].gatsbyPath}
@@ -39,7 +43,7 @@ const ArticlePage = (props) => {
             <FaArrowLeft />
           </Link>
         )}
-        <h1 className="px-4 py-2 text-lg font-bold rounded shadow w-min lg:text-2xl xl:text-3xl bg-slate-200">
+        <h1 className="px-4 py-2 text-lg font-bold text-white rounded shadow w-min lg:text-2xl xl:text-3xl bg-pitt-blue">
           <Link to="/" className="inline-block font-title whitespace-nowrap">
             Secret Pittsburgh
           </Link>
@@ -47,7 +51,7 @@ const ArticlePage = (props) => {
       </header>
 
       <section className="container relative flex flex-col justify-center min-h-screen pt-32 pb-24 mx-auto ">
-        <div className="w-full max-w-3xl px-4 mx-auto space-y-8 leading-loose">
+        <div className="w-full max-w-3xl px-4 mx-auto leading-loose">
           {article?.relationships?.field_image &&
             article?.relationships?.field_image.length > 0 && (
               <Carousel
@@ -74,9 +78,23 @@ const ArticlePage = (props) => {
                 ))}
               </Carousel>
             )}
-          <h2 className="text-3xl font-bold">{article?.title}</h2>
-          <div className="space-y-8 leading-loose processed-text xl:leading-loose xl:text-lg">
+          <h2 className="mt-8 mb-4 text-3xl font-bold">{article?.title}</h2>
+          {article?.field_author_name && (
+            <p className="mb-8 italic xl:text-lg">
+              By {article?.field_author_name}
+            </p>
+          )}
+          <div className="mb-4 space-y-8 leading-loose processed-text xl:leading-loose xl:text-lg">
             {parse(article?.body?.processed ?? "")}
+          </div>
+          <div className="flex space-x-4">
+            <button
+              onClick={() => scrollTo("#page-top")}
+              className="flex items-center justify-center px-4 py-2 space-x-2 font-bold text-center text-black transition transform rounded shadow hover:text-black bg-slate-200 hover:scale-105"
+            >
+              <FaArrowUp />
+              <span>Back to Top</span>
+            </button>
           </div>
         </div>
       </section>

@@ -3,20 +3,20 @@ import { AutoComplete } from "antd";
 
 function Controls({ locations, neighborhoods, onSelect, onChange }) {
   const sortedNeighborhoods = neighborhoods.nodes.sort((a, b) => {
-    return a.name.localeCompare(b.name);
+    return a.name.trim().localeCompare(b.name.trim());
   });
-
   const neighborhoodNames = sortedNeighborhoods.map((neighborhood) => {
-    return neighborhood.name;
+    return neighborhood.name.trim();
   });
 
   const sortedLocations = locations.nodes.sort((a, b) => {
-    return a.title.localeCompare(b.title);
+    return a.title.trim().localeCompare(b.title.trim());
+  });
+  const locationNames = sortedLocations.map((location) => {
+    return location.title.trim();
   });
 
-  const locationNames = sortedLocations.map((location) => {
-    return location.title;
-  });
+  console.log(locationNames);
 
   return (
     <div>
