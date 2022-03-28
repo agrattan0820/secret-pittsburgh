@@ -40,7 +40,7 @@ yarn start
 
     Edit `src/pages/index.js` to see your site update in real-time!
 
-4.  **Learn more**
+4.  **Learn more about the framework used (Gatsby)**
 
     - [Documentation](https://www.gatsbyjs.com/docs/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
 
@@ -56,7 +56,7 @@ yarn start
 
 ## Contributing to Secret Pittsburgh
 <!--- If your README is long or you have some specific process or steps you want contributors to follow, consider creating a separate CONTRIBUTING.md file--->
-To contribute to <project_name>, follow these steps:
+To contribute to Secret Pittsburgh, follow these steps:
 
 1. Fork this repository.
 2. Create a branch: `git checkout -b <branch_name>`.
