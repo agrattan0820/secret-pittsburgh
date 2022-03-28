@@ -13,7 +13,6 @@ The "Secret Pittsburgh" Literature class invites University of Pittsburgh studen
 ![GitHub last commit](https://img.shields.io/github/last-commit/GameDog9988/secret-pittsburgh)
 ![GitHub contributors](https://img.shields.io/github/contributors/GameDog9988/secret-pittsburgh)
 ![GitHub top language](https://img.shields.io/github/languages/top/GameDog9988/secret-pittsburgh)
-![GitHub stars](https://img.shields.io/github/stars/ameDog9988/secret-pittsburgh?style=social)
 ![Twitter Follow](https://img.shields.io/twitter/follow/Secret_PGH?style=social)
 
 ## Run Locally
