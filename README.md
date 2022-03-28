@@ -23,6 +23,7 @@ To run Secret Pittsburgh locally, follow these steps:
 1. **Clone repository and install packages**
 
 ```shell
+git clone https://github.com/GameDog9988/secret-pittsburgh.git
 cd secret-pittsburgh
 yarn
 ```
