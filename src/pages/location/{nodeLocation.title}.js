@@ -9,7 +9,7 @@ import { FaArrowLeft, FaNewspaper } from "react-icons/fa";
 import mapboxgl from "mapbox-gl";
 import Seo from "../../components/seo";
 import { getNodeText, shortenString } from "../../util";
-import useStickyState from "../components/useStickyState";
+import useStickyState from "../../components/useStickyState";
 
 // @ts-ignore
 mapboxgl.workerClass =
