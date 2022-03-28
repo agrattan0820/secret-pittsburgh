@@ -120,14 +120,14 @@ const ListViewPage = ({ data }) => {
                   <li key={i}>
                     <Link
                       to={location.gatsbyPath}
-                      className="block w-64 overflow-hidden transition transform rounded-md shadow h-72 hover:underline focus-visible:underline hover:scale-105 bg-slate-200"
+                      className="block w-40 h-64 overflow-hidden transition transform rounded-md shadow md:w-64 md:h-72 hover:underline focus-visible:underline hover:scale-105 bg-slate-200"
                     >
                       {location?.relationships?.field_associated_guidebook_entry
                         ?.relationships?.field_image &&
                         location?.relationships
                           ?.field_associated_guidebook_entry?.field_image && (
                           <img
-                            className="object-cover object-center w-full h-48"
+                            className="object-cover object-center w-full h-40 md:h-48"
                             src={`https://secretpittsburgh.pitt.edu${location?.relationships?.field_associated_guidebook_entry?.relationships?.field_image[0]?.uri?.url}
                             `}
                             alt={
@@ -138,7 +138,7 @@ const ListViewPage = ({ data }) => {
                           />
                         )}
 
-                      <h2 className="flex flex-col justify-center h-24 p-4 text-lg font-bold font-title text-ellipsis">
+                      <h2 className="flex flex-col justify-center h-24 p-4 font-bold leading-snug md:text-lg md:leading-snug md:h-24 font-title text-ellipsis">
                         {location.title}
                       </h2>
                     </Link>
