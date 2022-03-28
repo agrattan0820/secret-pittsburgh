@@ -22,6 +22,7 @@ import { shortenString } from "../util";
 import useStickyState from "../components/useStickyState";
 import Controls from "../components/controls";
 import { motion, AnimatePresence } from "framer-motion";
+import useMediaQuery from "../components/useMediaQuery";
 
 // @ts-ignore
 mapboxgl.workerClass =
@@ -47,6 +48,7 @@ const IndexPage = ({ data, location: router }) => {
   );
   const [tooltip, setTooltip] = useState(false);
   const [listView, setListView] = useStickyState(false, "list-view");
+  const isDesktop = useMediaQuery("(min-width: 768px)");
 
   const mapRef = useRef();
 
@@ -271,8 +273,12 @@ const IndexPage = ({ data, location: router }) => {
                 </Marker>
               )}
             </AnimatePresence>
-            <NavigationControl position="bottom-right" />
-            <GeolocateControl position="bottom-right" />
+            {isDesktop && (
+              <>
+                <NavigationControl position="bottom-right" />
+                <GeolocateControl position="bottom-right" />
+              </>
+            )}
           </Map>
         </motion.div>
 
@@ -320,30 +326,30 @@ const IndexPage = ({ data, location: router }) => {
                 />
               </div>
 
-              <motion.ul className="flex space-x-2 md:space-x-4">
-                <li className="w-full md:w-auto">
+              <motion.ul className="flex justify-center space-x-2 md:space-x-4">
+                <li>
                   <Link
                     to="/about"
-                    className="flex items-center justify-center w-full px-4 py-2 space-x-2 font-bold text-center text-white transition transform rounded shadow md:w-32 hover:text-white bg-pitt-blue hover:scale-105"
+                    className="flex items-center justify-center px-4 py-2 space-x-2 font-bold text-center text-white transition transform rounded shadow md:w-32 hover:text-white bg-pitt-blue hover:scale-105"
                   >
                     <span>About</span> <FaInfoCircle />
                   </Link>
                 </li>
-                <li className="w-full md:w-auto">
+                <li>
                   <Link
                     to="/bookshelf"
-                    className="flex items-center justify-center w-full md;w-32 px-4 py-2 space-x-2 font-bold text-center text-white transition transform rounded shadow hover:text-white bg-pitt-blue hover:scale-105"
+                    className="flex items-center justify-center px-4 py-2 space-x-2 font-bold text-center text-white transition transform rounded shadow md:w-32 hover:text-white bg-pitt-blue hover:scale-105"
                   >
                     <span>Bookshelf</span> <FaBook />
                   </Link>
                 </li>
-                <li className="w-full md:w-auto">
+                <li>
                   <button
                     onClick={() => {
                       setListView(true);
                       navigate("/list-view");
                     }}
-                    className="flex items-center justify-center w-full px-4 py-2 space-x-2 font-bold text-center text-white transition transform rounded shadow md:w-32 hover:text-white bg-pitt-blue hover:scale-105"
+                    className="flex items-center justify-center px-4 py-2 space-x-2 font-bold text-center text-white transition transform rounded shadow md:w-32 hover:text-white bg-pitt-blue hover:scale-105"
                   >
                     <span>List View</span> <FaListAlt />
                   </button>
