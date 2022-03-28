@@ -8,7 +8,9 @@ import { FaArrowLeft, FaNewspaper } from "react-icons/fa";
 /* eslint-disable import/no-webpack-loader-syntax */
 import mapboxgl from "mapbox-gl";
 import Seo from "../../components/seo";
-import { getNodeText, shortenString, useStickyState } from "../../util";
+import { getNodeText, shortenString } from "../../util";
+import useStickyState from "../components/useStickyState";
+
 // @ts-ignore
 mapboxgl.workerClass =
   require("worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker").default;
