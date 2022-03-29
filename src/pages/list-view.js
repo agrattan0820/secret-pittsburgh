@@ -28,7 +28,7 @@ const ListViewPage = ({ data }) => {
     <main>
       <Seo title="List View" />
       <header
-        className="absolute z-50 flex justify-center w-full max-w-3xl transform -translate-x-1/2 lg:max-w-5xl top-8 left-1/2"
+        className="absolute z-50 flex justify-center w-full max-w-3xl transform -translate-x-1/2 top-8 left-1/2"
         id="page-top"
       >
         <button
