@@ -212,18 +212,12 @@ const IndexPage = ({ data, location: router }) => {
               >
                 Enter the City
               </button>
-              <button
-                onClick={() => {
-                  if (listView) {
-                    navigate("/list-view");
-                  } else {
-                    setIntro(false);
-                  }
-                }}
-                className="inline-block px-4 py-2 font-bold transition border-2 rounded shadow text-pitt-blue border-pitt-blue focus-visible:scale-105 hover:scale-105"
+              <Link
+                to="/about"
+                className="inline-block px-4 py-2 font-bold transition border-2 rounded shadow text-pitt-blue border-pitt-blue hover:text-pitt-blue focus-visible:text-pitt-blue focus-visible:scale-105 hover:scale-105"
               >
                 Learn More
-              </button>
+              </Link>
             </div>
           </div>
         )}
