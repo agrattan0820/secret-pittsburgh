@@ -52,10 +52,6 @@ const IndexPage = ({ data, location: router }) => {
 
   const mapRef = useRef();
 
-  console.log(data);
-
-  console.log(router);
-
   const handleLocationOpen = (markerLocation) => {
     setLocation(markerLocation);
     goToLoc(

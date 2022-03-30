@@ -24,7 +24,6 @@ mapboxgl.workerClass =
 
 const LocationPage = (props) => {
   const [location, setLocation] = useState(props.data.nodeLocation);
-  const [drawer, setDrawer] = useState("");
   const [listView, setListView] = useStickyState(false, "list-view");
   // State to handle the copy-to-clipboard alert/popup
   const [copying, setCopying] = useState(false);
@@ -37,8 +36,6 @@ const LocationPage = (props) => {
           i === self.findIndex((t) => t.title === article.title)
       )
     : null;
-
-  console.log(props);
 
   // Function for share button that either copies the link to clipboard or activates the mobile share if available
   const shareLink = () => {
