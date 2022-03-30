@@ -117,3 +117,34 @@ a:hover {
 .sp-autocomplete .ant-select-selector {
   border: none !important;
 }
+
+.share-popup {
+  opacity: 0;
+  transition: opacity, transform 0.3s ease;
+}
+
+.animate-popup {
+  animation: forwards 2s popup-animation;
+}
+
+@keyframes popup-animation {
+  0% {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-25px);
+  }
+
+  20% {
+    opacity: 100;
+    transform: translateX(-50%) translateY(-50px);
+  }
+
+  80% {
+    opacity: 100;
+    transform: translateX(-50%) translateY(-50px);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-50px);
+  }
+}
