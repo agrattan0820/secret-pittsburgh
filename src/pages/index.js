@@ -30,8 +30,8 @@ mapboxgl.workerClass =
 
 const IndexPage = ({ data, location: router }) => {
   const [viewState, setViewState] = useState({
-    latitude: 40.444019,
-    longitude: -79.95359,
+    latitude: 40.4406,
+    longitude: -79.9959,
     zoom: 13,
     bearing: 0,
     pitch: 45,
@@ -112,8 +112,6 @@ const IndexPage = ({ data, location: router }) => {
   const mapVariants = {
     open: {
       borderRadius: "0",
-      // objectFit: "center",
-      display: "block",
       width: "100vw",
       height: "100vh",
       transition: {
@@ -252,7 +250,7 @@ const IndexPage = ({ data, location: router }) => {
               overflow: "hidden",
               margin: "0 auto",
               position: "relative",
-              // top: intro ? "-50%" : "unset",
+              top: intro ? "-50%" : "unset",
               left: intro ? "-100%" : "unset",
               transformOrigin: "center",
             }}
