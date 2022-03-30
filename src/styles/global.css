@@ -133,6 +133,19 @@ a:hover {
   border: none !important;
 }
 
+.essay-image {
+  width: 100%;
+  object-fit: contain;
+  height: 300px;
+  object-position: center;
+}
+
+@media screen and (min-width: 768px) {
+  .essay-image {
+    height: 400px;
+  }
+}
+
 .share-popup {
   opacity: 0;
   transition: opacity, transform 0.3s ease;

@@ -9,7 +9,7 @@ import scrollTo from "gatsby-plugin-smoothscroll";
 /* eslint-disable import/no-webpack-loader-syntax */
 import mapboxgl from "mapbox-gl";
 import Seo from "../../components/seo";
-import { getNodeText, shortenString } from "../../util";
+import { getNodeText, replaceStagingLink, shortenString } from "../../util";
 // @ts-ignore
 mapboxgl.workerClass =
   require("worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker").default;
@@ -111,7 +111,7 @@ const ArticlePage = (props) => {
             </p>
           )}
           <div className="mb-4 space-y-8 leading-loose processed-text xl:leading-loose xl:text-lg">
-            {parse(article?.body?.processed ?? "")}
+            {parse(replaceStagingLink(article?.body?.processed ?? ""))}
           </div>
           <div className="flex space-x-4">
             <div className="relative z-10">
