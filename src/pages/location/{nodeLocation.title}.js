@@ -227,10 +227,19 @@ const LocationPage = (props) => {
                   <Link
                     key={i}
                     to={article.gatsbyPath}
-                    className="flex items-center justify-between p-4 space-x-4 text-lg font-bold transition transform rounded hover:scale-105 focus-visible:scale-105 bg-slate-200 lg:text-2xl"
+                    className="flex justify-between gap-4 p-4 transition transform rounded hover:scale-105 focus-visible:scale-105 bg-slate-200"
                   >
-                    <span>{article.title}</span>
-                    <FaBookOpen />
+                    <div className="flex flex-col justify-center">
+                      <span className="text-lg font-bold lg:text-xl">
+                        {article?.title}
+                      </span>
+                      <span className="italic">
+                        {article?.field_author_name}
+                      </span>
+                    </div>
+                    <div>
+                      <FaBookOpen className="text-lg lg:text-xl" />
+                    </div>
                   </Link>
                 ))}
             </div>
@@ -325,6 +334,7 @@ export const query = graphql`
           }
           gatsbyPath(filePath: "/article/{nodeArticle.title}")
           title
+          field_author_name
         }
       }
       gatsbyPath(filePath: "/location/{nodeLocation.title}")
