@@ -111,7 +111,7 @@ a:hover {
   position: absolute !important;
   transform: translateY(-50%) !important;
   top: 50% !important;
-  right: 2rem !important;
+  right: 1rem !important;
 }
 
 .ant-drawer-title {
