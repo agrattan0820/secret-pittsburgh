@@ -56,12 +56,6 @@ const IndexPage = ({ data, location: router }) => {
 
   console.log(router);
 
-  useEffect(() => {
-    if (listView) {
-      navigate("/list-view");
-    }
-  }, []);
-
   const handleLocationOpen = (markerLocation) => {
     setLocation(markerLocation);
     goToLoc(
@@ -177,7 +171,7 @@ const IndexPage = ({ data, location: router }) => {
         {!intro && (
           <button
             onClick={() => setIntro(true)}
-            aria-label="Exit map view"
+            aria-label="Exit list view and go back to map"
             className="absolute p-2 text-lg text-white transform -translate-y-1/2 rounded-full lg:text-xl bg-pitt-blue left-8 top-1/2"
           >
             <FaArrowLeft />
@@ -211,7 +205,11 @@ const IndexPage = ({ data, location: router }) => {
             </p>
             <button
               onClick={() => {
-                setIntro(false);
+                if (listView) {
+                  navigate("/list-view");
+                } else {
+                  setIntro(false);
+                }
               }}
               className="inline-block px-4 py-2 font-bold text-white transition rounded shadow focus-within:scale-105 hover:scale-105 bg-pitt-blue"
             >
