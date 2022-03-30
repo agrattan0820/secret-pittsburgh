@@ -15,7 +15,7 @@ import scrollTo from "gatsby-plugin-smoothscroll";
 /* eslint-disable import/no-webpack-loader-syntax */
 import mapboxgl from "mapbox-gl";
 import Seo from "../../components/seo";
-import { getNodeText, shortenString } from "../../util";
+import { getNodeText, replaceStagingLink, shortenString } from "../../util";
 import useStickyState from "../../components/useStickyState";
 
 // @ts-ignore
@@ -212,8 +212,10 @@ const LocationPage = (props) => {
           )} */}
           <div className="space-y-8 leading-loose processed-text lg:leading-loose lg:text-lg">
             {parse(
-              location?.relationships?.field_associated_guidebook_entry?.body
-                ?.processed ?? ""
+              replaceStagingLink(
+                location?.relationships?.field_associated_guidebook_entry?.body
+                  ?.processed ?? ""
+              )
             )}
           </div>
           {location?.relationships?.node__article && (
