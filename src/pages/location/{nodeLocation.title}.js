@@ -146,7 +146,6 @@ const LocationPage = (props) => {
             )}
           <h2 className="text-3xl font-bold">{location?.title}</h2>
 
-          {/* TODO: Possible toggle buttons? */}
           <div className="flex items-center space-x-4">
             <div className="relative z-10">
               <button
@@ -168,13 +167,14 @@ const LocationPage = (props) => {
                 </p>
               </div>
             </div>
-
-            <button
-              onClick={() => scrollTo("#articles")}
-              className="relative z-0 flex items-center justify-center w-32 px-4 py-2 space-x-2 font-bold text-center text-black transition transform rounded shadow hover:text-black bg-slate-200 hover:scale-105 focus-visible:scale-105"
-            >
-              <span>Articles</span> <FaBookOpen />
-            </button>
+            {articles !== null && (
+              <button
+                onClick={() => scrollTo("#articles")}
+                className="relative z-0 flex items-center justify-center w-32 px-4 py-2 space-x-2 font-bold text-center text-black transition transform rounded shadow hover:text-black bg-slate-200 hover:scale-105 focus-visible:scale-105"
+              >
+                <span>Articles</span> <FaBookOpen />
+              </button>
+            )}
           </div>
           <div className="space-y-2 leading-loose processed-text lg:leading-loose lg:text-lg">
             {parse(

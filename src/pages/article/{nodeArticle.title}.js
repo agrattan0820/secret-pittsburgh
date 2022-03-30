@@ -3,7 +3,7 @@ import parse from "html-react-parser";
 import { graphql, Link } from "gatsby";
 import "mapbox-gl/dist/mapbox-gl.css";
 import { Carousel } from "antd";
-import { FaArrowLeft, FaArrowUp } from "react-icons/fa";
+import { FaArrowLeft, FaShare, FaArrowUp, FaLink } from "react-icons/fa";
 import scrollTo from "gatsby-plugin-smoothscroll";
 
 /* eslint-disable import/no-webpack-loader-syntax */
@@ -16,6 +16,32 @@ mapboxgl.workerClass =
 
 const ArticlePage = (props) => {
   const [article, setArticle] = useState(props.data.nodeArticle);
+  const [copying, setCopying] = useState(false);
+
+  // Function for share button that either copies the link to clipboard or activates the mobile share if available
+  const shareLink = () => {
+    if (navigator.share) {
+      navigator
+        .share({
+          title: `${article.title} | Secret Pittsburgh`,
+          url: props.location.href,
+        })
+        .then(() => {
+          console.log(`Thanks for sharing!`);
+        })
+        .catch(console.error);
+    } else {
+      const cb = navigator.clipboard;
+      if (copying) {
+        setCopying(false);
+      }
+      cb.writeText(props.location.href)
+        .then(() => {
+          setCopying(true);
+        })
+        .catch(console.error);
+    }
+  };
 
   return (
     <main>
@@ -88,6 +114,26 @@ const ArticlePage = (props) => {
             {parse(article?.body?.processed ?? "")}
           </div>
           <div className="flex space-x-4">
+            <div className="relative z-10">
+              <button
+                onClick={shareLink}
+                className="flex items-center justify-center w-32 px-4 py-2 font-bold text-center text-black transition transform rounded shadow hover:text-black bg-slate-200 hover:scale-105 focus-visible:scale-105"
+              >
+                <span className="mr-2">Share</span> <FaShare />
+              </button>
+              <div
+                // Role alert and aria-live announce to screen readers
+                role="alert"
+                aria-live="polite"
+                className={`max-w-3xl z-10 absolute origin-center top-0 font-bold left-1/2 px-4 py-2 w-56 text-sm text-center bg-pitt-blue text-white rounded-md shadow pointer-events-none share-popup ${
+                  copying && "animate-popup"
+                }`}
+              >
+                <p className={`${!copying && "hidden"} flex items-center`}>
+                  URL Copied to Clipboard <FaLink className="ml-2" />
+                </p>
+              </div>
+            </div>
             <button
               onClick={() => scrollTo("#page-top")}
               className="flex items-center justify-center px-4 py-2 space-x-2 font-bold text-center text-black transition transform rounded shadow hover:text-black bg-slate-200 hover:scale-105 focus-visible:scale-105"
