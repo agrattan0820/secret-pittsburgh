@@ -187,7 +187,7 @@ const IndexPage = ({ data, location: router }) => {
       >
         {intro && (
           <div className="px-4 pt-32 space-y-4 leading-loose max-w-prose lg:pt-0">
-            <h2 className="text-5xl font-bold leading-tight lg:leading-tight lg:text-5xl font-title">
+            <h2 className="text-4xl font-bold leading-tight lg:leading-tight lg:text-5xl font-title">
               Hidden Gems in the Steel City{" "}
               <GiSuspensionBridge
                 className="inline-block ml-2 text-pitt-blue"
