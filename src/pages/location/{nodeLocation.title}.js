@@ -93,7 +93,7 @@ const LocationPage = (props) => {
           to={listView ? "/list-view" : "/"}
           state={{ back: true }}
           aria-label="Go back to homepage"
-          className="absolute text-lg transform -translate-y-1/2 lg:text-xl left-8 top-1/2"
+          className="absolute text-lg transition transform -translate-y-1/2 focus-visible:scale-105 lg:text-xl left-8 top-1/2"
         >
           <FaArrowLeft />
         </Link>
@@ -151,7 +151,7 @@ const LocationPage = (props) => {
             <div className="relative z-10">
               <button
                 onClick={shareLink}
-                className="flex items-center justify-center w-32 px-4 py-2 font-bold text-center text-black transition transform rounded shadow hover:text-black bg-slate-200 hover:scale-105"
+                className="flex items-center justify-center w-32 px-4 py-2 font-bold text-center text-black transition transform rounded shadow hover:text-black bg-slate-200 hover:scale-105 focus-visible:scale-105"
               >
                 <span className="mr-2">Share</span> <FaShare />
               </button>
@@ -171,12 +171,12 @@ const LocationPage = (props) => {
 
             <button
               onClick={() => scrollTo("#articles")}
-              className="relative z-0 flex items-center justify-center w-32 px-4 py-2 space-x-2 font-bold text-center text-black transition transform rounded shadow hover:text-black bg-slate-200 hover:scale-105"
+              className="relative z-0 flex items-center justify-center w-32 px-4 py-2 space-x-2 font-bold text-center text-black transition transform rounded shadow hover:text-black bg-slate-200 hover:scale-105 focus-visible:scale-105"
             >
               <span>Articles</span> <FaBookOpen />
             </button>
           </div>
-          <div className="space-y-2 leading-loose processed-text xl:leading-loose xl:text-lg">
+          <div className="space-y-2 leading-loose processed-text lg:leading-loose lg:text-lg">
             {parse(
               location?.relationships?.field_associated_basic_info_entr?.body
                 ?.processed ?? ""
@@ -186,12 +186,12 @@ const LocationPage = (props) => {
             ?.processed === undefined &&
             articles === null && (
               <div className="space-y-2">
-                <p className="leading-loose xl:leading-loose xl:text-lg">
+                <p className="leading-loose lg:leading-loose lg:text-lg">
                   Oops! Looks like this is an empty location
                 </p>
                 <Link
                   to="/"
-                  className="inline-block px-4 py-2 font-bold text-center text-white transition transform rounded shadow hover:text-white bg-pitt-blue hover:scale-105"
+                  className="inline-block px-4 py-2 font-bold text-center text-white transition transform rounded shadow hover:text-white bg-pitt-blue hover:scale-105 focus-visible:scale-105"
                 >
                   Go Back Home
                 </Link>
@@ -213,7 +213,7 @@ const LocationPage = (props) => {
               </div>
             </div>
           )} */}
-          <div className="space-y-8 leading-loose processed-text xl:leading-loose xl:text-lg">
+          <div className="space-y-8 leading-loose processed-text lg:leading-loose lg:text-lg">
             {parse(
               location?.relationships?.field_associated_guidebook_entry?.body
                 ?.processed ?? ""
@@ -227,7 +227,7 @@ const LocationPage = (props) => {
                   <Link
                     key={i}
                     to={article.gatsbyPath}
-                    className="flex items-center justify-between p-4 space-x-4 text-lg font-bold transition transform rounded hover:scale-105 bg-slate-200 lg:text-2xl"
+                    className="flex items-center justify-between p-4 space-x-4 text-lg font-bold transition transform rounded hover:scale-105 focus-visible:scale-105 bg-slate-200 lg:text-2xl"
                   >
                     <span>{article.title}</span>
                     <FaBookOpen />
@@ -238,7 +238,7 @@ const LocationPage = (props) => {
           <div className="flex space-x-4">
             <button
               onClick={() => scrollTo("#page-top")}
-              className="flex items-center justify-center px-4 py-2 space-x-2 font-bold text-center text-black transition transform rounded shadow hover:text-black bg-slate-200 hover:scale-105"
+              className="flex items-center justify-center px-4 py-2 space-x-2 font-bold text-center text-black transition transform rounded shadow hover:text-black bg-slate-200 hover:scale-105 focus-visible:scale-105"
             >
               <FaArrowUp />
               <span>Back to Top</span>

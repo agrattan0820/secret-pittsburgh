@@ -38,7 +38,7 @@ const ArticlePage = (props) => {
           <Link
             to={article?.relationships?.node__location[0].gatsbyPath}
             aria-label="Go back to homepage"
-            className="absolute text-lg transform -translate-y-1/2 lg:text-xl left-8 top-1/2"
+            className="absolute text-lg transition transform -translate-y-1/2 focus-visible:scale-105 lg:text-xl left-8 top-1/2"
           >
             <FaArrowLeft />
           </Link>
@@ -90,7 +90,7 @@ const ArticlePage = (props) => {
           <div className="flex space-x-4">
             <button
               onClick={() => scrollTo("#page-top")}
-              className="flex items-center justify-center px-4 py-2 space-x-2 font-bold text-center text-black transition transform rounded shadow hover:text-black bg-slate-200 hover:scale-105"
+              className="flex items-center justify-center px-4 py-2 space-x-2 font-bold text-center text-black transition transform rounded shadow hover:text-black bg-slate-200 hover:scale-105 focus-visible:scale-105"
             >
               <FaArrowUp />
               <span>Back to Top</span>

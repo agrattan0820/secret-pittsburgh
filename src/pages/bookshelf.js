@@ -26,7 +26,7 @@ const BookshelfPage = ({ data }) => {
         <Link
           to="/?back=true"
           aria-label="Go back to homepage"
-          className="absolute text-lg transform -translate-y-1/2 lg:text-xl left-8 top-1/2"
+          className="absolute text-lg transition transform -translate-y-1/2 focus-visible:scale-105 lg:text-xl left-8 top-1/2"
         >
           <FaArrowLeft />
         </Link>
