@@ -44,7 +44,9 @@ const AboutPage = ({ data }) => {
             src={AboutImage}
             alt="Students of the University of Pittsburgh Secret Pittsburgh class"
           />
-          <h2 className="text-3xl font-bold">About Us and Our Mission</h2>
+          <h2 className="text-3xl font-bold font-title">
+            About Us and Our Mission
+          </h2>
           <div className="flex space-x-4">
             <a
               href="https://www.instagram.com/secretpittsburgh/?hl=en"

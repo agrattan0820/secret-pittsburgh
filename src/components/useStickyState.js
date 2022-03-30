@@ -2,10 +2,8 @@ import { useEffect, useState } from "react";
 
 function useStickyState(defaultValue, key) {
   const [value, setValue] = useState(() => {
-    const windowGlobal = typeof window !== `undefined` && window;
-    const stickyValue = windowGlobal
-      ? windowGlobal.localStorage.getItem(key)
-      : null;
+    const isBrowser = typeof window !== `undefined`;
+    const stickyValue = isBrowser ? window.localStorage.getItem(key) : null;
     return stickyValue !== null ? JSON.parse(stickyValue) : defaultValue;
   });
   useEffect(() => {

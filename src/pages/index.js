@@ -1,6 +1,6 @@
-import React, { useState, useMemo, useRef } from "react";
+import React, { useState, useEffect, useMemo, useRef } from "react";
 import parse from "html-react-parser";
-import { graphql, Link } from "gatsby";
+import { graphql, Link, navigate } from "gatsby";
 import { Drawer } from "antd";
 import Map, { Marker, NavigationControl, GeolocateControl } from "react-map-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
@@ -10,6 +10,7 @@ import {
   FaInfoCircle,
   FaBook,
   FaCity,
+  FaListAlt,
 } from "react-icons/fa";
 import { GiSuspensionBridge } from "react-icons/gi";
 
@@ -21,6 +22,7 @@ import { shortenString } from "../util";
 import useStickyState from "../components/useStickyState";
 import Controls from "../components/controls";
 import { motion, AnimatePresence } from "framer-motion";
+import useMediaQuery from "../components/useMediaQuery";
 
 // @ts-ignore
 mapboxgl.workerClass =
@@ -39,16 +41,26 @@ const IndexPage = ({ data, location: router }) => {
   });
   const [location, setLocation] = useState();
   const [drawerOpen, setDrawerOpen] = useState(false);
-  const [intro, setIntro] = useState(router.search !== "?back=true");
+  const [intro, setIntro] = useState(router?.state?.back !== true);
   const [visitedLocations, setVisitedLocations] = useStickyState(
     [],
     "visited-locations"
   );
   const [tooltip, setTooltip] = useState(false);
+  const [listView, setListView] = useStickyState(false, "list-view");
+  const isDesktop = useMediaQuery("(min-width: 768px)");
 
   const mapRef = useRef();
 
   console.log(data);
+
+  console.log(router);
+
+  useEffect(() => {
+    if (listView) {
+      navigate("/list-view");
+    }
+  }, []);
 
   const handleLocationOpen = (markerLocation) => {
     setLocation(markerLocation);
@@ -173,10 +185,6 @@ const IndexPage = ({ data, location: router }) => {
         )}
         <h1 className="px-4 py-2 text-lg font-bold text-white rounded shadow w-min lg:text-2xl xl:text-3xl bg-pitt-blue">
           <Link to="/" className="inline-block font-title whitespace-nowrap">
-            {/* <FaCity
-              className="inline-block mr-2 text-pitt-blue"
-              aria-label="Bridge Icon"
-            />{" "} */}
             Secret Pittsburgh
           </Link>
         </h1>
@@ -265,8 +273,12 @@ const IndexPage = ({ data, location: router }) => {
                 </Marker>
               )}
             </AnimatePresence>
-            <NavigationControl position="bottom-right" />
-            <GeolocateControl position="bottom-right" />
+            {isDesktop && (
+              <>
+                <NavigationControl position="bottom-right" />
+                <GeolocateControl position="bottom-right" />
+              </>
+            )}
           </Map>
         </motion.div>
 
@@ -303,19 +315,22 @@ const IndexPage = ({ data, location: router }) => {
             <motion.nav
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              className="fixed z-50 transform bottom-8"
+              className="fixed z-50 w-full transform md:w-auto bottom-8"
             >
-              <Controls
-                locations={data.allNodeLocation}
-                neighborhoods={data.allTaxonomyTermNeighborhoods}
-                onSelect={onSelect}
-                onChange={onChange}
-              />
-              <motion.ul className="flex space-x-4">
+              <div className="mx-auto w-80 md:w-auto">
+                <Controls
+                  locations={data.allNodeLocation}
+                  neighborhoods={data.allTaxonomyTermNeighborhoods}
+                  onSelect={onSelect}
+                  onChange={onChange}
+                />
+              </div>
+
+              <motion.ul className="flex justify-center space-x-2 md:space-x-4">
                 <li>
                   <Link
                     to="/about"
-                    className="flex items-center justify-center w-32 px-4 py-2 space-x-2 font-bold text-center text-white transition transform rounded shadow hover:text-white bg-pitt-blue hover:scale-105"
+                    className="flex items-center justify-center px-4 py-2 space-x-2 font-bold text-center text-white transition transform rounded shadow md:w-32 hover:text-white bg-pitt-blue hover:scale-105"
                   >
                     <span>About</span> <FaInfoCircle />
                   </Link>
@@ -323,10 +338,21 @@ const IndexPage = ({ data, location: router }) => {
                 <li>
                   <Link
                     to="/bookshelf"
-                    className="flex items-center justify-center w-32 px-4 py-2 space-x-2 font-bold text-center text-white transition transform rounded shadow hover:text-white bg-pitt-blue hover:scale-105"
+                    className="flex items-center justify-center px-4 py-2 space-x-2 font-bold text-center text-white transition transform rounded shadow md:w-32 hover:text-white bg-pitt-blue hover:scale-105"
                   >
                     <span>Bookshelf</span> <FaBook />
                   </Link>
+                </li>
+                <li>
+                  <button
+                    onClick={() => {
+                      setListView(true);
+                      navigate("/list-view");
+                    }}
+                    className="flex items-center justify-center px-4 py-2 space-x-2 font-bold text-center text-white transition transform rounded shadow md:w-32 hover:text-white bg-pitt-blue hover:scale-105"
+                  >
+                    <span>List View</span> <FaListAlt />
+                  </button>
                 </li>
               </motion.ul>
             </motion.nav>
@@ -369,7 +395,7 @@ const IndexPage = ({ data, location: router }) => {
                       ?.relationships?.field_image[0]?.uri?.url && (
                       <img
                         className="shadow-md"
-                        src={`https://secretpittsburgh.pitt.edu/${location?.relationships.field_associated_guidebook_entry.relationships.field_image[0].uri.url}`}
+                        src={`https://secretpittsburgh.pitt.edu${location?.relationships.field_associated_guidebook_entry.relationships.field_image[0].uri.url}`}
                         alt={
                           location?.relationships
                             .field_associated_guidebook_entry.field_image[0].alt

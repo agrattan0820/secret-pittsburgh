@@ -35,22 +35,3 @@ export function stringToSlug(str) {
 
   return str;
 }
-
-export function useStickyState(defaultValue, key) {
-  const windowGlobal = typeof window !== `undefined` && window;
-
-  const [value, setValue] = React.useState(() => {
-    const stickyValue = windowGlobal.localStorage.getItem(key) ?? null;
-    return stickyValue !== null ? JSON.parse(stickyValue) : defaultValue;
-  });
-
-  React.useEffect(() => {
-    const windowGlobal = typeof window !== `undefined` && window;
-
-    if (windowGlobal) {
-      windowGlobal.localStorage.setItem(key, JSON.stringify(value));
-    }
-  }, [key, value]);
-
-  return [value, setValue];
-}
