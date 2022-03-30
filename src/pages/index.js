@@ -251,7 +251,7 @@ const IndexPage = ({ data, location: router }) => {
               margin: "0 auto",
               position: "relative",
               top: intro ? "-50%" : "unset",
-              left: intro ? "-100%" : "unset",
+              left: isDesktop && intro ? "-100%" : "unset",
               transformOrigin: "center",
             }}
             ref={mapRef}
