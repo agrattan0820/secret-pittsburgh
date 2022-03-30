@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo, useRef } from "react";
+import React, { useState, useMemo, useRef } from "react";
 import parse from "html-react-parser";
 import { graphql, Link, navigate } from "gatsby";
 import { Drawer } from "antd";
@@ -187,8 +187,8 @@ const IndexPage = ({ data, location: router }) => {
       >
         {intro && (
           <div className="px-4 pt-32 space-y-4 leading-loose max-w-prose lg:pt-0">
-            <h2 className="text-5xl font-bold leading-tight lg:leading-tight lg:text-6xl font-title">
-              Explore the Steel City{" "}
+            <h2 className="text-5xl font-bold leading-tight lg:leading-tight lg:text-5xl font-title">
+              Hidden Gems in the Steel City{" "}
               <GiSuspensionBridge
                 className="inline-block ml-2 text-pitt-blue"
                 aria-label="Bridge Icon"
@@ -199,18 +199,32 @@ const IndexPage = ({ data, location: router }) => {
               Pittsburgh students to explore unusual or hidden spaces of the
               city, including "secret" spaces within well-known landmarks.
             </p>
-            <button
-              onClick={() => {
-                if (listView) {
-                  navigate("/list-view");
-                } else {
-                  setIntro(false);
-                }
-              }}
-              className="inline-block px-4 py-2 font-bold text-white transition rounded shadow focus-within:scale-105 hover:scale-105 bg-pitt-blue"
-            >
-              Enter the City
-            </button>
+            <div className="flex space-x-4">
+              <button
+                onClick={() => {
+                  if (listView) {
+                    navigate("/list-view");
+                  } else {
+                    setIntro(false);
+                  }
+                }}
+                className="inline-block px-4 py-2 font-bold text-white transition rounded shadow focus-visible:scale-105 hover:scale-105 bg-pitt-blue"
+              >
+                Enter the City
+              </button>
+              <button
+                onClick={() => {
+                  if (listView) {
+                    navigate("/list-view");
+                  } else {
+                    setIntro(false);
+                  }
+                }}
+                className="inline-block px-4 py-2 font-bold transition border-2 rounded shadow text-pitt-blue border-pitt-blue focus-visible:scale-105 hover:scale-105"
+              >
+                Learn More
+              </button>
+            </div>
           </div>
         )}
 
