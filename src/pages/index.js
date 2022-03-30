@@ -362,9 +362,7 @@ const IndexPage = ({ data, location: router }) => {
           placement="left"
           onClose={() => setDrawerOpen(false)}
           visible={drawerOpen}
-          closeIcon={
-            <FaTimes className="absolute text-xl transform -translate-y-1/2 top-1/2 right-8" />
-          }
+          closeIcon={<FaTimes className="text-xl" />}
         >
           <AnimatePresence>
             {location && (

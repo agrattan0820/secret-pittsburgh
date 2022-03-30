@@ -103,6 +103,21 @@ a:hover {
   }
 }
 
+.ant-drawer-header-title {
+  display: block !important;
+}
+
+.ant-drawer-close {
+  position: absolute !important;
+  transform: translateY(-50%) !important;
+  top: 50% !important;
+  right: 2rem !important;
+}
+
+.ant-drawer-title {
+  max-width: 300px !important;
+}
+
 .sp-autocomplete {
   display: block;
   margin: 0.5rem 0;
