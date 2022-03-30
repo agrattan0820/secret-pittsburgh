@@ -37,7 +37,7 @@ export function stringToSlug(str) {
 }
 
 export function replaceStagingLink(str) {
-  str = str.replace(
+  str = str.replaceAll(
     "http://stage.secretpittsburgh.pitt.edu/",
     "https://secretpittsburgh.pitt.edu/sp/"
   );
