@@ -24,13 +24,13 @@ To run Secret Pittsburgh locally, follow these steps:
 ```shell
 git clone https://github.com/GameDog9988/secret-pittsburgh.git
 cd secret-pittsburgh
-yarn
+npm install
 ```
 
 2. **Start development server**
 
 ```shell
-yarn start
+npm start
 ```
 
 3.  **Open the code and start customizing!**
