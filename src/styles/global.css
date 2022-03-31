@@ -103,6 +103,21 @@ a:hover {
   }
 }
 
+.ant-drawer-header-title {
+  display: block !important;
+}
+
+.ant-drawer-close {
+  position: absolute !important;
+  transform: translateY(-50%) !important;
+  top: 50% !important;
+  right: 1rem !important;
+}
+
+.ant-drawer-title {
+  max-width: 300px !important;
+}
+
 .sp-autocomplete {
   display: block;
   margin: 0.5rem 0;
@@ -116,4 +131,48 @@ a:hover {
 
 .sp-autocomplete .ant-select-selector {
   border: none !important;
+}
+
+.essay-image {
+  width: 100%;
+  object-fit: contain;
+  height: 300px;
+  object-position: center;
+}
+
+@media screen and (min-width: 768px) {
+  .essay-image {
+    height: 400px;
+  }
+}
+
+.share-popup {
+  opacity: 0;
+  transition: opacity, transform 0.3s ease;
+}
+
+.animate-popup {
+  animation: forwards 2s popup-animation;
+}
+
+@keyframes popup-animation {
+  0% {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-25px);
+  }
+
+  20% {
+    opacity: 100;
+    transform: translateX(-50%) translateY(-50px);
+  }
+
+  80% {
+    opacity: 100;
+    transform: translateX(-50%) translateY(-50px);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-50px);
+  }
 }

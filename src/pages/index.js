@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo, useRef } from "react";
+import React, { useState, useMemo, useRef } from "react";
 import parse from "html-react-parser";
 import { graphql, Link, navigate } from "gatsby";
 import { Drawer } from "antd";
@@ -51,16 +51,6 @@ const IndexPage = ({ data, location: router }) => {
   const isDesktop = useMediaQuery("(min-width: 768px)");
 
   const mapRef = useRef();
-
-  console.log(data);
-
-  console.log(router);
-
-  useEffect(() => {
-    if (listView) {
-      navigate("/list-view");
-    }
-  }, []);
 
   const handleLocationOpen = (markerLocation) => {
     setLocation(markerLocation);
@@ -121,9 +111,9 @@ const IndexPage = ({ data, location: router }) => {
 
   const mapVariants = {
     open: {
+      borderRadius: "0",
       width: "100vw",
       height: "100vh",
-      borderRadius: "0",
       transition: {
         duration: 0.8,
         type: "tween",
@@ -177,7 +167,7 @@ const IndexPage = ({ data, location: router }) => {
         {!intro && (
           <button
             onClick={() => setIntro(true)}
-            aria-label="Exit map view"
+            aria-label="Exit list view and go back to map"
             className="absolute p-2 text-lg text-white transform -translate-y-1/2 rounded-full lg:text-xl bg-pitt-blue left-8 top-1/2"
           >
             <FaArrowLeft />
@@ -197,8 +187,8 @@ const IndexPage = ({ data, location: router }) => {
       >
         {intro && (
           <div className="px-4 pt-32 space-y-4 leading-loose max-w-prose lg:pt-0">
-            <h2 className="text-5xl font-bold leading-tight lg:leading-tight lg:text-6xl font-title">
-              Explore the Steel City{" "}
+            <h2 className="text-4xl font-bold leading-tight lg:leading-tight lg:text-5xl font-title">
+              Hidden Gems in the Steel City{" "}
               <GiSuspensionBridge
                 className="inline-block ml-2 text-pitt-blue"
                 aria-label="Bridge Icon"
@@ -209,14 +199,26 @@ const IndexPage = ({ data, location: router }) => {
               Pittsburgh students to explore unusual or hidden spaces of the
               city, including "secret" spaces within well-known landmarks.
             </p>
-            <button
-              onClick={() => {
-                setIntro(false);
-              }}
-              className="inline-block px-4 py-2 font-bold text-white transition rounded shadow focus-within:scale-105 hover:scale-105 bg-pitt-blue"
-            >
-              Enter the City
-            </button>
+            <div className="flex space-x-4">
+              <button
+                onClick={() => {
+                  if (listView) {
+                    navigate("/list-view");
+                  } else {
+                    setIntro(false);
+                  }
+                }}
+                className="inline-block px-4 py-2 font-bold text-white transition rounded shadow focus-visible:scale-105 hover:scale-105 bg-pitt-blue"
+              >
+                Enter the City
+              </button>
+              <Link
+                to="/about"
+                className="inline-block px-4 py-2 font-bold transition border-2 rounded shadow text-pitt-blue border-pitt-blue hover:text-pitt-blue focus-visible:text-pitt-blue focus-visible:scale-105 hover:scale-105"
+              >
+                Learn More
+              </Link>
+            </div>
           </div>
         )}
 
@@ -247,6 +249,10 @@ const IndexPage = ({ data, location: router }) => {
               height: "100vh",
               overflow: "hidden",
               margin: "0 auto",
+              position: "relative",
+              top: intro ? "-50%" : "unset",
+              left: isDesktop && intro ? "-100%" : "unset",
+              transformOrigin: "center",
             }}
             ref={mapRef}
             onMove={(evt) => {
@@ -364,9 +370,7 @@ const IndexPage = ({ data, location: router }) => {
           placement="left"
           onClose={() => setDrawerOpen(false)}
           visible={drawerOpen}
-          closeIcon={
-            <FaTimes className="absolute text-xl transform -translate-y-1/2 top-1/2 right-8" />
-          }
+          closeIcon={<FaTimes className="text-xl" />}
         >
           <AnimatePresence>
             {location && (

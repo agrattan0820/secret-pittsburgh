@@ -35,3 +35,12 @@ export function stringToSlug(str) {
 
   return str;
 }
+
+export function replaceStagingLink(str) {
+  str = str.replaceAll(
+    "http://stage.secretpittsburgh.pitt.edu/",
+    "https://secretpittsburgh.pitt.edu/sp/"
+  );
+
+  return str;
+}
