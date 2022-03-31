@@ -16,6 +16,7 @@ module.exports = {
     "gatsby-plugin-sitemap",
     "gatsby-plugin-postcss",
     "gatsby-plugin-smoothscroll",
+    "gatsby-plugin-netlify",
     {
       resolve: "gatsby-plugin-manifest",
       options: {
