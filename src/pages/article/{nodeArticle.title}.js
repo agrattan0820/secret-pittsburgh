@@ -60,15 +60,17 @@ const ArticlePage = (props) => {
         className="absolute z-50 flex justify-center w-full max-w-3xl transform -translate-x-1/2 top-8 left-1/2"
         id="page-top"
       >
-        {article?.relationships?.node__location && (
-          <Link
-            to={article?.relationships?.node__location[0].gatsbyPath}
-            aria-label="Go back to homepage"
-            className="absolute text-lg transition transform -translate-y-1/2 focus-visible:scale-105 lg:text-xl left-8 top-1/2"
-          >
-            <FaArrowLeft />
-          </Link>
-        )}
+        <Link
+          to={
+            article?.relationships?.node__location
+              ? article?.relationships?.node__location[0].gatsbyPath
+              : "/"
+          }
+          aria-label="Go back to homepage"
+          className="absolute text-lg transition transform -translate-y-1/2 focus-visible:scale-105 lg:text-xl left-8 top-1/2"
+        >
+          <FaArrowLeft />
+        </Link>
         <h1 className="px-4 py-2 text-lg font-bold text-white rounded shadow w-min lg:text-2xl xl:text-3xl bg-pitt-blue">
           <Link to="/" className="inline-block font-title whitespace-nowrap">
             Secret Pittsburgh
