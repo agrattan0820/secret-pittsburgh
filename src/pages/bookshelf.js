@@ -75,12 +75,6 @@ const BookshelfPage = ({ data }) => {
                       </a>
                     </li>
                     {i !== data.allNodeBookshelfItem.nodes.length - 1 && <hr />}
-                    {/* <li
-                      key={i}
-                      className="h-64 p-4 font-bold border-l-8 font-title w-52 rounded-r-md bg-slate-200 border-l-slate-900"
-                    >
-                      {book?.title}
-                    </li> */}
                   </>
                 ))}
             </ul>

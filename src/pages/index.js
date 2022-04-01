@@ -217,7 +217,7 @@ const IndexPage = ({ data, location: router }) => {
                 aria-label="About page"
                 className="inline-block px-4 py-2 font-bold transition border-2 rounded shadow text-pitt-blue border-pitt-blue hover:text-pitt-blue focus-visible:text-pitt-blue focus-visible:scale-105 hover:scale-105"
               >
-                About
+                Learn More
               </Link>
             </div>
           </div>
