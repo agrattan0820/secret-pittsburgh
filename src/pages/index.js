@@ -306,7 +306,7 @@ const IndexPage = ({ data, location: router }) => {
         </motion.div>
 
         {intro && (
-          <footer className="absolute space-x-4 bottom-8 text-pitt-blue">
+          <footer className="space-x-4 lg:absolute lg:bottom-8 text-pitt-blue">
             <Link
               to="/about"
               className="inline-block text-pitt-blue hover:underline focus-visible:underline"
