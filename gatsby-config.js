@@ -5,7 +5,7 @@ require("dotenv").config({
 module.exports = {
   siteMetadata: {
     title: `Secret Pittsburgh`,
-    siteUrl: `https://secret-pittsburgh-test.netlify.app/`,
+    siteUrl: `https://secret-pittsburgh-test.netlify.app`,
     description: `Welcome to Secret Pittsburgh, a digital guide to Pittsburgh created by University of Pittsburgh students!`,
     author: `University of Pittsburgh`,
     image: `/secret_pittsburgh_OG_image.png`,

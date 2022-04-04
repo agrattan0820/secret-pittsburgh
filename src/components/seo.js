@@ -13,6 +13,8 @@ function Seo({ description, meta, title }) {
             description
             author
             image
+            siteUrl
+            lang
           }
         }
       }
@@ -20,9 +22,9 @@ function Seo({ description, meta, title }) {
   );
 
   const metaDescription = description || site.siteMetadata.description;
-  const { lang, siteURL } = site.siteMetadata;
+  const { lang, siteUrl } = site.siteMetadata;
   const defaultTitle = site.siteMetadata?.title;
-  const image = `${siteURL}${site.siteMetadata.image}`;
+  const image = `${siteUrl}${site.siteMetadata.image}`;
 
   return (
     <Helmet
