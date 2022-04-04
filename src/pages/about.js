@@ -15,7 +15,6 @@ mapboxgl.workerClass =
   require("worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker").default;
 
 const AboutPage = ({ data }) => {
-  console.log(data);
   return (
     <main>
       <Seo title="About" />

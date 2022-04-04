@@ -23,7 +23,6 @@ const ListViewPage = ({ data }) => {
 
   const [listView, setListView] = useStickyState(true, "list-view");
 
-  console.log(data);
   return (
     <main>
       <Seo title="List View" />

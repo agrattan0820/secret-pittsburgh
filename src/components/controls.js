@@ -16,8 +16,6 @@ function Controls({ locations, neighborhoods, onSelect, onChange }) {
     return location.title.trim();
   });
 
-  console.log(locationNames);
-
   return (
     <div>
       <AutoComplete
