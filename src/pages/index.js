@@ -9,7 +9,6 @@ import {
   FaArrowLeft,
   FaInfoCircle,
   FaBook,
-  FaCity,
   FaListAlt,
 } from "react-icons/fa";
 import { GiSuspensionBridge } from "react-icons/gi";
