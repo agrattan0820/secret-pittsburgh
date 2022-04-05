@@ -52,12 +52,16 @@ const ListViewPage = ({ data }) => {
 
       <section className="container relative flex flex-col justify-center min-h-screen pt-32 pb-24 mx-auto ">
         <div className="w-full max-w-3xl px-4 mx-auto space-y-8 leading-loose lg:max-w-5xl">
-          <StaticImage
-            className="object-cover w-full max-w-3xl mx-auto rounded shadow-lg carousel-image"
-            placeholder="blurred"
-            src="../images/secret_pittsburgh_list_view.jpg"
-            alt="City of Pittsburgh"
-          />
+          <div className="w-full max-w-3xl mx-auto">
+            <StaticImage
+              className="object-cover rounded shadow-lg carousel-image"
+              imgClassName="mx-auto w-full"
+              placeholder="blurred"
+              src="../images/secret_pittsburgh_list_view.jpg"
+              alt="City of Pittsburgh"
+            />
+          </div>
+
           <h2 className="w-full max-w-3xl mx-auto text-3xl font-bold font-title">
             Secret Pittsburgh Locations
           </h2>
