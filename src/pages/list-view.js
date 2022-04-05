@@ -11,7 +11,7 @@ import Seo from "../components/seo";
 import CityImage from "../images/secret_pittsburgh_list_view.jpg";
 import { shortenString } from "../util";
 import useStickyState from "../components/useStickyState";
-import { GatsbyImage, getImage } from "gatsby-plugin-image";
+import { GatsbyImage, getImage, StaticImage } from "gatsby-plugin-image";
 
 // @ts-ignore
 mapboxgl.workerClass =
@@ -52,9 +52,10 @@ const ListViewPage = ({ data }) => {
 
       <section className="container relative flex flex-col justify-center min-h-screen pt-32 pb-24 mx-auto ">
         <div className="w-full max-w-3xl px-4 mx-auto space-y-8 leading-loose lg:max-w-5xl">
-          <img
+          <StaticImage
             className="object-cover w-full max-w-3xl mx-auto rounded shadow-lg carousel-image"
-            src={CityImage}
+            placeholder="blurred"
+            src="../images/secret_pittsburgh_list_view.jpg"
             alt="City of Pittsburgh"
           />
           <h2 className="w-full max-w-3xl mx-auto text-3xl font-bold font-title">
