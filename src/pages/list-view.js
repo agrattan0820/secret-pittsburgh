@@ -65,53 +65,6 @@ const ListViewPage = ({ data }) => {
               Pittsburgh students to explore unusual or hidden spaces of the
               city, including "secret" spaces within well-known landmarks.
             </p>
-            {/* <ul className="space-y-8">
-              {data.allNodeBookshelfItem.nodes &&
-                data.allNodeBookshelfItem.nodes.map((book, i) => (
-                  <>
-                    <li key={i} className="processed-text">
-                      {parse(book.body.processed)}
-                      <a
-                        href={`https://pitt.primo.exlibrisgroup.com/discovery/search?query=any,contains,${book.title.replaceAll(
-                          " ",
-                          "%20"
-                        )}&tab=Everything&search_scope=MyInst_and_CI&vid=01PITT_INST:01PITT_INST&lang=en&offset=0`}
-                        target="_blank"
-                        rel="noreferrer"
-                      >
-                        Search in Pitt Library Catalog
-                        <FaBookOpen className="inline-block ml-2" />
-                      </a>
-                    </li>
-                    {i !== data.allNodeBookshelfItem.nodes.length - 1 && <hr />}
-                  </>
-                ))}
-            </ul> */}
-            {/* <ul className="space-y-8">
-              {data.allNodeLocation.nodes &&
-                data.allNodeLocation.nodes.map((location, i) => (
-                  <li key={i}>
-                    <Link
-                      to={location.gatsbyPath}
-                      className="block hover:underline focus-visible:underline"
-                    >
-                      <h2 className="text-2xl font-bold font-title">
-                        {location.title}
-                      </h2>
-                    </Link>
-                    <p>
-                      {parse(
-                        shortenString(
-                          location?.relationships
-                            ?.field_associated_guidebook_entry?.body
-                            ?.processed ?? "",
-                          300
-                        )
-                      )}
-                    </p>
-                  </li>
-                ))}
-            </ul> */}
             <ul className="grid items-stretch justify-center grid-cols-2 gap-8 justify-items-center lg:grid-cols-3">
               {data.allNodeLocation.nodes &&
                 sortedLocations &&
