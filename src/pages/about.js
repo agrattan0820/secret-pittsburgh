@@ -4,6 +4,7 @@ import { graphql, Link } from "gatsby";
 import "mapbox-gl/dist/mapbox-gl.css";
 import { FaArrowLeft, FaArrowUp, FaInstagram, FaTwitter } from "react-icons/fa";
 import scrollTo from "gatsby-plugin-smoothscroll";
+import { StaticImage } from "gatsby-plugin-image";
 
 /* eslint-disable import/no-webpack-loader-syntax */
 import mapboxgl from "mapbox-gl";
@@ -39,9 +40,10 @@ const AboutPage = ({ data }) => {
 
       <section className="container relative flex flex-col justify-center min-h-screen pt-32 pb-24 mx-auto ">
         <div className="w-full max-w-3xl px-4 mx-auto space-y-8 leading-loose">
-          <img
+          <StaticImage
             className="object-cover w-full rounded shadow-lg carousel-image"
-            src={AboutImage}
+            placeholder="blurred"
+            src="../images/secret_pittsburgh_about.jpg"
             alt="Students of the University of Pittsburgh Secret Pittsburgh class"
           />
           <h2 className="text-3xl font-bold font-title">
