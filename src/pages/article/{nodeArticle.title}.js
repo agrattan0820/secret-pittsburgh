@@ -94,7 +94,7 @@ const ArticlePage = (props) => {
                   // Extra div needed so there is no extra padding underneath the figure in the carousel
                   <div key={i}>
                     <figure className="relative block w-full group">
-                      {image.localFile.childImageSharp.gatsbyImageData ? (
+                      {image?.localFile?.childImageSharp?.gatsbyImageData ? (
                         <GatsbyImage
                           className="object-cover w-full carousel-image"
                           image={getImage(
