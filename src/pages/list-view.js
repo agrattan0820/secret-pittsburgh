@@ -146,7 +146,11 @@ export const query = graphql`
                 }
                 localFile {
                   childImageSharp {
-                    gatsbyImageData(placeholder: BLURRED, width: 256)
+                    gatsbyImageData(
+                      placeholder: BLURRED
+                      formats: [AUTO, WEBP]
+                      width: 256
+                    )
                   }
                 }
               }
