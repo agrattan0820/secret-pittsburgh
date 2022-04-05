@@ -5,6 +5,7 @@ import "mapbox-gl/dist/mapbox-gl.css";
 import { Carousel } from "antd";
 import { FaArrowLeft, FaShare, FaArrowUp, FaLink } from "react-icons/fa";
 import scrollTo from "gatsby-plugin-smoothscroll";
+import { GatsbyImage, getImage } from "gatsby-plugin-image";
 
 /* eslint-disable import/no-webpack-loader-syntax */
 import mapboxgl from "mapbox-gl";
@@ -93,11 +94,21 @@ const ArticlePage = (props) => {
                   // Extra div needed so there is no extra padding underneath the figure in the carousel
                   <div key={i}>
                     <figure className="relative block w-full group">
-                      <img
-                        className="object-cover w-full carousel-image"
-                        src={`https://secretpittsburgh.pitt.edu/${image?.uri?.url}`}
-                        alt={article?.field_image[i]?.alt}
-                      />
+                      {image.localFile.childImageSharp.gatsbyImageData ? (
+                        <GatsbyImage
+                          className="object-cover w-full carousel-image"
+                          image={getImage(
+                            image.localFile.childImageSharp.gatsbyImageData
+                          )}
+                          alt={article?.field_image[i]?.alt}
+                        />
+                      ) : (
+                        <img
+                          className="object-cover w-full carousel-image"
+                          src={`https://secretpittsburgh.pitt.edu/${image?.uri?.url}`}
+                          alt={article?.field_image[i]?.alt}
+                        />
+                      )}
                       <figcaption className="absolute bottom-0 left-0 px-4 pt-4 pb-6 text-white transition duration-300 transform -translate-x-16 bg-black opacity-0 group-hover:translate-x-0 max-w-prose group-hover:opacity-80">
                         {article?.field_image[i]?.alt}
                       </figcaption>
@@ -167,6 +178,11 @@ export const query = graphql`
         field_image {
           uri {
             url
+          }
+          localFile {
+            childImageSharp {
+              gatsbyImageData(placeholder: BLURRED, formats: [AUTO, WEBP])
+            }
           }
         }
         node__location {
