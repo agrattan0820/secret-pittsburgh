@@ -74,7 +74,9 @@ const BookshelfPage = ({ data }) => {
                         <FaBookOpen className="inline-block ml-2" />
                       </a>
                     </li>
-                    {i !== data.allNodeBookshelfItem.nodes.length - 1 && <hr />}
+                    {i !== data.allNodeBookshelfItem.nodes.length - 1 && (
+                      <hr key={i + "hr"} />
+                    )}
                   </>
                 ))}
             </ul>
