@@ -11,6 +11,7 @@ import Seo from "../components/seo";
 import CityImage from "../images/secret_pittsburgh_list_view.jpg";
 import { shortenString } from "../util";
 import useStickyState from "../components/useStickyState";
+import { GatsbyImage, getImage } from "gatsby-plugin-image";
 
 // @ts-ignore
 mapboxgl.workerClass =
@@ -78,10 +79,14 @@ const ListViewPage = ({ data }) => {
                         ?.relationships?.field_image &&
                         location?.relationships
                           ?.field_associated_guidebook_entry?.field_image && (
-                          <img
-                            className="object-cover object-center w-full h-40 md:h-48"
-                            src={`https://secretpittsburgh.pitt.edu${location?.relationships?.field_associated_guidebook_entry?.relationships?.field_image[0]?.uri?.url}
-                            `}
+                          <GatsbyImage
+                            className="object-cover object-center w-40 h-40 md:w-64 md:h-48"
+                            image={getImage(
+                              location?.relationships
+                                ?.field_associated_guidebook_entry
+                                ?.relationships?.field_image[0]?.localFile
+                                .childImageSharp.gatsbyImageData
+                            )}
                             alt={
                               location?.relationships
                                 ?.field_associated_guidebook_entry
@@ -115,19 +120,6 @@ export default ListViewPage;
 
 export const query = graphql`
   {
-    site {
-      siteMetadata {
-        author
-        description
-        siteUrl
-        title
-      }
-    }
-    allNodeTypeNodeType {
-      nodes {
-        name
-      }
-    }
     allNodeLocation {
       nodes {
         title
@@ -151,6 +143,11 @@ export const query = graphql`
               field_image {
                 uri {
                   url
+                }
+                localFile {
+                  childImageSharp {
+                    gatsbyImageData(placeholder: BLURRED, width: 256)
+                  }
                 }
               }
             }
@@ -214,44 +211,6 @@ export const query = graphql`
           }
         }
         gatsbyPath(filePath: "/location/{nodeLocation.title}")
-      }
-    }
-    allNodeGuidebookEntry {
-      nodes {
-        relationships {
-          field_image {
-            uri {
-              url
-            }
-          }
-          node__location {
-            title
-            field_geolocation {
-              lat
-              lng
-            }
-          }
-        }
-        body {
-          format
-          processed
-          summary
-          value
-        }
-      }
-    }
-    allTaxonomyTermNeighborhoods {
-      nodes {
-        name
-        relationships {
-          node__location {
-            title
-            field_geolocation {
-              lat
-              lng
-            }
-          }
-        }
       }
     }
   }
