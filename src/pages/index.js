@@ -12,6 +12,7 @@ import {
   FaListAlt,
 } from "react-icons/fa";
 import { GiSuspensionBridge } from "react-icons/gi";
+import { GatsbyImage, getImage } from "gatsby-plugin-image";
 
 /* eslint-disable import/no-webpack-loader-syntax */
 import mapboxgl from "mapbox-gl";
@@ -413,10 +414,15 @@ const IndexPage = ({ data, location: router }) => {
                 ) : (
                   <>
                     {location?.relationships?.field_associated_guidebook_entry
-                      ?.relationships?.field_image[0]?.uri?.url && (
-                      <img
+                      ?.relationships?.field_image && (
+                      <GatsbyImage
                         className="shadow-md"
-                        src={`https://secretpittsburgh.pitt.edu${location?.relationships.field_associated_guidebook_entry.relationships.field_image[0].uri.url}`}
+                        image={getImage(
+                          location?.relationships
+                            .field_associated_guidebook_entry.relationships
+                            .field_image[0].localFile.childImageSharp
+                            .gatsbyImageData
+                        )}
                         alt={
                           location?.relationships
                             .field_associated_guidebook_entry.field_image[0].alt
@@ -492,6 +498,11 @@ export const query = graphql`
               field_image {
                 uri {
                   url
+                }
+                localFile {
+                  childImageSharp {
+                    gatsbyImageData(placeholder: BLURRED, formats: [AUTO, WEBP])
+                  }
                 }
               }
             }
