@@ -8,7 +8,7 @@ import scrollTo from "gatsby-plugin-smoothscroll";
 /* eslint-disable import/no-webpack-loader-syntax */
 import mapboxgl from "mapbox-gl";
 import Seo from "../components/seo";
-import BookshelfImage from "../images/secret_pittsburgh_bookshelf.jpg";
+import { StaticImage } from "gatsby-plugin-image";
 
 // @ts-ignore
 mapboxgl.workerClass =
@@ -39,9 +39,10 @@ const BookshelfPage = ({ data }) => {
 
       <section className="container relative flex flex-col justify-center min-h-screen pt-32 pb-24 mx-auto ">
         <div className="w-full max-w-3xl px-4 mx-auto space-y-8 leading-loose">
-          <img
+          <StaticImage
             className="object-cover w-full rounded shadow-lg carousel-image"
-            src={BookshelfImage}
+            placeholder="blurred"
+            src="../images/secret_pittsburgh_bookshelf.jpg"
             alt="Old book from the Historic Pittsburgh Archive"
           />
           <h2 className="text-3xl font-bold font-title">
@@ -73,7 +74,9 @@ const BookshelfPage = ({ data }) => {
                         <FaBookOpen className="inline-block ml-2" />
                       </a>
                     </li>
-                    {i !== data.allNodeBookshelfItem.nodes.length - 1 && <hr />}
+                    {i !== data.allNodeBookshelfItem.nodes.length - 1 && (
+                      <hr key={i + "hr"} />
+                    )}
                   </>
                 ))}
             </ul>

@@ -11,6 +11,7 @@ import {
   FaLink,
 } from "react-icons/fa";
 import scrollTo from "gatsby-plugin-smoothscroll";
+import { GatsbyImage, getImage } from "gatsby-plugin-image";
 
 /* eslint-disable import/no-webpack-loader-syntax */
 import mapboxgl from "mapbox-gl";
@@ -119,15 +120,29 @@ const LocationPage = (props) => {
                     // Extra div needed so there is no extra padding underneath the figure in the carousel
                     <div key={i}>
                       <figure className="relative block w-full group">
-                        <img
-                          className="object-cover w-full rounded carousel-image"
-                          src={`https://secretpittsburgh.pitt.edu/${image.uri.url}`}
-                          alt={
-                            location?.relationships
-                              .field_associated_guidebook_entry.field_image[i]
-                              .alt
-                          }
-                        />
+                        {image?.localFile?.childImageSharp?.gatsbyImageData ? (
+                          <GatsbyImage
+                            className="object-cover w-full rounded carousel-image"
+                            image={getImage(
+                              image.localFile.childImageSharp.gatsbyImageData
+                            )}
+                            alt={
+                              location?.relationships
+                                .field_associated_guidebook_entry.field_image[i]
+                                .alt
+                            }
+                          />
+                        ) : (
+                          <img
+                            className="object-cover w-full rounded carousel-image"
+                            src={`https://secretpittsburgh.pitt.edu/${image.uri.url}`}
+                            alt={
+                              location?.relationships
+                                .field_associated_guidebook_entry.field_image[i]
+                                .alt
+                            }
+                          />
+                        )}
                         <figcaption className="absolute bottom-0 left-0 px-4 pt-4 pb-6 text-white transition duration-300 transform -translate-x-16 bg-black opacity-0 group-hover:translate-x-0 max-w-prose group-hover:opacity-80">
                           {
                             location?.relationships
@@ -194,22 +209,6 @@ const LocationPage = (props) => {
                 </Link>
               </div>
             )}
-          {/* {location?.relationships?.node__article && (
-            <div className="space-y-4">
-              <h3 className="font-bold">Read Articles</h3>
-              <div className="grid grid-cols-3 gap-8">
-                {location?.relationships?.node__article?.map((article, i) => (
-                  <Link
-                    key={i}
-                    to={article.gatsbyPath}
-                    className="flex items-center justify-between p-4 space-x-4 font-bold transition transform rounded shadow hover:scale-105 hover:underline bg-slate-200 focus-visible:scale-105 focus-visible:underline"
-                  >
-                    <span>{article.title}</span>
-                  </Link>
-                ))}
-              </div>
-            </div>
-          )} */}
           <div className="space-y-8 leading-loose processed-text lg:leading-loose lg:text-lg">
             {parse(
               replaceStagingLink(
@@ -307,6 +306,11 @@ export const query = graphql`
             field_image {
               uri {
                 url
+              }
+              localFile {
+                childImageSharp {
+                  gatsbyImageData(placeholder: BLURRED, formats: [AUTO, WEBP])
+                }
               }
             }
           }

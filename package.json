@@ -18,7 +18,7 @@
   "dependencies": {
     "antd": "^4.18.9",
     "framer-motion": "^6.2.8",
-    "gatsby": "^4.8.0",
+    "gatsby": "=v4.7.2",
     "gatsby-plugin-google-analytics": "^4.8.0",
     "gatsby-plugin-image": "^2.8.1",
     "gatsby-plugin-manifest": "^4.8.1",

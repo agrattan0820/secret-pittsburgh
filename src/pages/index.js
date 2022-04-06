@@ -150,10 +150,7 @@ const IndexPage = ({ data, location: router }) => {
             onBlur={() => setTooltip(false)}
             aria-label={`Open location information of ${markerLocation.title}`}
           >
-            <Pin
-              name={markerLocation.title}
-              visited={visitedLocations.includes(markerLocation.title)}
-            />
+            <Pin visited={visitedLocations.includes(markerLocation.title)} />
           </button>
         </Marker>
       )),
@@ -415,7 +412,8 @@ const IndexPage = ({ data, location: router }) => {
                     {location?.relationships?.field_associated_guidebook_entry
                       ?.relationships?.field_image[0]?.uri?.url && (
                       <img
-                        className="shadow-md"
+                        className="object-cover object-center w-full shadow-md"
+                        style={{ maxHeight: "20rem" }}
                         src={`https://secretpittsburgh.pitt.edu${location?.relationships.field_associated_guidebook_entry.relationships.field_image[0].uri.url}`}
                         alt={
                           location?.relationships
