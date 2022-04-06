@@ -1,8 +1,9 @@
 <p align="center">
-  <a href="https://secret-pittsburgh-test.netlify.app/">
-    <img alt="Secret Pittsburgh" src="https://user-images.githubusercontent.com/51346343/160471311-5fde8a84-2b00-424b-a1eb-9245febe9ebd.png" width="500" />
+  <a href="https://secretpittsburgh.netlify.app">
+    <img alt="Secret Pittsburgh" src="https://user-images.githubusercontent.com/51346343/162000341-4c887645-ec5b-4758-a79d-659a2b66be76.png" width="500" />
   </a>
 </p>
+
 <h1 align="center">
   Secret Pittsburgh
 </h1>
