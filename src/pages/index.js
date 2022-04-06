@@ -150,10 +150,7 @@ const IndexPage = ({ data, location: router }) => {
             onBlur={() => setTooltip(false)}
             aria-label={`Open location information of ${markerLocation.title}`}
           >
-            <Pin
-              name={markerLocation.title}
-              visited={visitedLocations.includes(markerLocation.title)}
-            />
+            <Pin visited={visitedLocations.includes(markerLocation.title)} />
           </button>
         </Marker>
       )),
