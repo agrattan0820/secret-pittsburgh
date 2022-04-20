@@ -42,6 +42,8 @@ export function replaceStagingLink(str) {
     "https://secretpittsburgh.pitt.edu/sp/"
   );
 
+  str = str.replaceAll("/sp/", "https://secretpittsburgh.pitt.edu/sp/");
+
   return str;
 }
 
