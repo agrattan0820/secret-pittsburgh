@@ -271,6 +271,7 @@ const IndexPage = ({ data, location: router }) => {
             ref={mapRef}
             onMove={(evt) => {
               setIntro(false);
+              setListView(true);
               setViewState(evt.viewState);
             }}
             mapboxAccessToken={process.env.GATSBY_MAPBOX_ACCESS_TOKEN}
