@@ -17,7 +17,7 @@ import { GiSuspensionBridge } from "react-icons/gi";
 import mapboxgl from "mapbox-gl";
 import Seo from "../components/seo";
 import Pin from "../components/pin";
-import { shortenString } from "../util";
+import { isOutOfMaxBounds, shortenString } from "../util";
 import useStickyState from "../components/useStickyState";
 import Controls from "../components/controls";
 import { motion, AnimatePresence } from "framer-motion";
@@ -239,7 +239,7 @@ const IndexPage = ({ data, location: router }) => {
             >
               <svg
                 role="status"
-                class="w-8 h-8 text-slate-200 animate-spin fill-pitt-blue"
+                className="w-8 h-8 text-slate-200 animate-spin fill-pitt-blue"
                 viewBox="0 0 100 101"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
@@ -270,9 +270,20 @@ const IndexPage = ({ data, location: router }) => {
             }}
             ref={mapRef}
             onMove={(evt) => {
-              setIntro(false);
-              setListView(true);
-              setViewState(evt.viewState);
+              intro && setIntro(false);
+              listView && setListView(false);
+              if (
+                !isOutOfMaxBounds(
+                  evt.viewState.latitude,
+                  evt.viewState.longitude,
+                  [
+                    [-80.13342, 40.30733],
+                    [-79.738968, 40.578369],
+                  ]
+                )
+              ) {
+                setViewState(evt.viewState);
+              }
             }}
             mapboxAccessToken={process.env.GATSBY_MAPBOX_ACCESS_TOKEN}
             mapStyle={"mapbox://styles/mapbox/light-v10"}
