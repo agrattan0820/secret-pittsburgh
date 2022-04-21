@@ -9,7 +9,6 @@ import { StaticImage } from "gatsby-plugin-image";
 /* eslint-disable import/no-webpack-loader-syntax */
 import mapboxgl from "mapbox-gl";
 import Seo from "../components/seo";
-import AboutImage from "../images/secret_pittsburgh_about.jpg";
 
 // @ts-ignore
 mapboxgl.workerClass =
