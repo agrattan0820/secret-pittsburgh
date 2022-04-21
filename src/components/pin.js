@@ -4,7 +4,7 @@ import { FaMapMarkerAlt } from "react-icons/fa";
 function Pin({ visited }) {
   return (
     <FaMapMarkerAlt
-      className={`filter drop-shadow sp-marker-icon ${
+      className={`w-6 filter drop-shadow sp-marker-icon ${
         visited && "sp-marker-visited"
       }`}
     />
