@@ -22,6 +22,7 @@ import useStickyState from "../components/useStickyState";
 import Controls from "../components/controls";
 import { motion, AnimatePresence } from "framer-motion";
 import useMediaQuery from "../components/useMediaQuery";
+import DrawerImage from "../components/drawerImage";
 
 // @ts-ignore
 mapboxgl.workerClass =
@@ -423,10 +424,12 @@ const IndexPage = ({ data, location: router }) => {
                   <>
                     {location?.relationships?.field_associated_guidebook_entry
                       ?.relationships?.field_image[0]?.uri?.url && (
-                      <img
-                        className="object-cover object-center w-full shadow-md"
-                        style={{ maxHeight: "20rem" }}
-                        src={`https://secretpittsburgh.pitt.edu${location?.relationships.field_associated_guidebook_entry.relationships.field_image[0].uri.url}`}
+                      <DrawerImage
+                        src={
+                          location?.relationships
+                            .field_associated_guidebook_entry.relationships
+                            .field_image[0].uri.url
+                        }
                         alt={
                           location?.relationships
                             .field_associated_guidebook_entry.field_image[0].alt
