@@ -474,11 +474,6 @@ export const query = graphql`
         title
       }
     }
-    allNodeTypeNodeType {
-      nodes {
-        name
-      }
-    }
     allNodeLocation {
       nodes {
         title
@@ -511,57 +506,6 @@ export const query = graphql`
               processed
             }
             title
-          }
-          node__article {
-            body {
-              processed
-            }
-            field_image {
-              alt
-            }
-            relationships {
-              field_image {
-                uri {
-                  url
-                }
-              }
-            }
-            title
-          }
-          field_main_entry {
-            title
-            field_place {
-              links {
-                help {
-                  href
-                }
-              }
-            }
-            body {
-              processed
-            }
-            field_image {
-              alt
-            }
-            relationships {
-              field_image {
-                uri {
-                  url
-                }
-              }
-            }
-          }
-          node__basics {
-            body {
-              processed
-            }
-            title
-          }
-          node__guidebook_entry {
-            title
-            body {
-              processed
-            }
           }
         }
         gatsbyPath(filePath: "/location/{nodeLocation.title}")
