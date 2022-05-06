@@ -511,27 +511,6 @@ export const query = graphql`
         gatsbyPath(filePath: "/location/{nodeLocation.title}")
       }
     }
-    allNodeGuidebookEntry {
-      nodes {
-        relationships {
-          field_image {
-            uri {
-              url
-            }
-          }
-          node__location {
-            title
-            field_geolocation {
-              lat
-              lng
-            }
-          }
-        }
-        body {
-          processed
-        }
-      }
-    }
     allTaxonomyTermNeighborhoods {
       nodes {
         name
