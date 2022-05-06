@@ -528,10 +528,7 @@ export const query = graphql`
           }
         }
         body {
-          format
           processed
-          summary
-          value
         }
       }
     }
