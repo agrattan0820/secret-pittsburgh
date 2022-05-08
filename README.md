@@ -11,6 +11,7 @@
 The "Secret Pittsburgh" Literature class invites University of Pittsburgh students to explore unusual or hidden spaces of the city, including "secret" spaces within well-known landmarks.
 
 <!--- These are examples. See https://shields.io for others or to customize this set of shields. You might want to include dependencies, project status and licence info here --->
+
 ![GitHub last commit](https://img.shields.io/github/last-commit/GameDog9988/secret-pittsburgh)
 ![GitHub contributors](https://img.shields.io/github/contributors/GameDog9988/secret-pittsburgh)
 ![GitHub top language](https://img.shields.io/github/languages/top/GameDog9988/secret-pittsburgh)
@@ -55,7 +56,9 @@ npm start
     - [Cheat Sheet](https://www.gatsbyjs.com/docs/cheat-sheet/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
 
 ## Contributing to Secret Pittsburgh
+
 <!--- If your README is long or you have some specific process or steps you want contributors to follow, consider creating a separate CONTRIBUTING.md file--->
+
 To contribute to Secret Pittsburgh, follow these steps:
 
 1. Fork this repository.
