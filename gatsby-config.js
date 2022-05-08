@@ -80,6 +80,8 @@ module.exports = {
             "h2",
             "h3",
             "input",
+            "ant-select",
+            "sp-autocomplete",
             "ant-select-selection-search-input",
             "ant-select-single",
             "ant-select-selector",
