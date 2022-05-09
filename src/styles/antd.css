@@ -1,4 +1,10 @@
-/* Redo Ant Design */
+/* Minimal Ant Design */
+/* 
+Grabs only what we need
+- Autocomplete
+- Carousel
+- Drawer
+*/
 
 body,
 html {
