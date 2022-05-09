@@ -108,7 +108,7 @@ const ListViewPage = ({ data }) => {
                 ))}
             </ul>
           </div>
-          <div className="max-w-3xl">
+          <div className="max-w-3xl mx-auto">
             <button
               onClick={() => scrollTo("#page-top")}
               className="flex items-center justify-center px-4 py-2 space-x-2 font-bold text-center text-black transition transform rounded shadow hover:text-black bg-slate-200 hover:scale-105"
