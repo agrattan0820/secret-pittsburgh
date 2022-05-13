@@ -1,9 +1,8 @@
 {
-  "apiKey": null,
+  "apiKey": "AIzaSyD6oZ0g7IgV4c8kOBwog4EwBkyYcyhENDA",
   "defaultZoom": 11,
-  "defaultLocale": null,
   "defaultLocation": {
-    "lat": 40.7058254,
-    "lng": -74.1180863
+    "lat": 40.4406,
+    "lng": -79.9959
   }
 }
