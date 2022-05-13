@@ -8,7 +8,7 @@ export default {
   fields: [
     {
       name: "name",
-      title: "place Name",
+      title: "Name",
       type: "string",
       description: "Title of place.",
     },
@@ -16,7 +16,7 @@ export default {
       name: "description",
       title: "Description",
       type: "text",
-      description: "Description of place.",
+      description: "Textual description of place.",
     },
     {
       name: "location",

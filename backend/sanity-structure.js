@@ -1,5 +1,5 @@
 import S from "@sanity/desk-tool/structure-builder";
-import { FaHome } from "react-icons/fa";
+import { FaHome, FaInfoCircle } from "react-icons/fa";
 
 export default () =>
   S.list()
@@ -16,7 +16,20 @@ export default () =>
             .documentId("homepage")
             .views([S.view.form()])
         ),
+      S.listItem()
+        .title("About Page")
+        .icon(FaInfoCircle)
+        .child(
+          S.editor()
+            .id("about")
+            .title("About Page")
+            .schemaType("about")
+            .documentId("about")
+            .views([S.view.form()])
+        ),
       ...S.documentTypeListItems().filter(
-        (listItem) => !["homepage"].includes(listItem.getId())
+        (listItem) =>
+          !["homepage"].includes(listItem.getId()) &&
+          !["about"].includes(listItem.getId())
       ),
     ]);

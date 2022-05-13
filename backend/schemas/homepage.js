@@ -1,4 +1,4 @@
-import { FaHome } from "react-icons";
+import { FaHome } from "react-icons/fa";
 
 export default {
   name: "homepage",
