@@ -1,5 +1,5 @@
-node_modules/
-backend/dist
-.cache/
-public
+node_modules
+dist
+.cache
+public/
 .env.*
