@@ -21,7 +21,8 @@ export default {
     {
       name: "bio",
       title: "Bio",
-      type: "text",
+      type: "array",
+      of: [{ type: "block" }],
       description: "Short bio or description of person.",
     },
     {
