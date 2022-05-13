@@ -2327,11 +2327,23 @@ h6 {
   white-space: nowrap;
 }
 
-@media (-ms-high-contrast: none) {
-  .ant-select-selection-placeholder,
-  .ant-select-selection-placeholder ::-ms-backdrop {
-    flex: auto;
-  }
+.ant-select:not(.ant-select-customize-input)
+  .ant-select-selector
+  .ant-select-selection-search-input {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background: transparent;
+  border: none;
+  margin: 0;
+  outline: none;
+  padding: 0;
+}
+
+.ant-select-show-search.ant-select:not(.ant-select-customize-input)
+  .ant-select-selector
+  input {
+  cursor: auto;
 }
 
 .ant-select-focused:not(.ant-select-disabled).ant-select:not(.ant-select-customize-input)
@@ -2340,25 +2352,6 @@ h6 {
   border-right-width: 1px;
   box-shadow: 0 0 0 2px rgba(24, 144, 255, 0.2);
   outline: 0;
-}
-
-.ant-select:not(.ant-select-customize-input) .ant-select-selector {
-  background-color: #fff;
-  border: 1px solid #d9d9d9;
-  border-radius: 2px;
-  position: relative;
-  transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
-}
-
-.ant-select-single:not(.ant-select-customize-input) .ant-select-selector {
-  height: 32px;
-  padding: 0 11px;
-  width: 100%;
-}
-
-.ant-select-show-search.ant-select:not(.ant-select-customize-input)
-  .ant-select-selector {
-  cursor: text;
 }
 
 .ant-select:not(.ant-select-customize-input) .ant-select-selector {
