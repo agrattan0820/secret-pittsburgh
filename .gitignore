@@ -1,4 +1,5 @@
 node_modules/
+backend/dist
 .cache/
 public
 .env.*
