@@ -17,7 +17,7 @@ import { GiSuspensionBridge } from "react-icons/gi";
 import mapboxgl from "mapbox-gl";
 import Seo from "../components/seo";
 import Pin from "../components/pin";
-import { isOutOfMaxBounds, shortenString } from "../util";
+import { isOutOfMaxBounds, removeExtraNewLines, shortenString } from "../util";
 import useStickyState from "../components/useStickyState";
 import Controls from "../components/controls";
 import { motion, AnimatePresence } from "framer-motion";
@@ -441,11 +441,23 @@ const IndexPage = ({ data, location: router }) => {
                     )}
                     <div className="processed-text">
                       {parse(
+                        removeExtraNewLines(
+                          location?.relationships
+                            ?.field_associated_basic_info_entr?.body
+                            ?.processed ?? ""
+                        )
+                      )}
+                    </div>
+                    <div className="processed-text">
+                      {parse(
                         shortenString(
                           location?.relationships
-                            .field_associated_guidebook_entry.body.processed ??
-                            "",
-                          550
+                            ?.field_associated_guidebook_entry?.body
+                            ?.processed ?? "",
+                          location?.relationships
+                            ?.field_associated_basic_info_entr?.body?.processed
+                            ? 250
+                            : 550
                         )
                       )}
                     </div>
