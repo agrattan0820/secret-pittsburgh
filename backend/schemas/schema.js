@@ -10,6 +10,7 @@ import video from "./video";
 import audio from "./audio";
 import about from "./about";
 import person from "./person";
+import imageWithCaption from "./blocks/imageWithCaption";
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -25,5 +26,6 @@ export default createSchema({
     video,
     audio,
     person,
+    imageWithCaption,
   ]),
 });

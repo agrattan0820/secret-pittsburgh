@@ -13,16 +13,50 @@ export default {
       description: "Title of place.",
     },
     {
+      name: "location",
+      title: "Location",
+      type: "geopoint",
+      description: "Geolocation of place.",
+    },
+    {
       name: "description",
       title: "Description",
       type: "text",
       description: "Textual description of place.",
     },
     {
-      name: "location",
-      title: "Location",
-      type: "geopoint",
-      description: "Geolocation of place.",
+      name: "images",
+      title: "Images",
+      type: "array",
+      of: [
+        {
+          type: "imageWithCaption",
+        },
+      ],
+    },
+    {
+      name: "address",
+      title: "Address",
+      type: "string",
+      description: `Street address of place ("1835 Centre Avenue, Pittsburgh, PA 15219")`,
+    },
+    {
+      name: "hours",
+      title: "Hours",
+      type: "string",
+      description: `Explanation location's hours if needed ("Monday - Friday  8AM - 5PM")`,
+    },
+    {
+      name: "website",
+      title: "Website",
+      type: "url",
+      description: "Place's associated website",
+    },
+    {
+      name: "admission",
+      title: "Admission",
+      type: "string",
+      description: `Price or cost of admission ("Free" or "$10 for Adults")`,
     },
   ],
 };
