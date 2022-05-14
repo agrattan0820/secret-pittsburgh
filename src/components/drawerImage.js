@@ -31,6 +31,7 @@ function DrawerImage({ src, alt }) {
       <img
         className="transition bg-slate-500 animate-pulse"
         src={`https://secretpittsburgh.pitt.edu${src}`}
+        alt={alt}
         style={{ display: "none" }}
         onLoad={() => setLoaded(true)}
       />
