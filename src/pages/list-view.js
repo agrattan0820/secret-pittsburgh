@@ -1,15 +1,12 @@
 import React from "react";
-import parse from "html-react-parser";
 import { graphql, Link, navigate } from "gatsby";
 import "mapbox-gl/dist/mapbox-gl.css";
-import { FaArrowLeft, FaArrowUp, FaBookOpen } from "react-icons/fa";
+import { FaArrowLeft, FaArrowUp } from "react-icons/fa";
 import scrollTo from "gatsby-plugin-smoothscroll";
 
 /* eslint-disable import/no-webpack-loader-syntax */
 import mapboxgl from "mapbox-gl";
 import Seo from "../components/seo";
-import CityImage from "../images/secret_pittsburgh_list_view.jpg";
-import { shortenString } from "../util";
 import useStickyState from "../components/useStickyState";
 import { GatsbyImage, getImage, StaticImage } from "gatsby-plugin-image";
 
@@ -22,7 +19,7 @@ const ListViewPage = ({ data }) => {
     return a.title.trim().localeCompare(b.title.trim());
   });
 
-  const [listView, setListView] = useStickyState(true, "list-view");
+  const [, setListView] = useStickyState(true, "list-view");
 
   return (
     <main>
