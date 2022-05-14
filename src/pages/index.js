@@ -449,13 +449,22 @@ const IndexPage = ({ data, location: router }) => {
                         )
                       )}
                     </div>
-                    <div className="flex items-center justify-center">
+                    <div className="flex space-x-4">
                       <Link
                         to={location.gatsbyPath}
-                        className="inline-block px-4 py-2 font-bold text-center text-white transition transform rounded shadow hover:text-white bg-pitt-blue hover:scale-105"
+                        className="inline-block px-4 py-2 text-sm font-bold text-center text-white transition transform rounded shadow hover:text-white bg-pitt-blue hover:scale-105"
                       >
                         Learn More
                       </Link>
+                      <a
+                        href={`https://www.google.com/maps/search/${location?.title.replaceAll(
+                          " ",
+                          "+"
+                        )}/@40.4452874,-79.9876859,17z`}
+                        className="inline-block px-4 py-2 text-sm font-bold transition border-2 rounded shadow text-pitt-blue border-pitt-blue hover:text-pitt-blue focus-visible:text-pitt-blue focus-visible:scale-105 hover:scale-105"
+                      >
+                        View on Google Maps
+                      </a>
                     </div>
                   </>
                 )}
