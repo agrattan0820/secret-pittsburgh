@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useRef } from "react";
+import React, { useState, useMemo, useRef, useCallback } from "react";
 import parse from "html-react-parser";
 import { graphql, Link, navigate } from "gatsby";
 import { Drawer } from "antd";
@@ -52,19 +52,22 @@ const IndexPage = ({ data, location: router }) => {
 
   const mapRef = useRef();
 
-  const handleLocationOpen = (markerLocation) => {
-    setLocation(markerLocation);
-    goToLoc(
-      markerLocation.field_geolocation.lat,
-      markerLocation.field_geolocation.lng
-    );
-    setTimeout(() => {
-      setDrawerOpen(true);
-      if (!visitedLocations.includes(markerLocation.title)) {
-        setVisitedLocations([...visitedLocations, markerLocation.title]);
-      }
-    }, 400);
-  };
+  const handleLocationOpen = useCallback(
+    (markerLocation) => {
+      setLocation(markerLocation);
+      goToLoc(
+        markerLocation.field_geolocation.lat,
+        markerLocation.field_geolocation.lng
+      );
+      setTimeout(() => {
+        setDrawerOpen(true);
+        if (!visitedLocations.includes(markerLocation.title)) {
+          setVisitedLocations([...visitedLocations, markerLocation.title]);
+        }
+      }, 400);
+    },
+    [visitedLocations, setVisitedLocations]
+  );
 
   const goToLoc = (lat, lng) => {
     mapRef.current?.flyTo({ center: [lng, lat], zoom: 15, duration: 800 });
