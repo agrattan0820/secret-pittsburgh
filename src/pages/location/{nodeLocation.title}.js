@@ -24,8 +24,8 @@ mapboxgl.workerClass =
   require("worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker").default;
 
 const LocationPage = (props) => {
-  const [location, setLocation] = useState(props.data.nodeLocation);
-  const [listView, setListView] = useStickyState(false, "list-view");
+  const [location] = useState(props.data.nodeLocation);
+  const [listView] = useStickyState(false, "list-view");
   // State to handle the copy-to-clipboard alert/popup
   const [copying, setCopying] = useState(false);
 
