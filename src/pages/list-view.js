@@ -62,7 +62,7 @@ const ListViewPage = ({ data }) => {
           <h2 className="w-full max-w-3xl mx-auto text-3xl font-bold font-title">
             Secret Pittsburgh Locations
           </h2>
-          <div className="space-y-16 leading-loose xl:leading-loose xl:text-lg">
+          <div className="space-y-8 leading-loose md:space-y-16 xl:leading-loose xl:text-lg">
             <p className="w-full max-w-3xl mx-auto">
               The "Secret Pittsburgh" Literature class invites University of
               Pittsburgh students to explore unusual or hidden spaces of the
@@ -75,14 +75,14 @@ const ListViewPage = ({ data }) => {
                   <li key={i}>
                     <Link
                       to={location.gatsbyPath}
-                      className="block w-40 h-64 overflow-hidden transition transform rounded-md shadow md:w-64 md:h-72 hover:scale-105 focus-visible:scale-105 bg-slate-200"
+                      className="block w-40 h-64 overflow-hidden transition transform rounded-md shadow sm:w-56 md:w-64 md:h-72 hover:scale-105 focus-visible:scale-105 bg-slate-200"
                     >
                       {location?.relationships?.field_associated_guidebook_entry
                         ?.relationships?.field_image &&
                         location?.relationships
                           ?.field_associated_guidebook_entry?.field_image && (
                           <GatsbyImage
-                            className="object-cover object-center w-40 h-40 md:w-64 md:h-48"
+                            className="object-cover object-center w-40 h-40 sm:w-56 md:w-64 md:h-48"
                             image={getImage(
                               location?.relationships
                                 ?.field_associated_guidebook_entry
@@ -97,15 +97,20 @@ const ListViewPage = ({ data }) => {
                           />
                         )}
 
-                      <h2 className="flex flex-col justify-center h-24 p-4 font-bold leading-snug md:text-lg md:leading-snug md:h-24 font-title text-ellipsis">
-                        {location.title}
-                      </h2>
+                      <div className="flex flex-col justify-center h-24 p-4 space-y-1 font-title text-ellipsis">
+                        <h2 className="text-sm font-bold leading-snug sm:text-base">
+                          {location.title}
+                        </h2>
+                        <p className="text-xs italic leading-snug sm:text-sm">
+                          {location?.relationships?.field_neighborhood[0]?.name}
+                        </p>
+                      </div>
                     </Link>
                   </li>
                 ))}
             </ul>
           </div>
-          <div className="max-w-3xl mx-auto text-center">
+          <div className="flex items-center justify-center max-w-3xl mx-auto">
             <button
               onClick={() => scrollTo("#page-top")}
               className="flex items-center justify-center px-4 py-2 space-x-2 font-bold text-center text-black transition transform rounded shadow hover:text-black bg-slate-200 hover:scale-105"
