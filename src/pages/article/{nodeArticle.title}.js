@@ -16,7 +16,7 @@ mapboxgl.workerClass =
   require("worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker").default;
 
 const ArticlePage = (props) => {
-  const [article, setArticle] = useState(props.data.nodeArticle);
+  const [article] = useState(props.data.nodeArticle);
   const [copying, setCopying] = useState(false);
 
   // Function for share button that either copies the link to clipboard or activates the mobile share if available
