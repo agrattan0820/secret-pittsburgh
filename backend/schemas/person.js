@@ -31,5 +31,10 @@ export default {
       type: "array",
       of: [{ type: "string" }],
     },
+    {
+      name: "image",
+      title: "Profile Image",
+      type: "image",
+    },
   ],
 };
