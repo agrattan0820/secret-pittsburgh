@@ -21,7 +21,8 @@ export default {
     {
       name: "description",
       title: "Description",
-      type: "text",
+      type: "array",
+      of: [{ type: "block" }],
       description: "Textual description of place.",
     },
     {
