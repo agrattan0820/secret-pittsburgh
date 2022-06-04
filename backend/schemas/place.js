@@ -51,7 +51,6 @@ export default {
       title: "Address",
       type: "string",
       description: `Street address of place ("1835 Centre Avenue, Pittsburgh, PA 15219")`,
-      validation: (Rule) => Rule.required(),
     },
     {
       name: "hours",
