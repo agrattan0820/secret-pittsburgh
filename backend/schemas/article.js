@@ -1,10 +1,10 @@
-import { FaBookOpen } from "react-icons/fa";
+import { FaPenAlt } from "react-icons/fa";
 
 export default {
   name: "article",
   title: "Article",
   type: "document",
-  icon: FaBookOpen,
+  icon: FaPenAlt,
   fields: [
     {
       name: "title",
