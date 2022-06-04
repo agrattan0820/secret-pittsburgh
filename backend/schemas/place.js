@@ -21,6 +21,14 @@ export default {
       validation: (Rule) => Rule.required(),
     },
     {
+      name: "neighborhood",
+      title: "Neighborhood",
+      type: "reference",
+      to: [{ type: "neighborhood" }],
+      description: "Neighborhood place is located in.",
+      validation: (Rule) => Rule.required(),
+    },
+    {
       name: "description",
       title: "Description",
       type: "array",

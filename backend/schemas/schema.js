@@ -12,6 +12,7 @@ import about from "./about";
 import person from "./person";
 import imageWithCaption from "./blocks/imageWithCaption";
 import bookshelfItem from "./bookshelfItem";
+import neighborhood from "./neighborhood";
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -23,11 +24,12 @@ export default createSchema({
     homepage,
     about,
     place,
+    neighborhood,
     article,
     video,
     audio,
-    bookshelfItem,
     person,
+    bookshelfItem,
     imageWithCaption,
   ]),
 });
