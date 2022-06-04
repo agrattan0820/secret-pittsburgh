@@ -11,12 +11,15 @@ export default {
       title: "Title",
       type: "string",
       description: "Headline of article.",
+      validation: (Rule) => Rule.required(),
     },
     {
       name: "author",
       title: "Author",
-      type: "string",
-      description: "Name of article's author.",
+      type: "reference",
+      to: [{ type: "person" }],
+      description: "Article's author.",
+      validation: (Rule) => Rule.required(),
     },
     {
       name: "post",
@@ -24,6 +27,7 @@ export default {
       type: "array",
       of: [{ type: "block" }],
       description: "Content of article.",
+      validation: (Rule) => Rule.required(),
     },
     {
       name: "place",
@@ -31,6 +35,7 @@ export default {
       type: "reference",
       to: [{ type: "place" }],
       description: "Location that article references.",
+      validation: (Rule) => Rule.required(),
     },
   ],
 };

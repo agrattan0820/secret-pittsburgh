@@ -11,12 +11,14 @@ export default {
       title: "Title",
       type: "string",
       description: "Title of video content.",
+      validation: (Rule) => Rule.required(),
     },
     {
       name: "author",
       title: "Author",
       type: "string",
       description: "Name of video's author.",
+      validation: (Rule) => Rule.required(),
     },
     {
       name: "description",
@@ -29,6 +31,7 @@ export default {
       title: "Video Link",
       type: "url",
       description: "URL to YouTube video.",
+      validation: (Rule) => Rule.required(),
     },
     {
       name: "place",
@@ -36,6 +39,7 @@ export default {
       type: "reference",
       to: [{ type: "place" }],
       description: "Location that video references.",
+      validation: (Rule) => Rule.required(),
     },
   ],
 };

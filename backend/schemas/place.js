@@ -11,12 +11,14 @@ export default {
       title: "Name",
       type: "string",
       description: "Title of place.",
+      validation: (Rule) => Rule.required(),
     },
     {
       name: "location",
       title: "Location",
       type: "geopoint",
       description: "Geolocation of place.",
+      validation: (Rule) => Rule.required(),
     },
     {
       name: "description",
@@ -24,6 +26,7 @@ export default {
       type: "array",
       of: [{ type: "block" }],
       description: "Textual description of place.",
+      validation: (Rule) => Rule.required(),
     },
     {
       name: "images",
@@ -40,6 +43,7 @@ export default {
       title: "Address",
       type: "string",
       description: `Street address of place ("1835 Centre Avenue, Pittsburgh, PA 15219")`,
+      validation: (Rule) => Rule.required(),
     },
     {
       name: "hours",

@@ -11,12 +11,14 @@ export default {
       title: "Title",
       type: "string",
       description: "Title or name of the piece",
+      validation: (Rule) => Rule.required(),
     },
     {
       name: "author",
       title: "Author",
       type: "string",
       description: "Author of piece.",
+      validation: (Rule) => Rule.required(),
     },
     {
       name: "publisher",
@@ -33,6 +35,7 @@ export default {
         dateFormat: "YYYY",
         calendarTodayLabel: "Today",
       },
+      validation: (Rule) => Rule.required(),
     },
     {
       name: "description",

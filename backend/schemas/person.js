@@ -11,6 +11,7 @@ export default {
       title: "Name",
       type: "string",
       description: "Name of person.",
+      validation: (Rule) => Rule.required(),
     },
     {
       name: "pronouns",

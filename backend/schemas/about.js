@@ -11,6 +11,7 @@ export default {
       title: "Heading",
       type: "string",
       description: "Headline text on homepage.",
+      validation: (Rule) => Rule.required(),
     },
     {
       name: "bodyText",
@@ -18,6 +19,7 @@ export default {
       type: "array",
       of: [{ type: "block" }],
       description: "Text for button that opens up locations.",
+      validation: (Rule) => Rule.required(),
     },
     {
       name: "instagramLink",
