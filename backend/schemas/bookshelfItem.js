@@ -44,11 +44,34 @@ export default {
       description: "Description or explanation of piece.",
     },
     {
+      name: "type",
+      title: "Type",
+      type: "string",
+      options: {
+        list: [
+          { title: "Place", value: "place" },
+          { title: "Neighborhood", value: "neighborhood" },
+        ],
+      },
+      description:
+        "Whether a bookshelf item is related to a specific location or an entire neighborhood.",
+      validation: (Rule) => Rule.required(),
+    },
+    {
       name: "place",
       title: "Place",
       type: "reference",
       to: [{ type: "place" }],
       description: "Location that piece references.",
+      hidden: ({ document }) => document?.type !== "place",
+    },
+    {
+      name: "neighborhood",
+      title: "Neighborhood",
+      type: "reference",
+      to: [{ type: "neighborhood" }],
+      description: "Neighborhood that piece references.",
+      hidden: ({ document }) => document?.type !== "neighborhood",
     },
   ],
 };
