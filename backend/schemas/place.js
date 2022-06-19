@@ -55,7 +55,7 @@ export default {
     {
       name: "hours",
       title: "Hours",
-      type: "string",
+      type: "text",
       description: `Explanation location's hours if needed ("Monday - Friday  8AM - 5PM")`,
     },
     {
@@ -67,8 +67,22 @@ export default {
     {
       name: "admission",
       title: "Admission",
-      type: "string",
+      type: "text",
       description: `Price or cost of admission ("Free" or "$10 for Adults")`,
+    },
+    {
+      name: "transportation",
+      title: "Transportation",
+      type: "text",
+      description:
+        "Available tranportation to and from location (bus, car, etc.)",
+    },
+    {
+      name: "access",
+      title: "Access",
+      type: "text",
+      description:
+        "How location is accessible to all individuals (wheelchair accessibility, tours available)",
     },
   ],
 };
