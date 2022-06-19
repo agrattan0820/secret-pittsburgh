@@ -25,7 +25,7 @@ export default {
       name: "post",
       title: "Post",
       type: "array",
-      of: [{ type: "block" }],
+      of: [{ type: "block" }, { type: "imageWithCaption" }],
       description: "Content of article.",
       validation: (Rule) => Rule.required(),
     },
