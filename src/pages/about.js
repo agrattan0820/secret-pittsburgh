@@ -2,7 +2,7 @@ import React from "react";
 import parse from "html-react-parser";
 import { graphql, Link } from "gatsby";
 import "mapbox-gl/dist/mapbox-gl.css";
-import { FaArrowLeft, FaArrowUp, FaInstagram, FaTwitter } from "react-icons/fa";
+import { FaArrowLeft, FaArrowUp, FaInstagram, FaTwitter, FaMicrophone  } from "react-icons/fa";
 import scrollTo from "gatsby-plugin-smoothscroll";
 import { StaticImage } from "gatsby-plugin-image";
 
@@ -60,6 +60,13 @@ const AboutPage = ({ data }) => {
             >
               <FaTwitter className="text-xl md:text-base" />
               <span>Follow Our Twitter</span>
+            </a>
+            <a
+              href="https://www.secretpghpodcast.com"
+              className="flex items-center justify-center px-4 py-2 space-x-2 text-sm font-bold text-center text-black transition transform rounded shadow md:text-base hover:text-black bg-slate-200 hover:scale-105"
+            >
+              <FaMicrophone className="text-xl md:text-base" />
+              <span>Listen to Our Podcast</span>
             </a>
           </div>
           <div className="space-y-8 leading-loose processed-text xl:leading-loose xl:text-lg">

@@ -333,6 +333,12 @@ const IndexPage = ({ data, location: router }) => {
               Bookshelf
             </Link>
             <a
+              href="https://www.secretpghpodcast.com"
+              className="inline-block text-pitt-blue hover:underline focus-visible:underline"
+            >
+              Podcast
+            </a>
+            <a
               href="https://www.instagram.com/secretpittsburgh/?hl=en"
               className="inline-block text-pitt-blue hover:underline focus-visible:underline"
             >
