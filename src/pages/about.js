@@ -46,7 +46,7 @@ const AboutPage = ({ data }) => {
             alt="Students of the University of Pittsburgh Secret Pittsburgh class"
           />
           <h2 className="text-3xl font-bold font-title">About Us</h2>
-          <div className="flex space-x-4">
+          <div className="flex flex-wrap gap-4">
             <a
               href="https://www.instagram.com/secretpittsburgh/?hl=en"
               className="flex items-center justify-center px-4 py-2 space-x-2 text-sm font-bold text-center text-black transition transform rounded shadow md:text-base hover:text-black bg-slate-200 hover:scale-105"
